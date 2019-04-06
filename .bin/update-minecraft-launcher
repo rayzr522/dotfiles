@@ -1,0 +1,17 @@
+#!/bin/bash
+set -e
+
+UPDATEDIR=/tmp/minecraft-launcher-update
+
+[[ -d "$UPDATEDIR" ]] && rm -rf "$UPDATEDIR"
+mkdir -p "$UPDATEDIR"
+cd "$UPDATEDIR"
+
+wget https://launcher.mojang.com/mc-staging/download/Minecraft_staging.tar.gz
+tar xvf ./Minecraft_staging.tar.gz
+
+sudo rm -rf /opt/minecraft-launcher
+ls
+sudo mv ./minecraft-launcher-* /opt/minecraft-launcher
+
+rm -rf "$UPDATEDIR"

@@ -1,0 +1,25 @@
+#!/bin/bash
+##DESC## Outputs the online URL for the current local repository.
+
+fail() {
+    echo "$*" >&1
+    exit 1
+}
+
+if ! git status -s 2>/dev/null; then
+    fail "You are not in a git repository!"
+fi
+
+REMOTE_NAME="$(git for-each-ref --format='%(upstream:short)' $(git symbolic-ref -q HEAD) | cut -d / -f 1)"
+
+if [ ! "$REMOTE_NAME" ]; then
+    fail "No remote could be found!"
+fi
+
+REMOTE_URL="$(git remote get-url "$REMOTE_NAME")"
+
+if [ ! "$REMOTE_URL" ]; then
+    fail "No URL found for remote '$REMOTE_NAME'"
+fi
+
+echo "$REMOTE_URL" | sed 's;^git@\(.\+\):\(.\+\)/\(.\+\)$;https://\1/\2/\3;g' | sed 's/\.git$//g'

@@ -1,0 +1,115 @@
+#!/bin/bash
+##DESC## Builds a Bukkit plugin and installs it to your current server.
+
+SCREEN_NAME="mcTestServer"
+if [ ! -z "$SERVER_SCREEN_NAME" ]; then
+    SCREEN_NAME="$SERVER_SCREEN_NAME"
+fi
+
+trap "fail Cancelled build" SIGINT
+
+# Utility methods
+function fail {
+    taskfail
+
+    echo -e "\n$(tput setaf 1)Error: $(tput sgr0)$*"
+    exit 1
+}
+
+# Task methods
+function task {
+    echo -en "$(tput setaf 3)»$(tput sgr0) $(tput bold)$*$(tput sgr0) "
+}
+
+function taskdone {
+    echo -en "\r$(tput setaf 2)✔$(tput sgr0)\n"
+}
+
+function taskfail {
+    echo -en "\r$(tput setaf 1)✖$(tput sgr0)\n"
+}
+
+function usage {
+    fail "Usage: build <name> [name2] [name3] [...]"
+}
+
+PROJECTS=( "$@" )
+
+if [ ${#PROJECTS} -lt 1 ]; then
+    if command -v peco >/dev/null; then
+        PROJECT="$(find "$HOME/GitHub" -maxdepth 2 -name 'pom.xml' -print0 | xargs -0 dirname -z | xargs -0 basename -a | peco --prompt 'Project:' --layout bottom-up || fail "No project chosen")"
+        [ ! "$PROJECT" ] && usage
+        PROJECTS=( "$PROJECT" )
+    else
+        usage
+    fi
+fi
+
+SERVER_FOLDER="$(pwd)"
+RECURSING=0
+
+while [[ "$SERVER_FOLDER" != "/" ]] && [[ ! -d "$SERVER_FOLDER/plugins" ]]; do
+    if [[ $RECURSING = 0 ]]; then
+        task "Recursing upwards to find server folder..."
+        RECURSING=1
+    fi
+
+    SERVER_FOLDER="$(dirname "$SERVER_FOLDER")"
+done
+
+[[ "$SERVER_FOLDER" != "/" ]] || fail "Failed to find a valid server folder :("
+[[ $RECURSING = 1 ]] && taskdone
+
+function build {
+    task "Locating project folder of $1"
+
+    cd "$HOME/GitHub" || fail "Could not enter $HOME/GitHub"
+
+    if [ ! -d "$1" ]; then
+        fail "The project '$1' does not exist!"
+    fi
+
+    cd "$1" || fail "Could not enter '$1'"
+    [ -f pom.xml ] || fail "Could not find a Maven project in the project folder!"
+
+    taskdone
+    task "Building $1 with Maven"
+
+    OUTPUT="$(mvn -q clean package)"
+    # the grep is to make sure it isn't just the output of tests
+    if [ ! -z "$(echo "$OUTPUT" | grep "\[ERROR\]")" ]; then
+        fail "The project failed to build!"
+    fi
+
+    taskdone
+    task "Finding JAR file for $1"
+
+    if [ ! -d target ]; then
+        fail "The output directory could not be found!"
+    fi
+
+    taskdone
+    task "Moving JAR file for $1"
+
+    [ -d "$SERVER_FOLDER/plugins/" ] || /bin/mkdir -p "$SERVER_FOLDER/plugins/" >/dev/null 2>&1
+
+    cp -f ./target/"$1"*.jar "$SERVER_FOLDER/plugins/" >/dev/null 2>&1 || fail "Failed to copy built JARs into server directory!"
+
+    taskdone
+
+    if [ ! -z "$(screen -ls | grep "$SCREEN_NAME")" ]; then
+        task "Sending reload command"
+        tell "$SCREEN_NAME" "plugman reload $1"
+        taskdone
+    fi
+
+}
+
+for project in "${PROJECTS[@]}"; do
+    echo
+    build "$project"
+done
+
+echo "$(tput setaf 2)$(tput bold)
+Projects succesfully built
+$(tput sgr0)"

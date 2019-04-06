@@ -1,0 +1,29 @@
+#!/bin/bash
+##DESC## A helper script to build a Bukkit plugin and open it on GitHub for releasing.
+
+# Fail on error
+set -e
+
+if [ $# -lt 1 ]; then
+    echo "Usage: release <plugin>" >&2
+    exit 1
+fi
+
+OUTPUT="$HOME/Desktop/Release-JARs"
+
+[ -d "$OUTPUT" ] && rm -rf "$OUTPUT"
+mkdir -p "$OUTPUT"
+
+PROJECT="$HOME/GitHub/$1"
+
+if [ ! -d "$PROJECT" ]; then
+    echo "That project does not exist!" >&2
+    exit 1
+fi
+
+cd "$PROJECT"
+mvn -q
+cp target/*.jar "$OUTPUT"
+
+open "$(giturl)/releases/new"
+open "$OUTPUT"

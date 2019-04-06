@@ -1,0 +1,59 @@
+#!/usr/bin/env node
+
+const getCalculationType = input => {
+    if (input.toLowerCase() === 'left') {
+        return 0;
+    } else if (input.toLowerCase() === 'middle') {
+        return 0.5;
+    } else if (input.toLowerCase() === 'right') {
+        return 1;
+    }
+    return -1;
+}
+
+const fail = message => {
+    console.error(message);
+    process.exit(1);
+};
+
+const getNum = (input, label) => {
+    if (isNaN(input)) {
+        return fail(`'${label}' must be a number!`);
+    }
+    return parseInt(input);
+};
+
+const evalEquation = (equation, value) => {
+    const x = value;
+    const result = eval(equation);
+    console.log(`f(${x}) = ${equation.replace(/x/g, x)} = ${result}`);
+    return result;
+};
+
+const main = args => {
+    if (args.length < 4) {
+        return fail('Usage: ram [left|middle|right] <slices> <start> <finish> <equation...>');
+    }
+
+    let offset = 0.5;
+    if (getCalculationType(args[0]) !== -1) {
+        offset = getCalculationType(args.shift());
+    }
+
+    const slices = getNum(args[0], 'slices');
+    const start = getNum(args[1], 'start');
+    const finish = getNum(args[2], 'finish');
+    const equation = args.slice(3).join(' ');
+
+    const sliceSize = (finish - start) / slices;
+
+    let result = 0;
+
+    for (let i = start + sliceSize * offset; i < finish + offset; i += sliceSize) {
+        result += sliceSize * evalEquation(equation, i);
+    }
+
+    console.log('Result: ' + result);
+};
+
+main(process.argv.slice(2));

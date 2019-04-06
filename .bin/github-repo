@@ -1,0 +1,104 @@
+#!/bin/bash
+##DESC## Creates a GitHub repository based on the provided name & description.
+
+function jsonProp {
+    file="$1"
+    propname="$2"
+
+    grep -m1 "\"$propname\":" "$file" | cut -d':' -f2- | cut -d'"' -f2- | cut -d'"' -f-1
+}
+
+function xmlProp {
+    file="$1"
+    propname="$2"
+
+    grep "<$propname>" "$file" | cut -d'>' -f2- | cut -d'<' -f-1
+}
+
+function promptConfirm {
+    while true; do
+        read -r -p "$* [y/n] " response
+        case "$response" in
+            [yY][eE][sS]|[yY])
+                return 0;;
+            [nN][oO]|[nN])
+                return 1;;
+            *)
+                echo "Invalid input: $response"
+        esac
+    done
+}
+
+function makeRepo {
+    NAME="$1"
+    DESCRIPTION="$2"
+
+    JSON="{\"name\": \"$NAME\""
+
+    if [ ! -z "$DESCRIPTION" ]; then
+        JSON+=", \"description\": \"$DESCRIPTION\""
+    fi
+
+    JSON+="}"
+
+    curl -fsSL -u "$USERNAME" -d "$JSON" https://api.github.com/user/repos 1>/dev/null || exit 1
+
+    promptConfirm "Would you like to add this remote to your local repository?" && (
+        [ -d ./.git ] || git init || exit 1
+        URL="https://github.com/$USERNAME/$NAME.git"
+        git remote add origin "$URL"
+        echo "Added '$URL'"
+    )
+}
+
+USERNAME="$(git config --get user.name)"
+
+if [ ! "$USERNAME" ]; then
+    echo "Could not find username. Please make sure your git config is properly set up."
+    exit 1
+fi
+
+if [ $# -lt 1 ]; then
+    echo "Usage: github-repo <name>"
+    exit 1
+fi
+
+if [ "$1" = "package.json" ]; then
+    if [ ! -f ./package.json ]; then
+        echo "No package.json file could be found in your current directory"
+        exit 1
+    fi
+
+    NAME="$(jsonProp package.json name)"
+    DESCRIPTION="$(jsonProp package.json description)"
+
+    echo "Creating repository from package.json information..."
+    echo "Name: \"$NAME\""
+    echo "Description: \"$DESCRIPTION\""
+
+    read -rsn1 -p "Hit any key to continue..."; echo
+
+    makeRepo "$NAME" "$DESCRIPTION"
+
+    exit
+elif [ "$1" = "pom.xml" ]; then
+    if [ ! -f ./pom.xml ]; then
+        echo "No pom.xml file could be found in your current directory"
+        exit 1
+    fi
+
+    NAME="$(xmlProp pom.xml name)"
+    DESCRIPTION="$(xmlProp pom.xml description)"
+
+    echo "Creating repository from pom.xml information..."
+    echo "Name: \"$NAME\""
+    echo "Description: \"$DESCRIPTION\""
+
+    read -rsn1 -p "Hit any key to continue..."; echo
+
+    makeRepo "$NAME" "$DESCRIPTION"
+
+    exit
+fi
+
+makeRepo "$@"

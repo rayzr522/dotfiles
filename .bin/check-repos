@@ -1,0 +1,46 @@
+#!/bin/bash
+##DESC## Checks all of the local repositories in ~/GitHub for uncommitted / unpushed changes.
+
+fail() {
+    echo "$*" >&2
+    exit 1
+}
+
+cd "$HOME/GitHub" || fail "Could not find GitHub folder."
+
+projects="$(find . -maxdepth 2 -type d -name '.git' -exec dirname {} \;)"
+count_changes=0
+count_commits=0
+
+while read -r project; do
+    name="$(basename "$project")"
+    cd "$HOME/GitHub/$project" || fail "Failed to enter project folder '$name'."
+    status="$(git status -s)"
+
+    if [ ! -z "$status" ]; then
+        echo "$(tput setaf 2)$(echo "$status" | wc -l)$(tput sgr0) uncommitted changes in $(tput bold)$name$(tput sgr0)"
+        count_changes=$((count_changes + 1))
+    fi
+
+    ahead="$(git status | grep 'Your branch is ahead of' | awk '{print $8}')"
+    if [ "$ahead" ] && [ "$ahead" -gt 0 ]; then
+        echo "$(tput setaf 2)$ahead$(tput sgr0) unpushed commits in $(tput bold)$name$(tput sgr0)"
+        count_commits=$((count_commits + 1))
+    fi
+done <<< "$projects"
+
+echo
+
+suffix="y"
+if [ $count_changes != 1 ]; then
+    suffix="ies"
+fi
+echo "$(tput setaf 2)$count_changes$(tput sgr0) repositor$suffix with uncommitted changes"
+
+suffix="y"
+if [ $count_commits != 1 ]; then
+    suffix="ies"
+fi
+echo "$(tput setaf 2)$count_commits$(tput sgr0) repositor$suffix with unpushed commits"
+
+echo

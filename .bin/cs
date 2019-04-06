@@ -1,0 +1,94 @@
+#!/bin/bash
+##DESC## This script allows you to create, edit and remove custom scripts.
+
+SCRIPTS="${SCRIPTS:-~/.bin}"
+
+function open_file {
+    if [ -z "$1" ]; then
+        return
+    fi
+
+    touch "$1"
+
+    if [ ! -z "$VISUAL" ]; then
+        "$VISUAL" "$1"
+    elif [ ! -z "$EDITOR" ]; then
+        "$EDITOR" "$1"
+    else
+        nano "$1"
+    fi
+}
+
+function show_usage {
+    printf '\nUSAGE: cs [-re] <file>\n\n' 2>&1
+    exit 1
+}
+
+if [ $# -lt 1 ]; then
+    show_usage
+fi
+
+if echo "$1" | grep -q /; then
+    echo "
+    Slashes are not enabled in the filename.
+    "
+
+    exit 1
+
+fi
+
+while getopts ":r::e:" opt; do
+    case $opt in
+        r)
+            script="$SCRIPTS/$OPTARG"
+            if [ -f "$script" ]; then
+                rm "$script"
+                echo "Script '$OPTARG' removed!"
+                exit
+            else
+                echo "There is no script named '$OPTARG'!"
+                exit 1
+            fi
+            ;;
+
+        e)
+            script="$SCRIPTS/$OPTARG"
+            if [ -f "$script" ]; then
+                open_file "$script"
+                chmod u+x "$script"
+                exit
+            else
+                echo "There is no script named '$OPTARG'!"
+                exit 1
+
+            fi
+            ;;
+
+        :)
+            echo "Parmater -$OPTARG requires a file argument."
+            show_usage
+            ;;
+
+        \?)
+            echo "Unknown paramter: '-$OPTARG'"
+            show_usage
+            ;;
+    esac
+done
+
+if [ -f "$SCRIPTS/$1" ]; then
+    echo
+    echo "There's already a script with that name! Either choose a new name"
+    echo "for your script or use 'cs -e $1' to edit the pre-existing script."
+    echo
+    exit 1
+fi
+
+if [ ! -f "$1" ]; then
+    echo '#!/bin/bash' > "$1"
+fi
+
+mv "$1" "$SCRIPTS/$1"
+chmod u+x "$SCRIPTS/$1"
+
+open_file "$SCRIPTS/$1"

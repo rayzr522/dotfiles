@@ -1,0 +1,12 @@
+#!/bin/bash
+##DESC## This is a simple script to list all scripts along with their descriptions.
+
+cd "$SCRIPTS" || exit 1
+
+BOLD="$(tput bold)"
+RESET="$(tput sgr0)"
+
+grep -E '^(##|//)DESC(##|//)' * 2>/dev/null | sed \
+    -e "s/\(.*\):##DESC## \(.*\)/$BOLD\1$RESET\n  \2\n/g" \
+    -e "s/\(.*\):\/\/DESC\/\/ \(.*\)/$BOLD\1$RESET\n  \2\n/g" \
+    | less -R

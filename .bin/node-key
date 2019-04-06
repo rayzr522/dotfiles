@@ -1,0 +1,39 @@
+#!/usr/bin/env node
+
+const ansi = code => process.stdout.write('\033[' + code);
+const cursor = (x, y) => ansi(`${y + 1};${x + 1}H`);
+
+const clearLine = () => ansi('2K');
+const clearScreen = () => {
+    for (var y = 0; y < process.stdout.rows; y++) {
+        cursor(0, y);
+        clearLine();
+    }
+    cursor(0, 0);
+};
+
+const screen = {
+    save: () => ansi('?47h'),
+    restore: () => ansi('?47l')
+};
+
+const toUnicodeString = code => {
+    const str = code.toString(16);
+    return '\\u' + (str.length < 4 ? '0'.repeat(4 - str.length) + str : str);
+};
+
+// Save screen
+screen.save();
+clearScreen();
+
+process.stdin.setRawMode(true);
+process.stdin.on('data', raw => {
+    const char = raw.toString();
+    const code = char.charCodeAt(0);
+    console.log(`'${char.replace('\033', '\\033')}' (${code}) (${toUnicodeString(code)})`);
+
+    if (char === '\u0003') {
+        process.exit(0);
+    }
+});
+

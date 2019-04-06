@@ -1,0 +1,13 @@
+#!/bin/bash
+##DESC## Opens a file using the DE/OS-specific system.
+
+os="$(uname)"
+
+if [ $os = "Linux" ]; then
+    xdg-open "$*"
+elif [ $os = "Darwin" ]; then
+    open "$*"
+else
+    echo "I don't know how to handle the operating system '$os'" >&2
+    exit 1
+fi
