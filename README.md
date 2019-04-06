@@ -1,6 +1,6 @@
 # dotfiles
 
-> My dotfiles for my macOS / Linux systems.
+> My personal dotfiles for *nix.
 
 Please keep in mind that some of these scripts / configs are things that I made years ago and have yet to update with all of my new scripting knowledge. Additionally, not everything will work on everyone's system, although I am trying to make these scripts as portable as possible (since I want to be able to automatically deploy my scripts to new machines in the future!).
 
