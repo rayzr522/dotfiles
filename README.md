@@ -10,6 +10,7 @@ These are other personal scripts / tools that I made which I use in conjunction 
 
 - [mcsm](https://github.com/Rayzr522/MinecraftServerManager)
 - [server-essentials](https://github.com/Rayzr522/server-essentials)
+- [printy](https://github.com/Rayzr522/Printy)
 
 ## Join Me
 
