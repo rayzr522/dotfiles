@@ -1,5 +1,5 @@
 #!/bin/bash
-##DESC## Creates a new Bukkit plugin via my Maven archetype.
+##DESC## Creates a new Bukkit plugin with Maven
 
 # Fail on error
 set -e
@@ -9,7 +9,7 @@ COLOR_SECONDARY=$(tput setaf 4)
 COLOR_RESET="$(tput sgr0)"
 
 err() {
-    echo -e "$item" >&2
+    echo -e "$*" >&2
     exit 1
 }
 
@@ -47,9 +47,9 @@ fi
 
 NAME="$1"
 AUTHOR="${2:-Rayzr}"
-DIR="${3:-$HOME/GitHub/}"
-GROUP="${4:-me.rayzr522}"
-VERSION="${5:-1.0.0}"
+GROUP="${3:-me.rayzr522}"
+VERSION="${4:-1.0.0}"
+DIR="${5:-$HOME/GitHub/}"
 
 if [ -f "$DIR" ]; then
     err "There's already a file at $COLOR_MAIN$DIR"
@@ -141,6 +141,6 @@ prompt_confirm || exit 0
 
 github-repo "$NAME" "$DESCRIPTION" && {
     echo
-    echo "The repository is now avilable at https://github.com/$(git config --get user.name)/$NAME.git"
+    echo "The repository is now avilable at https://github.com/Rayzr522/$NAME.git"
     echo
 } || exit 1
