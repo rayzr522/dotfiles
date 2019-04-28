@@ -39,6 +39,12 @@ function makeRepo {
         JSON+=", \"description\": \"$DESCRIPTION\""
     fi
 
+    PRIVATE=true
+
+    promptConfirm "Would you like to make this a public repository?" && PRIVATE=false
+
+    JSON+=",\"private\":$PRIVATE"
+
     JSON+="}"
 
     curl -fsSL -u "$USERNAME" -d "$JSON" https://api.github.com/user/repos 1>/dev/null || exit 1
