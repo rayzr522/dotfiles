@@ -101,7 +101,7 @@ mvn archetype:generate \
     -DinteractiveMode=false \
     -DarchetypeGroupId=me.rayzr522 \
     -DarchetypeArtifactId=mvn-archetype-bukkit-base-plugin \
-    -DarchetypeVersion=1.1.1 \
+    -DarchetypeVersion=1.1.2 \
     -DgroupId="$GROUP" \
     -DartifactId="$LOWER" \
     -Dversion="$VERSION" \

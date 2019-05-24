@@ -1,0 +1,25 @@
+#!/bin/bash
+
+if [[ $# -lt 1 ]]; then
+    echo "Usage; test-factors <number>" 1>&2
+    exit 1
+fi
+
+num="$1"
+expected="$( (factor -- "$num" || exit 1) | cut -d':' -f2- | cut -d' ' -f2- | tr ' ' 'x')"
+
+failed=0
+
+for lang in bash node python ruby; do
+    echo -n "Checking '$lang'... "
+    result="$($lang-factors "$num")"
+    if [[ "$result" != "$expected" ]]; then
+        echo "failed"
+        echo "Instead of '$expected', got '$result'"
+        failed=1
+    else
+        echo "passed"
+    fi
+done
+
+exit $failed

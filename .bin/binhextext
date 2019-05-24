@@ -1,0 +1,30 @@
+#!/usr/bin/env node
+
+const fs = require('fs');
+
+const args = process.argv.slice(2);
+
+const text = (args.length > 2 && args[0] === '-f') ? fs.readFileSync(args[1]).toString() : args.join(' ');
+
+const printArray = (arr, cols) => {
+    const out = arr.slice(0);
+
+    while (out.length > 0) {
+        console.log(out.splice(0, cols).join(' '));
+    }
+};
+
+const padLeft = (input, char, target) => char.repeat(target - input.length) + input;
+const padZero = target => input => padLeft(input, '0', target);
+
+const toBin = c => c.charCodeAt(0).toString(2);
+const toHex = c => c.charCodeAt(0).toString(16);
+
+const bin = text.split('').map(toBin).map(padZero(8));
+const hex = text.split('').map(toHex).map(padZero(2));
+
+console.log('--- BINARY');
+printArray(bin, 6);
+console.log();
+console.log('--- HEXADECIMAL');
+printArray(hex, 18);

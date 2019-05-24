@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [[ ! -d ./.git ]]; then
+    echo "Please use this from within a GitHub repo." >&1
+    exit 1
+fi
+
+URL="$(giturl)"
+
+if [[ ! "$URL" ]]; then
+    echo "No remote URL could be found." >&1
+    exit 1
+fi
+
+open "$URL"

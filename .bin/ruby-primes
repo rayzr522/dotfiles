@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+
+def primes(limit)
+    out=[]
+    for i in 1..limit do
+        isPrime = true
+        for n in 2..i - 1 do
+            if i % n == 0
+                isPrime = false
+                break
+            end
+        end
+        if isPrime
+            out.push i
+        end
+    end
+    return out
+end
+
+if ARGV.length < 1
+    puts "Usage: ruby-primes <limit>"
+    exit 1
+end
+
+num=ARGV[0].to_i
+
+puts primes(num).join ', '

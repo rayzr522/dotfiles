@@ -1,5 +1,5 @@
 #!/bin/bash
-##DESC## Builds a Bukkit plugin and installs it to your current server.
+##DESC## Builds a Bukkit plugin and installs it to your current server
 
 SCREEN_NAME="mcTestServer"
 if [ ! -z "$SERVER_SCREEN_NAME" ]; then
@@ -75,7 +75,7 @@ function build {
     taskdone
     task "Building $1 with Maven"
 
-    OUTPUT="$(mvn -q clean package)"
+    OUTPUT="$(mvn --offline -q clean package)"
     # the grep is to make sure it isn't just the output of tests
     if [ ! -z "$(echo "$OUTPUT" | grep "\[ERROR\]")" ]; then
         fail "The project failed to build!"

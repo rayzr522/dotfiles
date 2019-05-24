@@ -7,6 +7,7 @@ const os = require('os');
 const mkdirp = folder => {
     const parts = folder.split(path.sep);
     let current = parts.shift();
+    // handle paths starting with `/` (e.g. /home/rayzr/...)
     if (current == '') {
         current = path.join('/', parts.shift());
     }
@@ -87,10 +88,10 @@ const main = async (args) => {
 
 Options:
 
--a|--add [name]
+-a|--add
     Adds a new countdown
 
--d|--del [name]
+-d|--del
     Deletes a countdown
 
 -l|--list
@@ -100,7 +101,7 @@ Options:
     }
 
     if (args[0] === '-a' || args[0] === '--add') {
-        const name = args[1] || await input('Please enter the name of the new countdown: ');
+        const name = await input('Please enter the name of the new countdown: ');
 
         if (settings.countdowns[name]) {
             if (!(await confirm(`The countdown '${name}' already exists. Would you like to overwrite it? [y/N] `))) {
@@ -128,7 +129,7 @@ Options:
 
         console.log(`Set countdown '${name}' to ${date}`);
     } else if (args[0] === '-d' || args[0] === '--del') {
-        const name = args[1] || await input('Please enter the name of the countdown to delete: ');
+        const name = await input('Please enter the name of the countdown to delete: ');
 
         if (!settings.countdowns[name]) {
             console.error(`The countdown ${name} doesn't exist!`);

@@ -1,0 +1,39 @@
+#!/usr/bin/env node
+
+const factors = num => {
+    // Original number
+    let o = num;
+
+    // 1, 2, or 3 are themselves as the factors
+    if (o < 4) return [o];
+
+    // Output array
+    let out = [];
+    
+    for (let i = 2; i <= o; i++) {
+        while (o % i === 0) {
+            o /= i;
+            out.push(i);
+        }
+    }
+
+    return out;
+};
+
+const main = args => {
+    if (isNaN(args[0])) {
+        console.error('Usage: node-factors <number>');
+        process.exit(1);
+    }
+
+    const num = parseInt(args[0]);
+    
+    if (num < 0) {
+        console.error('The number must be greater than or equal to zero!');
+        process.exit(1);
+    }
+
+    console.log(factors(num).join('x'));
+};
+
+main(process.argv.slice(2));

@@ -1,0 +1,36 @@
+#!/usr/bin/env ruby
+
+def factors(num)
+    if num < 4
+        return [num]
+    end
+
+    out=[]
+
+    for i in 2..num do
+        while num % i == 0 do
+            num /= i
+            out.push i
+        end
+
+        if num == 1
+            break
+        end
+    end
+
+    if num != 1
+        out.push num
+    end
+
+    out
+end
+
+if ARGV.length < 1
+    puts "Usage: ruby-factors <number>"
+    exit 1
+end
+
+num=ARGV[0].to_i
+out=factors num
+
+puts out.join 'x'

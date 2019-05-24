@@ -1,12 +1,15 @@
 #!/bin/bash
-##DESC## Outputs the online URL for the current local repository.
 
 fail() {
     echo "$*" >&1
     exit 1
 }
 
-if ! git status -s 2>/dev/null; then
+prop() {
+    git config -l | grep -E "^$1" | head -n1 | cut -d= -f2-
+}
+
+if [ ! -d .git ]; then
     fail "You are not in a git repository!"
 fi
 
@@ -22,4 +25,4 @@ if [ ! "$REMOTE_URL" ]; then
     fail "No URL found for remote '$REMOTE_NAME'"
 fi
 
-echo "$REMOTE_URL" | sed 's;^git@\(.\+\):\(.\+\)/\(.\+\)$;https://\1/\2/\3;g' | sed 's/\.git$//g'
+echo "$REMOTE_URL" | sed 's;^git@github.com:\(.\+\)/\(.\+\)$;https://github.com/\1/\2;g'

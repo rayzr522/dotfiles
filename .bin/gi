@@ -1,5 +1,5 @@
 #!/bin/bash
-##DESC## Adds my template .gitignore file to a project. It puts the file into ~/GitHub/$1.
+##DESC## Adds my template .gitignore file to a project. It puts the file into ~/GitHub/$1
 
 TEMPLATE_FILE="$HOME/GitHub/.templates/gitignore"
 

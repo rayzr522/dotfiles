@@ -1,0 +1,28 @@
+#!/bin/bash
+
+primes() {
+    num="$1"
+    declare -a out
+
+    for i in $(seq 1 $num); do
+        isPrime=true
+        for n in $(seq 2 $((i - 1))); do
+            if [[ $((i % n)) = 0 ]]; then
+                isPrime=false
+                break
+            fi
+        done
+        if [[ $isPrime = true ]]; then
+            out+=($i)
+        fi
+    done
+
+    echo "${out[*]}"
+}
+
+if [[ $# -lt 1 ]]; then
+    echo "Usage: bash-primes <limit>" 1>&2
+    exit 1
+fi
+
+primes "$1" | sed 's/ /, /g'

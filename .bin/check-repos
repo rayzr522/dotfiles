@@ -1,5 +1,4 @@
 #!/bin/bash
-##DESC## Checks all of the local repositories in ~/GitHub for uncommitted / unpushed changes.
 
 fail() {
     echo "$*" >&2
