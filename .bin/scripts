@@ -9,4 +9,4 @@ RESET="$(tput sgr0)"
 grep -E '^(##|//)DESC(##|//)' * 2>/dev/null | sed \
     -e "s/\(.*\):##DESC## \(.*\)/$BOLD\1$RESET\n  \2\n/g" \
     -e "s/\(.*\):\/\/DESC\/\/ \(.*\)/$BOLD\1$RESET\n  \2\n/g" \
-    | less -R
+    | less -r
