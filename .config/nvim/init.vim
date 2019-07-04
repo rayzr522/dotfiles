@@ -6,6 +6,8 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'Shougo/vimproc.vim'
 Plug 'Shougo/unite.vim'
 
+Plug 'vim-scripts/JavaDecompiler.vim'
+
 call plug#end()
 " }}}
 
