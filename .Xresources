@@ -18,17 +18,17 @@
 
 ! rofi.hide-scrollbar: true
 ! Font
-rofi.font: Roboto 15
+rofi.font: Roboto 20
 ! Dimensions
 rofi.width: 700
 rofi.lines: 5
 rofi.columns: 1
 
-rofi.line-margin: 0
+rofi.line-margin: 5
 rofi.line-padding: 5
 ! Borders
-rofi.bw: 5
-rofi.padding: 3
+rofi.bw: 2
+rofi.padding: 2
 ! Colors
 rofi.color-window: #aa263238, #7700BCD4
 rofi.color-normal: #aa28282f, #ffb9b9b9, #aa28282f, #aa2f2f3f, #ffdedede
@@ -37,13 +37,16 @@ rofi.color-active: #aa3f93de, #ffddddff, #aa3f9fe3, #aa3f9ff3, #ffffffff
 
 rofi.separator-style: none
 
-rofi.terminal:          termite
+rofi.modi: window,run,ssh,drun
+rofi.icon-theme: Paper
+rofi.show-icons: true
+rofi.terminal:          urxvt
 rofi.ssh-client:        ssh
 rofi.ssh-command:       {terminal} -e "sh -c 'TERM=xterm-256color {ssh-client} {host}'"
 ! ""ception
 
 !! URxvt
-URxvt.font: xft:RobotoMono Nerd Font:size=12:antialias=true,xft:FontAwesome:size=12:antialias=true,xft:DejaVu Sans Mono:size=12:antialias=true
+URxvt.font: xft:RobotoMono Nerd Font:size=10:antialias=true,xft:FontAwesome:size=10:antialias=true,xft:DejaVu Sans Mono:size=10:antialias=true
 
 ! Size
 URxvt.geometry: 100x30
