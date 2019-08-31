@@ -22,11 +22,7 @@ alias gs='git status -s'
 alias maven-deploy='mvn -DaltDeploymentRepository=local-repo::default::file://$HOME/GitHub/maven-repo clean package deploy'
 
 # Quick launchers
-alias wine-steam='wine "C:\Program Files\Steam\Steam.exe" 2>/dev/null >/dev/null &'
-alias dotfiles='code ~/.zshrc ~/.config/dotfiles/'
-alias duckgame='(wine "C:\Program Files\Steam\steamapps\common\Duck Game\DuckGame.exe" &>/dev/null &)'
-
-alias restart-vps-bots='ssh bots@vps.rayzr.tech /home/bots/start-bots -v'
+alias vps-stats='ssh vps "TERM=$TERM" ./stats.sh'
 
 # Joke commands
 alias doesinternetsuck='speedtest --simple --server 1298'
