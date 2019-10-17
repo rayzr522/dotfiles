@@ -33,3 +33,8 @@ mkdir -p "$DOTFILES_DIR/.config"
 for file in "$PWD/.config/"*; do
     safe-link ".config/$(basename "$file")"
 done
+
+mkdir -p "$HOME/.templates"
+for file in "$PWD/.templates/"*; do
+    safe-link ".templates/$(basename "$file")"
+done

@@ -1,7 +1,7 @@
 #!/bin/bash
 ##DESC## Adds my template .gitignore file to a project. It puts the file into ~/GitHub/$1
 
-TEMPLATE_FILE="$HOME/GitHub/.templates/gitignore"
+TEMPLATE_FILE="$HOME/.templates/gitignore"
 
 if [ ! -f "$TEMPLATE_FILE" ]; then
     echo "gi is set up incorrectly! There should be a file named 'gitignore' in '$(dirname "$TEMPLATE_FILE")', but none was found. Please correct this and then try again." >&1
