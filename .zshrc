@@ -4,6 +4,11 @@
 # My personal ZSH config.
 # ------------------------
 
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
 # Prezto options
 zstyle ':prezto:module:editor' key-bindings 'vi'
 prompt garrett
