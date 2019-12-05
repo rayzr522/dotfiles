@@ -43,3 +43,7 @@ bindkey '^x^e' edit-command-line
 # Enable ZSH reverse-search with ^R.
 bindkey -v
 bindkey '^R' history-incremental-search-backward
+
+if command -v kubectl >/dev/null; then
+    source <(kubectl completion zsh)
+fi
