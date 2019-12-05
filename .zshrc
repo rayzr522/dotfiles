@@ -30,9 +30,21 @@ for file in ~/.config/dotfiles/*.dot.sh; do
 done
 
 # zsh-autosuggestions support & config.
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-bindkey '^ ' autosuggest-accept
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=7'
+AUTOSUGGESTIONS_LOC=""
+
+if [[ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
+    AUTOSUGGESTIONS_LOC=/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+elif [[ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
+    AUTOSUGGESTIONS_LOC=/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
+
+if [[ ! -z "$AUTOSUGGESTIONS_LOC" ]]; then
+    source "$AUTOSUGGESTIONS_LOC"
+    bindkey '^ ' autosuggest-accept
+    export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=7'
+fi
+
+unset AUTOSUGGESTIONS_LOC
 
 # Enable Ctrl-x-e to edit command line.
 autoload -U edit-command-line
