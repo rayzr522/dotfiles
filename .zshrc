@@ -14,7 +14,7 @@ zstyle ':prezto:module:editor' key-bindings 'vi'
 prompt garrett
 
 # When using urxvt, go straight to tmux and reattach if a session is available.
-if [[ $TERM == rxvt-unicode-256color ]]; then
+if [[ $TERM == rxvt-unicode-256color ]] && [[ -z "$NO_TMUX" ]]; then
   if [[ ! -z "$(tmux list-sessions | grep -v '(attached)')" ]]; then
     exec tmux attach
   else
