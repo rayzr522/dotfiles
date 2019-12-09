@@ -76,7 +76,7 @@ function dfe {
 
 # Opens the given path or the current directory.
 function o {
-    open "${@:-.}" 2&>/dev/null
+    "$SCRIPTS/open" "${@:-.}" 2&>/dev/null
     return $?
 }
 
