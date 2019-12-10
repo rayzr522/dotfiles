@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if ! command -v openvpn >/dev/null; then
+    echo "openvpn not installed" 1>&2
+    exit 1
+fi
+
+if [[ ! -f ~/.config/ovpn/client.ovpn ]]; then
+    echo "openvpn config not found at ~/.config/ovpn/client.ovpn" 1>&2
+    exit 1
+fi
+
+sudo openvpn --config ~/.config/ovpn/client.ovpn --auth-user-pass

@@ -97,10 +97,12 @@ function build {
 
     taskdone
 
-    if [ ! -z "$(screen -ls | grep "$SCREEN_NAME")" ]; then
-        task "Sending reload command"
-        tell "$SCREEN_NAME" "plugman reload $1"
-        taskdone
+    if command -v screen >/dev/null; then
+        if [ ! -z "$(screen -ls | grep "$SCREEN_NAME")" ]; then
+            task "Sending reload command"
+            tell "$SCREEN_NAME" "plugman reload $1"
+            taskdone
+        fi
     fi
 
 }

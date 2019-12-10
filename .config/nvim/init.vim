@@ -8,7 +8,17 @@ Plug 'Shougo/unite.vim'
 
 Plug 'vim-scripts/JavaDecompiler.vim'
 
+" REQUIRED: Add a syntax file. YATS is the best
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+" For async completion
+Plug 'Shougo/deoplete.nvim'
+" For Denite features
+Plug 'Shougo/denite.nvim'
+
 call plug#end()
+
+let g:deoplete#enable_at_startup = 1
 " }}}
 
 " Unite {{{
