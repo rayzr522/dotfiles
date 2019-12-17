@@ -54,10 +54,10 @@ URxvt.geometry: 100x30
 URxvt.iso14755:        false
 URxvt.iso14755_52:     false
 URxvt.internalBorder:  false
-URxvt.perl-ext-common: font-size,default
+URxvt.perl-ext-common: font-size,default,matcher
 URxvt.perl-ext: font-size,default
 
-URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.urlLauncher: /usr/bin/xdg-open
 URxvt.matcher.button: 1
 
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
