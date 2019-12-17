@@ -8,6 +8,8 @@ Plug 'Shougo/unite.vim'
 
 Plug 'vim-scripts/JavaDecompiler.vim'
 
+Plug 'airblade/vim-gitgutter'
+
 " REQUIRED: Add a syntax file. YATS is the best
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
@@ -54,9 +56,25 @@ autocmd BufWritePost ~/.Xresources :silent !xrdb -merge ~/.Xresources
 
 " }}}
 
+" ColorColumn {{{
 if (exists('+colorcolumn'))
     set colorcolumn=80
     highlight ColorColumn ctermbg=8
 endif
+" }}}
 
+" Visual {{{
+" Doesn't work (well) with urxvt
 " set termguicolors
+
+set number
+highlight LineNr ctermfg=grey
+
+highlight GitGutterAdd ctermfg=green
+highlight GitGutterChange ctermfg=green
+highlight GitGutterDelete ctermfg=red
+
+let g:gitgutter_async = 0
+set updatetime=100
+
+" }}}
