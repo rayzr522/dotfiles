@@ -25,4 +25,4 @@ if [ ! "$REMOTE_URL" ]; then
     fail "No URL found for remote '$REMOTE_NAME'"
 fi
 
-echo "$REMOTE_URL" | sed 's;^git@github.com:\(.\+\)/\(.\+\)$;https://github.com/\1/\2;g'
+echo "$REMOTE_URL" | sed 's;^git@\(.\+\):\(.\+\)/\(.\+\)$;https://\1/\2/\3;g'
