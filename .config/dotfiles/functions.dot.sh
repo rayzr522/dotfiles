@@ -90,6 +90,19 @@ function md {
     (moeditor "$@" &)
 }
 
+function loc {
+    if [[ $# -lt 1 ]]; then
+        echo "Usage: loc <query> [folder]" >&1
+        return 1
+    fi
+
+    local query="$1"
+    local dir="${2:-.}"
+
+    grep -Rni "$query" "$dir" --color=yes | less
+}
+
+# ----- AUTOCOMPLETIONS
 # Make sure to only run when we're using zsh
 if command -v compdef >/dev/null; then
     function _dfe {
@@ -116,4 +129,3 @@ if command -v compdef >/dev/null; then
 
     compdef _cs cs
 fi
-
