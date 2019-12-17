@@ -4,6 +4,7 @@
 unalias o 2>/dev/null
 
 alias rs='source ~/.zshrc;'
+alias grep='grep --exclude-dir=node_modules'
 
 # Navigation
 alias ~='cd ~'
