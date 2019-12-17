@@ -78,3 +78,11 @@ let g:gitgutter_async = 0
 set updatetime=100
 
 " }}}
+
+" Quality of Life {{{
+
+" Better searching
+:set ignorecase
+:set smartcase
+
+" }}}
