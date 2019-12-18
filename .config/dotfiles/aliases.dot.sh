@@ -48,6 +48,13 @@ alias grh='git reset --hard'
 alias gss='git stash'
 alias gsp='git stash pop'
 
+# NPM
+alias nps='npm start'
+alias npi='npm install'
+alias npci='npm ci'
+alias npt='npm test'
+alias npb='npm run build'
+
 # CI/CD
 alias maven-deploy='mvn -DaltDeploymentRepository=local-repo::default::file://$HOME/GitHub/maven-repo clean package deploy'
 
