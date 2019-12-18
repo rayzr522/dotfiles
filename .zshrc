@@ -58,6 +58,17 @@ fi
 
 unset AUTOSUGGESTIONS_LOC
 
+# source: https://github.com/sorin-ionescu/prezto/issues/28
+# Insert "sudo " at the beginning of the line
+function prepend-sudo {
+  if [[ $BUFFER != "sudo "* ]]; then
+    BUFFER="sudo $BUFFER"; CURSOR+=5
+  fi
+}
+
+zle -N prepend-sudo
+bindkey '^s' prepend-sudo
+
 if [[ -f "$HOME/.zshrc.local" ]]; then
     source "$HOME/.zshrc.local"
 fi
