@@ -38,6 +38,9 @@ map <s-tab> <ESC>:bprev<CR>
 map <c-w> <ESC>:bdel<CR>
 
 map <c-s> <ESC>:w<CR>
+imap <c-s> <ESC>:w<CR>
+
+map <c-x> <ESC>:ALENextWrap<CR>
 
 " }}}
 
