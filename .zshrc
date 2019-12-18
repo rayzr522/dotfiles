@@ -29,6 +29,9 @@ for file in ~/.config/dotfiles/*.dot.sh; do
   source "$file"
 done
 
+# Use viins keymap
+bindkey -v
+
 # Enable Ctrl-x-e to edit command line.
 autoload -U edit-command-line
 zle -N edit-command-line
@@ -36,7 +39,6 @@ bindkey '^xe' edit-command-line
 bindkey '^x^e' edit-command-line
 
 # Enable ZSH reverse-search with ^R.
-bindkey -v
 bindkey '^R' history-incremental-search-backward
 
 # zsh-autosuggestions support & config.
