@@ -85,4 +85,6 @@ set updatetime=100
 :set ignorecase
 :set smartcase
 
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
 " }}}
