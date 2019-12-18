@@ -1,39 +1,27 @@
 " Plugins {{{
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'bronson/vim-trailing-whitespace'
-
-Plug 'Shougo/vimproc.vim'
-Plug 'Shougo/unite.vim'
-
-Plug 'vim-scripts/JavaDecompiler.vim'
-
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 
-" REQUIRED: Add a syntax file. YATS is the best
+Plug 'Shougo/denite.nvim'
+Plug 'vim-scripts/JavaDecompiler.vim'
+
+" Completion engine
+Plug 'Shougo/deoplete.nvim'
+" Linting engine
+Plug 'w0rp/ale'
+
+" Typescript
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
-" For async completion
-Plug 'Shougo/deoplete.nvim'
-" For Denite features
-Plug 'Shougo/denite.nvim'
+
+Plug 'bronson/vim-trailing-whitespace'
 
 call plug#end()
 
 let g:deoplete#enable_at_startup = 1
-" }}}
-
-" Unite {{{
-let g:unite_source_history_yank_enable = 1
-try
-  let g:unite_source_rec_async_command='ag --nocolor --nogroup -g ""'
-  call unite#filters#matcher_default#use(['matcher_fuzzy'])
-catch
-endtry
-" search a file in the filetree
-nnoremap <space><space> :split<cr> :<C-u>Unite -start-insert file_rec/async<cr>
-" reset not it is <C-l> normally
-:nnoremap <space>r <Plug>(unite_restart)
 " }}}
 
 " Tabs {{{
@@ -42,25 +30,21 @@ set tabstop=4
 set shiftwidth=4
 " }}}
 
-" Folding {{{
-set foldmethod=marker
+" Binds {{{
 
-" Bindings
-nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
-vnoremap <Space> zf
+map <tab> <ESC>:bnext<CR>
+map <s-tab> <ESC>:bprev<CR>
+
+map <c-w> <ESC>:bdel<CR>
+
+map <c-s> <ESC>:w<CR>
+
 " }}}
 
 " Auto Commands {{{
 
 autocmd BufWritePost ~/.Xresources :silent !xrdb -merge ~/.Xresources
 
-" }}}
-
-" ColorColumn {{{
-if (exists('+colorcolumn'))
-    set colorcolumn=80
-    highlight ColorColumn ctermbg=8
-endif
 " }}}
 
 " Visual {{{
@@ -81,10 +65,28 @@ set updatetime=100
 
 " Quality of Life {{{
 
+" Folding
+set foldmethod=marker
+
+" Don't be stupid
+set hidden
+set nocompatible
+
 " Better searching
-:set ignorecase
-:set smartcase
+set ignorecase
+set smartcase
 
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" }}}
+
+" Airline {{{
+
+let g:airline_theme = 'biogoo'
+let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 2
+
+let g:airline_powerline_fonts = 1
 
 " }}}
