@@ -27,6 +27,13 @@ safe-link .gitignore
 safe-link .tmux.conf
 if [[ "$(uname)" == Linux ]]; then
     safe-link .Xresources
+
+    XTHEMES_DIR="$DOTFILES_DIR/.config/rice/Xthemes"
+
+    if [[ -d "$XTHEMES_DIR" ]] && [[ ! -L "$XTHEMES_DIR/_selected" ]]; then
+        echo "Setting google.xresources as the default rice theme"
+        ln -s "$XTHEMES_DIR/google.xresources" "$XTHEMES_DIR/_selected"
+    fi
 fi
 
 mkdir -p "$DOTFILES_DIR/.config"
@@ -38,3 +45,4 @@ mkdir -p "$HOME/.templates"
 for file in "$PWD/.templates/"*; do
     safe-link ".templates/$(basename "$file")"
 done
+
