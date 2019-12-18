@@ -69,6 +69,18 @@ function prepend-sudo {
 zle -N prepend-sudo
 bindkey '^s' prepend-sudo
 
+# and then my own addition
+
+function un-prepend-sudo {
+  if [[ $BUFFER = "sudo "* ]]; then
+      (( CURSOR -= 5 ))
+      BUFFER="${BUFFER[6,-1]}"
+  fi
+}
+
+zle -N un-prepend-sudo
+bindkey '^[s' un-prepend-sudo
+
 if [[ -f "$HOME/.zshrc.local" ]]; then
     source "$HOME/.zshrc.local"
 fi
