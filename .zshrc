@@ -41,23 +41,6 @@ bindkey '^x^e' edit-command-line
 # Enable ZSH reverse-search with ^R.
 bindkey '^R' history-incremental-search-backward
 
-# zsh-autosuggestions support & config.
-AUTOSUGGESTIONS_LOC=""
-
-if [[ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
-    AUTOSUGGESTIONS_LOC=/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-elif [[ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
-    AUTOSUGGESTIONS_LOC=/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-fi
-
-if [[ ! -z "$AUTOSUGGESTIONS_LOC" ]]; then
-    source "$AUTOSUGGESTIONS_LOC"
-    bindkey '^ ' autosuggest-accept
-    export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=7'
-fi
-
-unset AUTOSUGGESTIONS_LOC
-
 # source: https://github.com/sorin-ionescu/prezto/issues/28
 # Insert "sudo " at the beginning of the line
 function prepend-sudo {
@@ -84,3 +67,19 @@ bindkey '^[s' un-prepend-sudo
 if [[ -f "$HOME/.zshrc.local" ]]; then
     source "$HOME/.zshrc.local"
 fi
+
+### zsh plugins ###
+
+export ZSH_CUSTOM="$HOME/.config/zsh"
+
+# zsh-autosuggestions
+source "$ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+bindkey '^ ' autosuggest-accept
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=7'
+
+# fast-syntax-highlighting
+source "$ZSH_CUSTOM/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
+
+# history-search-multi-word
+source "$ZSH_CUSTOM/plugins/history-search-multi-word/history-search-multi-word.plugin.zsh"
+zstyle :plugin:history-search-multi-word reset-prompt-protect 1
