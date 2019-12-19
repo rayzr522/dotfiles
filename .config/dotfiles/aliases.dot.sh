@@ -49,11 +49,15 @@ alias gss='git stash'
 alias gsp='git stash pop'
 
 # NPM
-alias nps='npm start'
+alias npr='npm run'
+
+alias nps='npr start'
+alias npt='npr test'
+alias npb='npr build'
+alias npl='npr lint'
+
 alias npi='npm install'
 alias npci='npm ci'
-alias npt='npm test'
-alias npb='npm run build'
 
 # CI/CD
 alias maven-deploy='mvn -DaltDeploymentRepository=local-repo::default::file://$HOME/GitHub/maven-repo clean package deploy'
