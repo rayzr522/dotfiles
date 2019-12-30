@@ -4,10 +4,14 @@
 os="$(uname)"
 
 if [ $os = "Linux" ]; then
-    xdg-open "$*"
+    xdg-open "$*" &>/dev/null
 elif [ $os = "Darwin" ]; then
     open "$*"
 else
     echo "I don't know how to handle the operating system '$os'" >&2
     exit 1
+fi
+
+if [[ $? != 0 ]]; then
+    echo "Failed to open '$*'"
 fi

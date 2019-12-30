@@ -76,7 +76,13 @@ function dfe {
 
 # Opens the given path or the current directory.
 function o {
-    "$SCRIPTS/open" "${@:-.}" 2&>/dev/null
+    local dir="$@"
+    if [[ -z "$dir" ]] && [[ ! -t 0 ]]; then
+        read -r line
+        dir="$line"
+    fi
+
+    "$SCRIPTS/open" "${dir:-.}" 1&>/dev/null
     return $?
 }
 
