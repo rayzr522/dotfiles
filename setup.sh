@@ -2,6 +2,16 @@
 
 cd "$(dirname "$0")" || exit 1
 
+LN_OPTS="-sT"
+
+if [[ "$1" = "-f" ]] || [[ "$1" = "--force" ]]; then
+    echo "(Force-installing)"
+    LN_OPTS+="f"
+    shift
+else
+    LN_OPTS+="i"
+fi
+
 DOTFILES_DIR="${1:-$HOME}"
 
 echo "Current path: $PWD"
@@ -13,12 +23,12 @@ safe-link() {
     SOURCE="$PWD/$1"
     DEST="$DOTFILES_DIR/$1"
 
-    if [[ -d "$SOURCE" ]] && [[ -d "$DEST" ]]; then
+    if [[ -d "$SOURCE" ]] && [[ -d "$DEST" ]] && [[ ! -L "$DEST" ]]; then
         echo "! Made a backup of pre-existing '$1'"
-        mv "$DEST"{,.bak}
+        mv "$DEST" "$DEST.bak.$(date '+%D-%T' | tr ':/' '-')"
     fi
 
-    ln -is "$SOURCE" "$DEST"
+    ln "$LN_OPTS" "$SOURCE" "$DEST"
 }
 
 safe-link .bin
