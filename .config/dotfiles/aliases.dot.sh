@@ -7,6 +7,7 @@ alias rs='source ~/.zshrc;'
 
 # Navigation
 alias ~='cd ~'
+alias h='cd ~'
 alias ..='cd ..'
 alias gh='cd ~/GitHub'
 alias dt='cd ~/Desktop'
@@ -25,6 +26,8 @@ alias get='wget --content-disposition'
 # Fix vi/vim (and by vi/vim I mean me because I am the one who forgets)
 alias vi='nvim'
 alias vim='nvim'
+# shorthand because i Am LaZy
+alias v='nvim'
 
 # Sane defaults
 alias grep='grep --exclude-dir=node_modules'
@@ -40,6 +43,7 @@ alias gb='git branch '
 alias gc='git commit -m '
 alias gca='git commit -am '
 alias gcf='git commit --amend'
+alias ga='git add'
 alias gp='git pull'
 alias gpsh='git push'
 alias gf='git fetch origin'
