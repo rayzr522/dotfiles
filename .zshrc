@@ -13,7 +13,10 @@ fi
 zstyle ':prezto:module:editor' key-bindings 'vi'
 prompt garrett
 
+# Don't autocorrect
 unsetopt correct
+# Don't trust cache for completions -- https://unix.stackexchange.com/a/2180
+zstyle ":completion:*:commands" rehash 1
 
 # When using urxvt, go straight to tmux and reattach if a session is available.
 if [[ $TERM == rxvt-unicode-256color ]] && [[ -z "$NO_TMUX" ]]; then
@@ -26,8 +29,6 @@ fi
 
 # All environment variables, aliases, etc. are handled in my organized dotfiles.
 for file in ~/.config/dotfiles/*.dot.sh; do
-  # shellcheck disable=SC1090
-  # Yes, I really do want to source this file.
   source "$file"
 done
 
