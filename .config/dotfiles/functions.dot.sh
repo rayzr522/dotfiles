@@ -98,7 +98,7 @@ function md {
 
 function loc {
     if [[ $# -lt 1 ]]; then
-        echo "Usage: loc <query> [folder]" >&1
+        echo "Usage: loc <query> [folder]" >&2
         return 1
     fi
 
@@ -106,6 +106,22 @@ function loc {
     local dir="${2:-.}"
 
     grep -Rni "$query" "$dir" --color=yes | less
+}
+
+function fc-find {
+    if [[ $# -lt 1 ]]; then
+        echo "Usage: fc-find <name>" >&2
+        return 1
+    fi
+
+    local fontName="$1"
+
+    fc-list \
+        | grep -i "$fontName" \
+        | cut -d: -f2 \
+        | sort \
+        | uniq \
+        | sed -e 's/^ //g' -e 's/,/, /g'
 }
 
 # ----- AUTOCOMPLETIONS
