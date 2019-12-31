@@ -46,10 +46,11 @@ rofi.ssh-command:       {terminal} -e "sh -c 'TERM=xterm-256color {ssh-client} {
 ! ""ception
 
 !! URxvt
-URxvt.font: xft:RobotoMono Nerd Font:size=10:antialias=true,xft:FontAwesome:size=10:antialias=true,xft:DejaVu Sans Mono:size=10:antialias=true
+URxvt.font: xft:Iosevka Nerd Font:size=10
+URxvt.boldFont: xft:Iosevka Nerd Font:size=10:style=bold
 
 ! Size
-URxvt.geometry: 100x30
+URxvt.geometry: 120x30
 
 URxvt.iso14755:        false
 URxvt.iso14755_52:     false

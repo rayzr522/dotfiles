@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if ! which playerctl >/dev/null; then
+    exit 1
+fi
+
+if playerctl -l 2>&1 | grep -q 'No players were found'; then
+    exit 1
+fi
+
+SYMBOL=""
+if [[ "$(playerctl status)" = "Playing" ]]; then
+    SYMBOL=$'\ue602'
+else
+    SYMBOL=$'\uf8e3'
+fi
+
+printf '%s %s - %s' "$SYMBOL" "$(playerctl metadata artist)" "$(playerctl metadata title)"
