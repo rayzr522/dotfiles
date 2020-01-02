@@ -71,6 +71,14 @@ if [[ -f "$HOME/.zshrc.local" ]]; then
     source "$HOME/.zshrc.local"
 fi
 
+function copy-buffer {
+    # my custom alias will be used on linux
+    echo -n "$BUFFER" | pbcopy
+}
+
+zle -N copy-buffer
+bindkey '^[c' copy-buffer
+
 ### zsh plugins ###
 
 export ZSH_CUSTOM="$HOME/.config/zsh"
