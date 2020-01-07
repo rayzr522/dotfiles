@@ -157,7 +157,7 @@ if command -v compdef >/dev/null; then
 
     function _cs {
         local -a options
-        options=( $(find ~/.bin -maxdepth 1 -type f -print0 | xargs -0 basename -a) )
+        options=( $(find -L ~/.bin -maxdepth 1 -type f -print0 | xargs -0 basename -a) )
         _describe 'command' options
     }
 
