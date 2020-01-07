@@ -90,6 +90,8 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=7'
 
 # fast-syntax-highlighting
 source "$ZSH_CUSTOM/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
+# fix for freezing when highlighting ssh commands
+FAST_HIGHLIGHT[chroma-ssh]=""
 
 # history-search-multi-word
 source "$ZSH_CUSTOM/plugins/history-search-multi-word/history-search-multi-word.plugin.zsh"
