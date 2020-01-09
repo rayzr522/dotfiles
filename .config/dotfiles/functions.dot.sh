@@ -117,7 +117,7 @@ function loc {
     done
     fi
 
-    grep "${grep_opts[@]}" -Rni "$query" "$dir" | less
+    grep "${grep_opts[@]}" -Rni "$query" "$dir" | less -R
 }
 
 function fc-find {
