@@ -22,6 +22,8 @@ This includes all of my dotfiles I use on all my \*nix systems (including but no
 * **Chat:** Discord
 * **Browser:** Google Chrome
 
+## [Wallpapers](WALLPAPERS.md)
+
 ## Setup
 
 In order to set up all these config files for yourself, simply clone the repository and run the `setup.sh` script. Example:
