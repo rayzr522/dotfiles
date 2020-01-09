@@ -1,7 +1,7 @@
 ! An X theme based on the Sweet GTK/KDE theme, with URxvt transparency support
 
 URxvt.depth: 32
-URxvt.background: rgba:1616/1919/2525/eeee
+URxvt.background: [65]#0c0e14
 
 ! special
 *.foreground:   #f2efea
