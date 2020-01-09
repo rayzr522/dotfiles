@@ -36,6 +36,7 @@ safe-link .zshrc
 safe-link .gitignore
 safe-link .tmux.conf
 if [[ "$(uname)" == Linux ]]; then
+    safe-link .xinitrc
     safe-link .Xresources
 
     XTHEMES_DIR="$DOTFILES_DIR/.config/rice/Xthemes"
