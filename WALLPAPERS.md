@@ -21,3 +21,7 @@
 ### [Small Memory by Mikael Gustafsson](https://www.reddit.com/r/wallpapers/comments/edn0ju/4k_desktop_wallpaper/)
 
 ![preview](https://preview.redd.it/c3uhsgo1vx541.jpg?width=960&crop=smart&auto=webp&s=fe0a8bdb9635673d7025293326c8d8ee47fa6703)
+
+### [Futuristic Skyscrapers](https://www.reddit.com/r/wallpaper/comments/eay3yg/futuristic_skyscrapers_2560_x_1440/)
+
+![preview](https://preview.redd.it/8bsf1dtgcs441.jpg?width=960&crop=smart&auto=webp&s=2c137fd17441b2be7c4f4578e4f011e53748b345)
