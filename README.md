@@ -18,6 +18,7 @@ This includes all of my dotfiles I use on all my \*nix systems (including but no
 * **Font:** [Iosevka Nerd Font](https://www.nerdfonts.com/)
 * **Multiplexer:** tmux
 * **Editor:** neovim
+* **IDE:** IntelliJ IDEA / WebStorm
 * **Music:** Spotify
 * **Chat:** Discord
 * **Browser:** Google Chrome
