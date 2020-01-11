@@ -10,7 +10,9 @@
 
 ![preview](https://preview.redd.it/dd1rrym6n1941.png?width=960&crop=smart&auto=webp&s=386701d6f1c85b5576e9d26bcccbdbf22b7e5060)
 
-### [Vaporwave Sunset](https://www.reddit.com/r/wallpapers/comments/9yqjxj/vaporwave_sunset_4k/)
+### [Neon Sunset 4k by AxiomDesign](https://www.reddit.com/r/wallpapers/comments/9yqjxj/vaporwave_sunset_4k/)
+
+*Original: https://www.deviantart.com/axiomdesign/art/Neon-Sunset-4k-709421733*
 
 ![preview](https://external-preview.redd.it/NXaM31uCGigLDeBAPwnQaMQjQF8SQHFph3pEDbemTo8.jpg?width=960&crop=smart&auto=webp&s=8b9edb884210486124c5c0e00fb3e9447160044a)
 
