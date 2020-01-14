@@ -9,7 +9,7 @@ prop() {
     git config -l | grep -E "^$1" | head -n1 | cut -d= -f2-
 }
 
-if [ ! -d .git ]; then
+if ! git status &>/dev/null; then
     fail "You are not in a git repository!"
 fi
 
