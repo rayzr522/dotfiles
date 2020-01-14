@@ -13,11 +13,14 @@ if ! git status &>/dev/null; then
     fail "You are not in a git repository!"
 fi
 
-REMOTE_NAME="$(git for-each-ref --format='%(upstream:short)' $(git symbolic-ref -q HEAD) | cut -d / -f 1)"
+REMOTE="$(git for-each-ref --format='%(upstream:short)' $(git symbolic-ref -q HEAD))"
 
-if [ ! "$REMOTE_NAME" ]; then
+if [ ! "$REMOTE" ]; then
     fail "No remote could be found!"
 fi
+
+REMOTE_NAME="$(cut -d / -f 1 <<< "$REMOTE")"
+REMOTE_BRANCH="$(cut -d / -f 2 <<< "$REMOTE")"
 
 REMOTE_URL="$(git remote get-url "$REMOTE_NAME")"
 
@@ -25,4 +28,8 @@ if [ ! "$REMOTE_URL" ]; then
     fail "No URL found for remote '$REMOTE_NAME'"
 fi
 
-echo "$REMOTE_URL" | sed 's;^git@\(.\+\):\(.\+\)/\(.\+\)$;https://\1/\2/\3;g'
+echo -n "$REMOTE_URL" | sed -e 's;\.git$;;g' -e 's;^git@\(.\+\):\(.\+\)/\(.\+\)$;https://\1/\2/\3;g'
+
+if [ ! -z "$REMOTE_BRANCH" ] && [ "$REMOTE_BRANCH" != "master" ]; then
+    echo -n "/tree/$REMOTE_BRANCH"
+fi
