@@ -63,6 +63,11 @@ alias npl='npr lint'
 alias npi='npm install'
 alias npci='npm ci'
 
+# Misc optional tool shortcuts
+if command -v shellcheck >/dev/null; then
+    alias sc='shellcheck '
+fi
+
 # CI/CD
 alias maven-deploy='mvn -DaltDeploymentRepository=local-repo::default::file://$HOME/GitHub/maven-repo clean package deploy'
 
