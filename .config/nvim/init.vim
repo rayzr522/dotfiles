@@ -1,25 +1,27 @@
 " Plugins {{{
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'airblade/vim-gitgutter'
-
-Plug 'Shougo/denite.nvim'
 Plug 'vim-scripts/JavaDecompiler.vim'
 
 " Completion engine
 Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+" Fuzzy finding
+Plug 'Shougo/denite.nvim'
 " Linting engine
 Plug 'w0rp/ale'
-
 " Typescript
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 
 Plug 'bronson/vim-trailing-whitespace'
 
+" Visuals
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'airblade/vim-gitgutter'
+
 Plug 'arcticicestudio/nord-vim'
+Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
@@ -44,6 +46,7 @@ nmap <c-x><c-n> <ESC>:ALENextWrap<CR>
 nmap <c-x><c-f> <ESC>:ALEFix<CR>
 nmap <c-x><c-g> <ESC>:ALEGoToDefinition<CR>
 nmap <c-x><c-i> <ESC>:ALEHover<CR>
+nmap <c-x><c-b> <ESC>:ALEFindReferences<CR>
 
 " }}}
 
