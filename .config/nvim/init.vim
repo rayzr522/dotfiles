@@ -13,6 +13,8 @@ Plug 'w0rp/ale'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 
+Plug 'preservim/nerdtree'
+
 Plug 'bronson/vim-trailing-whitespace'
 
 " Visuals
@@ -36,17 +38,19 @@ set shiftwidth=4
 
 " Binds {{{
 
-nmap <tab> <ESC>:bnext<CR>
-nmap <s-tab> <ESC>:bprev<CR>
+nmap <tab> :bnext<CR>
+nmap <s-tab> :bprev<CR>
 
-map <c-x><c-x> <ESC>:bdel<CR>
-map <c-x><c-s> <ESC>:w<CR>
+map <c-x><c-x> :bdel<CR>
+map <c-x><c-s> :w<CR>
 
-nmap <c-x><c-n> <ESC>:ALENextWrap<CR>
-nmap <c-x><c-f> <ESC>:ALEFix<CR>
-nmap <c-x><c-g> <ESC>:ALEGoToDefinition<CR>
-nmap <c-x><c-i> <ESC>:ALEHover<CR>
-nmap <c-x><c-b> <ESC>:ALEFindReferences<CR>
+nmap <c-x><c-n> :ALENextWrap<CR>
+nmap <c-x><c-f> :ALEFix<CR>
+nmap <c-x><c-g> :ALEGoToDefinition<CR>
+nmap <c-x><c-i> :ALEHover<CR>
+nmap <c-x><c-b> :ALEFindReferences<CR>
+
+map <leader>f :NERDTreeToggle<CR>
 
 " }}}
 
@@ -278,5 +282,13 @@ endfunction
 
 let g:nvim_typescript#type_info_on_hold = 0
 let g:nvim_typescript#diagnostics_enable = 0
+
+" }}}
+
+" NERDTree {{{
+
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let g:NERDTreeDirArrowExpandable = ''
+let g:NERDTreeDirArrowCollapsible = ''
 
 " }}}
