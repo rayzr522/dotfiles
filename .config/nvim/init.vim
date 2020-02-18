@@ -22,7 +22,10 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 
-Plug 'arcticicestudio/nord-vim'
+" Plug 'arcticicestudio/nord-vim'
+" Plug 'rakr/vim-two-firewatch'
+" Plug 'rakr/vim-one'
+Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
@@ -64,20 +67,32 @@ autocmd BufWritePost ~/.Xresources :silent !xrdb -merge ~/.Xresources
 " Doesn't work (well) with urxvt
 " set termguicolors
 
+if has('termguicolors')
+    set termguicolors
+
+    set t_8f=[38;2;%lu;%lu;%lum
+    set t_8b=[48;2;%lu;%lu;%lum
+endif
+
 set number
-" highlight LineNr ctermfg=grey
-"
-" highlight GitGutterAdd ctermfg=green
-" highlight GitGutterChange ctermfg=green
-" highlight GitGutterDelete ctermfg=red
-"
-" highlight Pmenu ctermbg=238 ctermfg=white
-" highlight PmenuSel ctermbg=240 ctermfg=white
+
+let g:hybrid_transparent_background = 1
+
+set background=dark
+colorscheme hybrid_material
+let g:airline_theme='hybrid'
 
 let g:gitgutter_async = 0
 set updatetime=100
 
-colorscheme nord
+" Force background transparency despite colorscheme
+hi Normal             ctermbg=NONE guibg=NONE
+hi Statement          ctermbg=NONE guibg=NONE
+hi Title              ctermbg=NONE guibg=NONE
+hi Todo               ctermbg=NONE guibg=NONE
+hi Underlined         ctermbg=NONE guibg=NONE
+hi ErrorMsg           ctermbg=NONE guibg=NONE
+hi LineNr             ctermbg=NONE guibg=NONE
 
 " }}}
 
@@ -100,7 +115,6 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " Airline {{{
 
-let g:airline_theme = 'biogoo'
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 2
