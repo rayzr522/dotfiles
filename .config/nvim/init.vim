@@ -304,5 +304,6 @@ let g:nvim_typescript#diagnostics_enable = 0
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let g:NERDTreeDirArrowExpandable = ''
 let g:NERDTreeDirArrowCollapsible = ''
+let g:NERDTreeQuitOnOpen = 1
 
 " }}}
