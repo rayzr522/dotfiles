@@ -7,3 +7,6 @@
 [submodule ".config/zsh/plugins/history-search-multi-word"]
 	path = .config/zsh/plugins/history-search-multi-word
 	url = https://github.com/zdharma/history-search-multi-word
+[submodule ".config/conky/now-clocking"]
+	path = .config/conky/now-clocking
+	url = git@github.com:gamehelp16/now-clocking.git
