@@ -73,6 +73,7 @@ alias maven-deploy='mvn -DaltDeploymentRepository=local-repo::default::file://$H
 
 # Quick launchers
 alias vps-stats='ssh vps "TERM=$TERM" ./stats.sh'
+alias conky-start='~/.config/conky/now-clocking/start.sh'
 
 # Info commands
 alias sysinfo='clear;neofetch;read -sk 1;echo'
