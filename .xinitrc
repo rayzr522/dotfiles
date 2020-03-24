@@ -8,9 +8,7 @@ if command -v nvidia-settings >/dev/null; then
     nvidia-settings -l &
 fi
 
-if [[ -x "$HOME/.config/conky/now-clocking/start.sh" ]]; then
-    "$HOME/.config/conky/now-clocking/start.sh" &>/dev/null &
-fi
+~/.bin/conky-start &
 
 if [[ -z "$DISPLAY" ]]; then
     exec startkde
