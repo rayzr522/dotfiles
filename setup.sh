@@ -33,6 +33,7 @@ safe-link() {
 
 safe-link .bin
 safe-link .zshrc
+safe-link .zpreztorc
 safe-link .gitignore
 safe-link .tmux.conf
 if [[ "$(uname)" == Linux ]]; then

@@ -9,10 +9,6 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Prezto options
-zstyle ':prezto:module:editor' key-bindings 'vi'
-prompt garrett
-
 # Don't autocorrect
 unsetopt correct
 # Don't trust cache for completions -- https://unix.stackexchange.com/a/2180
