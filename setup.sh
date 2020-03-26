@@ -21,7 +21,7 @@ echo "--- Linking directories & files ---"
 safe-link() {
     echo "> Linking '$1'"
     SOURCE="$PWD/$1"
-    DEST="$DOTFILES_DIR/$1"
+    DEST="$DOTFILES_DIR/${2:-$1}"
 
     if [[ -d "$SOURCE" ]] && [[ -d "$DEST" ]] && [[ ! -L "$DEST" ]]; then
         echo "! Made a backup of pre-existing '$1'"
@@ -37,7 +37,7 @@ safe-link .zpreztorc
 safe-link .gitignore
 safe-link .tmux.conf
 if [[ "$(uname)" == Linux ]]; then
-    safe-link .xinitrc
+    safe-link .xprofile
     safe-link .Xresources
 
     XTHEMES_DIR="$DOTFILES_DIR/.config/rice/Xthemes"
@@ -57,4 +57,3 @@ mkdir -p "$HOME/.templates"
 for file in "$PWD/.templates/"*; do
     safe-link ".templates/$(basename "$file")"
 done
-

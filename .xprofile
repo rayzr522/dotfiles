@@ -8,7 +8,7 @@ if command -v nvidia-settings >/dev/null; then
     nvidia-settings -l &
 fi
 
-~/.bin/conky-start &
+(sleep 10 && ~/.bin/conky-start) &
 
 if [[ -z "$DISPLAY" ]]; then
     exec startkde
