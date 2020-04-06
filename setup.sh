@@ -3,8 +3,10 @@
 cd "$(dirname "$0")" || exit 1
 
 LN_OPTS="-sT"
+FORCE=false
 
 if [[ "$1" = "-f" ]] || [[ "$1" = "--force" ]]; then
+    FORCE=true
     echo "(Force-installing)"
     LN_OPTS+="f"
     shift
@@ -57,3 +59,12 @@ mkdir -p "$HOME/.templates"
 for file in "$PWD/.templates/"*; do
     safe-link ".templates/$(basename "$file")"
 done
+
+PROMPTS_DIR="${ZDOTDIR:-$HOME}/.zprezto/modules/prompt/functions"
+PROMPT_FILE="$PROMPTS_DIR/prompt_garrett_setup"
+
+if [[ -d "$PROMPTS_DIR" ]] && [[ ! -f "$PROMPT_FILE" ]] || [[ $FORCE = true ]]; then
+    echo -n "Downloading zsh-prompt-garrett... "
+    curl -sLJ "https://github.com/chauncey-garrett/zsh-prompt-garrett/raw/master/prompt_garrett_setup" -o "$PROMPT_FILE"
+    echo "done"
+fi
