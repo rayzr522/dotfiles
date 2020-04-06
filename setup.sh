@@ -60,6 +60,8 @@ for file in "$PWD/.templates/"*; do
     safe-link ".templates/$(basename "$file")"
 done
 
+echo "--- Dependency setup ---"
+
 PROMPTS_DIR="${ZDOTDIR:-$HOME}/.zprezto/modules/prompt/functions"
 PROMPT_FILE="$PROMPTS_DIR/prompt_garrett_setup"
 
@@ -68,3 +70,7 @@ if [[ -d "$PROMPTS_DIR" ]] && [[ ! -f "$PROMPT_FILE" ]] || [[ $FORCE = true ]]; 
     curl -sLJ "https://github.com/chauncey-garrett/zsh-prompt-garrett/raw/master/prompt_garrett_setup" -o "$PROMPT_FILE"
     echo "done"
 fi
+
+echo -n "Installing or updating vim-plug... "
+curl -sfLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+echo "done"
