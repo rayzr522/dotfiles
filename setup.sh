@@ -62,7 +62,20 @@ done
 
 echo "--- Dependency setup ---"
 
-PROMPTS_DIR="${ZDOTDIR:-$HOME}/.zprezto/modules/prompt/functions"
+PREZTO_DIR="${ZDOTDIR:-$HOME}/.zprezto"
+
+if [[ ! -d "$PREZTO_DIR" ]] && command -v zsh /dev/null; then
+    echo "Setting up Prezto"
+    zsh -c '
+    git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+    setopt EXTENDED_GLOB
+    for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+       ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+    done
+    '
+fi
+
+PROMPTS_DIR="$PREZTO_DIR/modules/prompt/functions"
 PROMPT_FILE="$PROMPTS_DIR/prompt_garrett_setup"
 
 if [[ -d "$PROMPTS_DIR" ]] && [[ ! -f "$PROMPT_FILE" ]] || [[ $FORCE = true ]]; then
