@@ -136,6 +136,40 @@ function fc-find {
         | sed -e 's/^ //g' -e 's/,/, /g'
 }
 
+function gm {
+    if [[ $# -lt 1 ]]; then
+        echo "Usage: gm <name> [--init]" >&2
+        return 1
+    fi
+
+    local gm_dir="$HOME/GitHub/.mirror"
+
+    if [[ ! -d "$gm_dir" ]]; then
+        echo "Creating git mirror dir..."
+        mkdir -p "$gm_dir"
+    fi
+
+    local mirror_path="$gm_dir/$1.git"
+
+    if [[ "$2" = "--init" ]]; then
+        if [[ -d "$mirror_path" ]]; then
+            echo "That mirror already exists!" >&2
+            return 1
+        fi
+
+        echo "Initializing git mirror '$1'..."
+        mkdir -p "$mirror_path"
+        git --git-dir "$mirror_path" init --bare
+        echo "Done!"
+    elif [[ -d "$mirror_path" ]]; then
+        echo "Cloning git mirror '$1'..."
+        git clone "$mirror_path" "$1"
+    else
+        echo "That git mirror does not exist!" >&2
+        return 1
+    fi
+}
+
 # ----- AUTOCOMPLETIONS
 # Make sure to only run when we're using zsh
 if command -v compdef >/dev/null; then
