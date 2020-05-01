@@ -6,6 +6,8 @@ URxvt.boldFont: xft:Iosevka Nerd Font:size=10:style=Bold
 URxvt.italicFont: xft:Iosevka Nerd Font:size=10:style=Italic
 URxvt.boldItalicFont: xft:Iosevka Nerd Font:size=10:style=Bold Italic
 
+URxvt.icon: terminal
+
 ! Size
 URxvt.geometry: 120x30
 
