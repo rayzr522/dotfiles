@@ -8,7 +8,7 @@ if command -v nvidia-settings >/dev/null; then
     nvidia-settings -l &
 fi
 
-(sleep 10 && ~/.bin/conky-start) &
+(sleep 5 && ~/.bin/conky-start) &
 
 if [[ -z "$DISPLAY" ]]; then
     exec startkde
@@ -16,4 +16,6 @@ elif [[ "$XDG_CURRENT_DESKTOP" == KDE ]]; then
     if command -v compton >/dev/null; then
         compton -b &
     fi
+elif [[ "$XDG_CURRENT_DESKTOP" == pop:GNOME ]]; then
+    (sleep 5 && ~/.bin/fix-pop-shell-theme) &
 fi
