@@ -66,6 +66,9 @@ alias npl='npr lint'
 alias npi='npm install'
 alias npci='npm ci'
 
+# DB
+alias mongo='mongo --quiet'
+
 # Misc optional tool shortcuts
 if command -v shellcheck >/dev/null; then
     alias sc='shellcheck '
