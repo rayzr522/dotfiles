@@ -31,3 +31,11 @@
 ### [Neon City by Romain Trystram](https://www.reddit.com/r/wallpapers/comments/ev6kc2/neon_city_3840x2160/)
 
 ![preview](https://preview.redd.it/7a86e9v99jd41.jpg?width=960&crop=smart&auto=webp&s=4f82437604590d406c831f22cf458b817a879df0)
+
+## [Los Santos 2077 by Mikhail Sharov](https://www.reddit.com/r/wallpapers/comments/goou59/los_santos_2077_by_mikhail_sharov_1920x1080/)
+
+![preview](https://preview.redd.it/ir6oxx0vzc051.png?width=960&crop=smart&auto=webp&s=7a50944ebe60ac404a1578933fe319654bec0bbf)
+
+## [On a cloudy moon orbiting a planet](https://www.reddit.com/r/MesmerisingSpace/comments/gq8yr5/on_a_cloudy_moon_orbiting_a_planet_digital_art/)
+
+![preview](https://preview.redd.it/3zktdf8w5w051.jpg?width=960&crop=smart&auto=webp&s=092f453d94d6aa02cf69af22a0e3073e73f7ef97)
