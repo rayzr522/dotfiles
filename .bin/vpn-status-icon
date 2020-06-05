@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if pgrep openvpn >/dev/null; then
+    printf '\uf023'
+else
+    printf '\uf09c'
+fi
