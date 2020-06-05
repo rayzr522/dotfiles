@@ -10,9 +10,16 @@ if [[ ! -f ~/.config/ovpn/client.ovpn ]]; then
     exit 1
 fi
 
-if [[ -z "$1" ]]; then
+action_usage() {
+    echo "Usage: $(basename "$0") [-k|-s]" 1>&2
+    exit 1
+}
+
+action_start() {
     sudo openvpn --config ~/.config/ovpn/client.ovpn --auth-user-pass --daemon
-elif [[ "$1" = "-k" ]]; then
+}
+
+action_kill() {
     sudo killall openvpn 2>/dev/null
     if [[ $? = 0 ]]; then
         echo "Killed OpenVPN daemon"
@@ -20,7 +27,22 @@ elif [[ "$1" = "-k" ]]; then
         echo "Could not kill OpenVPN daemon -- it might not be running" 1>&2
         exit 1
     fi
+}
+
+action_status() {
+    if pgrep openvpn >/dev/null; then
+        echo "OpenVPN daemon is currently: $(tput setaf 2)running$(tput sgr0)"
+    else
+        echo "OpenVPN daemon is currently: $(tput setaf 1)not running$(tput sgr0)"
+    fi
+}
+
+if [[ -z "$1" ]]; then
+    action_start
+elif [[ "$1" = "-k" ]]; then
+    action_kill
+elif [[ "$1" = "-s" ]]; then
+    action_status
 else
-    echo "Usage: $(basename "$0") [-k]" 1>&2
-    exit 1
+    action_usage
 fi
