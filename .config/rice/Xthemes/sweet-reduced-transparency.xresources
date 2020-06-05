@@ -1,0 +1,41 @@
+! An X theme based on the Sweet GTK/KDE theme, with URxvt transparency support
+
+URxvt.depth: 32
+URxvt.background: [90]#0c0e14
+
+! special
+*.foreground:   #f2efea
+*.background:   #161925
+*.cursorColor:  #f2efea
+
+! black
+*.color0:       #161925
+*.color8:       #555753
+
+! red
+*.color1:       #ed254e
+*.color9:       #ed254e
+
+! green
+*.color2:       #71f79f
+*.color10:      #71f79f
+
+! yellow
+*.color3:       #f9dc5c
+*.color11:      #f9dc5c
+
+! blue
+*.color4:       #7cb7ff
+*.color12:      #7cb7ff
+
+! magenta
+*.color5:       #c74ded
+*.color13:      #c74ded
+
+! cyan
+*.color6:       #00c1e4
+*.color14:      #00c1e4
+
+! white
+*.color7:       #c3c7d1
+*.color15:      #f2efea
