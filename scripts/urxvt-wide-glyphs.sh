@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [[ ! -d /usr/include/X11/Xft ]]; then
+    echo "Error: Xft headers could not be found, compilation will now stop." 1>&2
+    exit 1
+fi
+
 set -ex
 
 PKGBUILD_DIR=urxvt-pkgbuild
