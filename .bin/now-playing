@@ -8,7 +8,17 @@ if playerctl -l 2>&1 | grep -q 'No players were found'; then
     exit 1
 fi
 
-status="$(playerctl status)"
+playerctl_player="$(playerctl -l | grep -v plasma-browser-integration | head -n1)"
+
+playerctl_exec() {
+    playerctl -p "$playerctl_player" "$@"
+}
+
+playerctl_meta() {
+    playerctl_exec metadata "$@"
+}
+
+status="$(playerctl_exec status)"
 
 symbol=""
 
@@ -20,4 +30,4 @@ else
     exit 0
 fi
 
-printf '%s %s - %s' "$symbol" "$(playerctl metadata artist)" "$(playerctl metadata title)"
+printf '%s %s - %s' "$symbol" "$(playerctl_meta artist)" "$(playerctl_meta title)"
