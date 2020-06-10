@@ -29,6 +29,10 @@ alias vim='nvim'
 # shorthand because i Am LaZy
 alias v='nvim'
 
+# I'm addicted
+alias :wq='exit'
+alias :q!='exit'
+
 # Sane defaults
 alias grep='grep --exclude-dir=node_modules'
 alias ls='ls --color=auto'
