@@ -143,7 +143,13 @@ let g:ale_fixers = {
             \   'typescript': [
             \       'remove_trailing_lines',
             \       'trim_whitespace',
-            \       'tslint'
+            \       'tslint',
+            \       'eslint'
+            \   ],
+            \   'javascript': [
+            \       'remove_trailing_lines',
+            \       'trim_whitespace',
+            \       'eslint'
             \   ]
             \}
 
