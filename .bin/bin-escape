@@ -1,0 +1,5 @@
+#!/bin/bash
+
+od -vtx1 $1 |
+    sed -e 's/^[0-9]* //' -e '$d' -e 's/^/ /' -e 's/ /\\x/g' |
+    tr -d '\n'
