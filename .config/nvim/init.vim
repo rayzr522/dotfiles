@@ -1,36 +1,32 @@
 " Plugins {{{
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'vim-scripts/JavaDecompiler.vim'
+" -- Completion & linting
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" Completion engine
-Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-" Fuzzy finding
+" -- Navigation
 Plug 'Shougo/denite.nvim'
-" Linting engine
-Plug 'w0rp/ale'
-" Typescript
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
-
 Plug 'preservim/nerdtree'
 
-Plug 'bronson/vim-trailing-whitespace'
+" -- Syntax
+Plug 'HerringtonDarkholme/yats.vim'
 
-" Visuals
+" -- UI Widgets
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 
+" -- Themes & styling
 " Plug 'arcticicestudio/nord-vim'
 " Plug 'rakr/vim-two-firewatch'
 " Plug 'rakr/vim-one'
 Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'ryanoasis/vim-devicons'
 
-call plug#end()
+" -- File support
+Plug 'vim-scripts/JavaDecompiler.vim'
 
-let g:deoplete#enable_at_startup = 1
+call plug#end()
 " }}}
 
 " Tabs {{{
@@ -115,43 +111,10 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " Airline {{{
 
-let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 2
 
 let g:airline_powerline_fonts = 1
-
-" }}}
-
-" ALE {{{
-
-let g:ale_open_list = 0
-let g:ale_lint_delay = 0
-let g:ale_list_window_size = 50
-
-let g:ale_fix_on_save = 1
-let g:ale_completion_tsserver_autoimport = 1
-
-let g:ale_sign_error = '●'
-let g:ale_sign_warning = '.'
-
-let g:ale_fixers = {
-            \   '*': [
-            \       'remove_trailing_lines',
-            \       'trim_whitespace'
-            \   ],
-            \   'typescript': [
-            \       'remove_trailing_lines',
-            \       'trim_whitespace',
-            \       'tslint',
-            \       'eslint'
-            \   ],
-            \   'javascript': [
-            \       'remove_trailing_lines',
-            \       'trim_whitespace',
-            \       'eslint'
-            \   ]
-            \}
 
 " }}}
 
@@ -245,8 +208,6 @@ nnoremap <leader>j :<C-u>DeniteCursorWord grep:.<CR>
 "   <C-h>         - Open currently selected file in a horizontal split
 autocmd FileType denite-filter call s:denite_filter_my_settings()
 function! s:denite_filter_my_settings() abort
-    call deoplete#custom#buffer_option('auto_complete', v:false)
-
     imap <silent><buffer> <C-o>
                 \ <Plug>(denite_filter_quit)
     inoremap <silent><buffer><expr> <Esc>
