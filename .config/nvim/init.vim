@@ -43,12 +43,6 @@ nmap <s-tab> :bprev<CR>
 map <c-x><c-x> :bdel<CR>
 map <c-x><c-s> :w<CR>
 
-nmap <c-x><c-n> :ALENextWrap<CR>
-nmap <c-x><c-f> :ALEFix<CR>
-nmap <c-x><c-g> :ALEGoToDefinition<CR>
-nmap <c-x><c-i> :ALEHover<CR>
-nmap <c-x><c-b> :ALEFindReferences<CR>
-
 map <leader>f :NERDTreeToggle<CR>
 
 " }}}
