@@ -17,10 +17,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 
 " -- Themes & styling
-" Plug 'arcticicestudio/nord-vim'
-" Plug 'rakr/vim-two-firewatch'
-" Plug 'rakr/vim-one'
-Plug 'kristijanhusak/vim-hybrid-material'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'ryanoasis/vim-devicons'
 
 " -- File support
@@ -139,11 +136,8 @@ else
   set signcolumn=yes
 endif
 
-let g:hybrid_transparent_background = 1
-
-set background=dark
-colorscheme hybrid_material
-let g:airline_theme='hybrid'
+colorscheme onehalfdark
+let g:airline_theme='onehalfdark'
 
 let g:gitgutter_async = 0
 set updatetime=100
@@ -156,6 +150,9 @@ hi Todo               ctermbg=NONE guibg=NONE
 hi Underlined         ctermbg=NONE guibg=NONE
 hi ErrorMsg           ctermbg=NONE guibg=NONE
 hi LineNr             ctermbg=NONE guibg=NONE
+
+" Un-derpify popup menus
+hi Pmenu ctermbg=black guibg=black ctermfg=lightgray guifg=lightgray
 
 " }}}
 
