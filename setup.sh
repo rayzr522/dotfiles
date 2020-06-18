@@ -87,3 +87,16 @@ fi
 echo -n "Installing or updating vim-plug... "
 curl -sfLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 echo "done"
+
+echo -n "Updating coc.nvim extensions... "
+if ! command -v npm >/dev/null; then
+    echo "fail, npm not found"
+else
+    npm --prefix "$DOTFILES_DIR/.config/coc/extensions" install --silent --no-package-lock &>/dev/null
+
+    if [[ $? = 0 ]]; then
+        echo "done"
+    else
+        echo "fail, unknown error"
+    fi
+fi
