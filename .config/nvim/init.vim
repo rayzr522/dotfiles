@@ -253,13 +253,6 @@ endfunction
 
 " }}}
 
-" nvim-typescript {{{
-
-let g:nvim_typescript#type_info_on_hold = 0
-let g:nvim_typescript#diagnostics_enable = 0
-
-" }}}
-
 " NERDTree {{{
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
