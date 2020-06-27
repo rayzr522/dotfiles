@@ -133,17 +133,16 @@ done
 
 if command -v sftp >/dev/null && [ -n "$REMOTE" ]; then
     echo
-    task "Uploading ${#BUILT_JARS[@]} JARs to $REMOTE"
+    echo "Uploading ${#BUILT_JARS[@]} JARs to $REMOTE"
+
     cd "$PLUGINS_FOLDER"
     
     function get_sftp_commands {
         local IFS=$'\n'
-        echo "${BUILT_JARS[@]}" | sed 's/^/put /g'
+        echo "${BUILT_JARS[*]}" | sed 's/^/put /g'
     }
 
-    get_sftp_commands | sftp "$REMOTE" &>/dev/null || taskfail
-
-    taskdone
+    get_sftp_commands | sftp "$REMOTE"
 fi
 
 echo "$(tput setaf 2)$(tput bold)
