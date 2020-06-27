@@ -30,8 +30,19 @@ function taskfail {
 }
 
 function usage {
-    fail "Usage: build <name> [name2] [name3] [...]"
+    fail "Usage: build [-r <remote>] <name> [name2] [name3] [...]"
 }
+
+REMOTE=
+
+if [ "$1" = "-r" ]; then
+    REMOTE="$2"
+    shift 2
+
+    if [ -z "$REMOTE" ]; then
+        usage
+    fi
+fi
 
 PROJECTS=( "$@" )
 
@@ -59,6 +70,12 @@ done
 
 [[ "$SERVER_FOLDER" != "/" ]] || fail "Failed to find a valid server folder :("
 [[ $RECURSING = 1 ]] && taskdone
+
+PLUGINS_FOLDER="$SERVER_FOLDER/plugins"
+
+[ -d "$PLUGINS_FOLDER" ] || mkdir -p "$PLUGINS_FOLDER" >/dev/null 2>&1
+
+BUILT_JARS=()
 
 function build {
     task "Locating project folder of $1"
@@ -91,9 +108,12 @@ function build {
     taskdone
     task "Moving JAR file for $1"
 
-    [ -d "$SERVER_FOLDER/plugins/" ] || /bin/mkdir -p "$SERVER_FOLDER/plugins/" >/dev/null 2>&1
+    FILE_NAME="$(basename ./target/"$1"*.jar)"
+    rm -f "$PLUGINS_FOLDER/$FILE_NAME" 2>/dev/null
+    rm -i "$PLUGINS_FOLDER/$1"*.jar 2>/dev/null
+    cp -f "./target/$FILE_NAME" "$PLUGINS_FOLDER/$FILE_NAME" >/dev/null 2>&1 || fail "Failed to copy built JARs into server directory!"
 
-    cp -f ./target/"$1"*.jar "$SERVER_FOLDER/plugins/" >/dev/null 2>&1 || fail "Failed to copy built JARs into server directory!"
+    BUILT_JARS+=("$FILE_NAME")
 
     taskdone
 
@@ -104,13 +124,27 @@ function build {
             taskdone
         fi
     fi
-
 }
 
 for project in "${PROJECTS[@]}"; do
     echo
     build "$project"
 done
+
+if command -v sftp >/dev/null && [ -n "$REMOTE" ]; then
+    echo
+    task "Uploading ${#BUILT_JARS[@]} JARs to $REMOTE"
+    cd "$PLUGINS_FOLDER"
+    
+    function get_sftp_commands {
+        local IFS=$'\n'
+        echo "${BUILT_JARS[@]}" | sed 's/^/put /g'
+    }
+
+    get_sftp_commands | sftp "$REMOTE" &>/dev/null || taskfail
+
+    taskdone
+fi
 
 echo "$(tput setaf 2)$(tput bold)
 Projects succesfully built
