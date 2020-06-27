@@ -14,4 +14,8 @@ sudo rm -rf /opt/minecraft-launcher
 ls
 sudo mv ./minecraft-launcher-* /opt/minecraft-launcher
 
+if [[ -x /opt/minecraft-launcher/minecraft-launcher.sh ]] && [[ ! -x /opt/minecraft-launcher/minecraft-launcher ]]; then
+    sudo ln -s /opt/minecraft-launcher/minecraft-launcher.sh /opt/minecraft-launcher/minecraft-launcher
+fi
+
 rm -rf "$UPDATEDIR"
