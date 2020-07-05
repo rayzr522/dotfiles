@@ -1,0 +1,28 @@
+#!/bin/bash
+
+fail() {
+    echo "$*" >&1
+    exit 1
+}
+
+if ! command -v xdotool >/dev/null; then
+    fail "This command requires xdotool to be installed."
+fi
+
+class="$1"
+shift
+cmd=( "$@" )
+
+class_ids=( $(xdotool search --classname --onlyvisible "$class" | while read -r id; do
+    # only actual... windows. what doesn't have a state???
+    xprop -id $id WM_STATE | grep -q 'WM_STATE(WM_STATE)' && echo $id
+done) )
+active_window="$(xdotool getactivewindow)"
+
+if [[ ${#class_ids[@]} -lt 1 ]]; then
+    xdotool exec "${cmd[@]}"
+elif ! echo "${class_ids[@]}" | grep -q "$active_window"; then
+    xdotool windowactivate "${class_ids[-1]}"
+else
+    xdotool windowactivate "${class_ids[0]}"
+fi

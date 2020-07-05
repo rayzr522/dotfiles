@@ -29,5 +29,6 @@ elif [[ "$XDG_CURRENT_DESKTOP" =~ .*:GNOME ]]; then
         (sleep 5 && ~/.bin/fix-pop-shell-theme) &
     elif [[ "$XDG_CURRENT_DESKTOP" == Budgie:GNOME ]]; then
         try_exec tint2
+        try_exec xbindkeys -p -f ~/.config/xbindkeysrc
     fi
 fi
