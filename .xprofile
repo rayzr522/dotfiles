@@ -17,5 +17,8 @@ elif [[ "$XDG_CURRENT_DESKTOP" == KDE ]]; then
         compton -b &
     fi
 elif [[ "$XDG_CURRENT_DESKTOP" == pop:GNOME ]]; then
+    if [[ -z "$GDM" ]] && command -v gnome-screensaver >/dev/null; then
+        exec gnome-screensaver &
+    fi
     (sleep 5 && ~/.bin/fix-pop-shell-theme) &
 fi
