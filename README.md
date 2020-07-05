@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="800px" src="https://cdn.discordapp.com/attachments/282207139752050688/664674681701531654/unknown.png" alt="screenshot">
+  <img width="100%" src="https://cdn.discordapp.com/attachments/282207139752050688/664674681701531654/unknown.png" alt="screenshot">
 </p>
 
 *Screenshot of my setup. Click to see a larger preview.*
