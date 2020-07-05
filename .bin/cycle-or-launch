@@ -24,5 +24,9 @@ if [[ ${#class_ids[@]} -lt 1 ]]; then
 elif ! echo "${class_ids[@]}" | grep -q "$active_window"; then
     xdotool windowactivate "${class_ids[-1]}"
 else
-    xdotool windowactivate "${class_ids[0]}"
+    if [[ "${class_ids[0]}" = "$active_window" ]]; then
+        xdotool windowminimize "$active_window"
+    else
+        xdotool windowactivate "${class_ids[0]}"
+    fi
 fi
