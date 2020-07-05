@@ -8,17 +8,21 @@ if command -v nvidia-settings >/dev/null; then
     nvidia-settings -l &
 fi
 
+try_exec() {
+    if command -v "$1" >/dev/null; then
+        exec "$@" &
+    fi
+}
+
 (sleep 5 && ~/.bin/conky-start) &
 
 if [[ -z "$DISPLAY" ]]; then
-    exec startkde
+    try_exec startkde
 elif [[ "$XDG_CURRENT_DESKTOP" == KDE ]]; then
-    if command -v compton >/dev/null; then
-        compton -b &
-    fi
+    try_exec compton -b
 elif [[ "$XDG_CURRENT_DESKTOP" =~ .*:GNOME ]]; then
-    if [[ -z "$GDM" ]] && command -v gnome-screensaver >/dev/null; then
-        exec gnome-screensaver &
+    if [[ -z "$GDM" ]]; then
+        try_exec gnome-screensaver
     fi
 
     if [[ "$XDG_CURRENT_DESKTOP" == pop:GNOME ]]; then
