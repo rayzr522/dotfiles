@@ -73,12 +73,7 @@ position=1
 [applets/{2fb01b46-be73-11ea-9d85-7d9721b6441a}]
 alignment='end'
 name='Status Indicator'
-position=3
-
-[applets/{4393bd52-be73-11ea-9d85-7d9721b6441a}]
-alignment='end'
-name='Spacer'
-position=7
+position=5
 
 [applets/{b6f5830e-be99-11ea-b51d-3927dc59567f}]
 alignment='end'
@@ -90,11 +85,6 @@ alignment='start'
 name='Budgie Menu'
 position=0
 
-[applets/{d5be0756-be2e-11ea-87c9-abf76dcbde83}]
-alignment='start'
-name='Spacer'
-position=1
-
 [applets/{d5be0758-be2e-11ea-87c9-abf76dcbde83}]
 alignment='end'
 name='Spacer'
@@ -103,7 +93,7 @@ position=2
 [applets/{d5be075c-be2e-11ea-87c9-abf76dcbde83}]
 alignment='end'
 name='User Indicator'
-position=8
+position=6
 
 [applets/{d5be075d-be2e-11ea-87c9-abf76dcbde83}]
 alignment='end'
@@ -113,15 +103,13 @@ position=4
 [applets/{d5be075e-be2e-11ea-87c9-abf76dcbde83}]
 alignment='end'
 name='Separator'
-position=5
+position=3
 
-[applets/{d5be075f-be2e-11ea-87c9-abf76dcbde83}]
-alignment='end'
-name='Clock'
-position=6
-
-[instance/spacer/{4393bd52-be73-11ea-9d85-7d9721b6441a}]
-size=5
+[instance/budgie-menu/{d5be0755-be2e-11ea-87c9-abf76dcbde83}]
+enable-menu-label=false
+menu-categories-hover=false
+menu-compact=true
+menu-headers=false
 
 [panels/{0acf0730-be99-11ea-b51d-3927dc59567f}]
 applets=['0acf0735-be99-11ea-b51d-3927dc59567f', '0acf073c-be99-11ea-b51d-3927dc59567f', '0acf0731-be99-11ea-b51d-3927dc59567f', '0acf0736-be99-11ea-b51d-3927dc59567f', '0acf0732-be99-11ea-b51d-3927dc59567f', '0acf0737-be99-11ea-b51d-3927dc59567f', '0acf0733-be99-11ea-b51d-3927dc59567f', '0acf0738-be99-11ea-b51d-3927dc59567f', '0acf0734-be99-11ea-b51d-3927dc59567f', '0acf0739-be99-11ea-b51d-3927dc59567f', '0acf073a-be99-11ea-b51d-3927dc59567f', '0acf073b-be99-11ea-b51d-3927dc59567f']
@@ -130,7 +118,7 @@ size=39
 transparency='none'
 
 [panels/{d5be0754-be2e-11ea-87c9-abf76dcbde83}]
-applets=['d5be075f-be2e-11ea-87c9-abf76dcbde83', 'd5be0758-be2e-11ea-87c9-abf76dcbde83', '2fb01b46-be73-11ea-9d85-7d9721b6441a', 'd5be0755-be2e-11ea-87c9-abf76dcbde83', '21272328-be99-11ea-b51d-3927dc59567f', 'd5be075c-be2e-11ea-87c9-abf76dcbde83', 'd5be075d-be2e-11ea-87c9-abf76dcbde83', 'd5be0756-be2e-11ea-87c9-abf76dcbde83', '4393bd52-be73-11ea-9d85-7d9721b6441a', 'b6f5830e-be99-11ea-b51d-3927dc59567f', 'd5be075e-be2e-11ea-87c9-abf76dcbde83']
+applets=['d5be0758-be2e-11ea-87c9-abf76dcbde83', '2fb01b46-be73-11ea-9d85-7d9721b6441a', 'd5be0755-be2e-11ea-87c9-abf76dcbde83', '21272328-be99-11ea-b51d-3927dc59567f', 'd5be075c-be2e-11ea-87c9-abf76dcbde83', 'd5be075d-be2e-11ea-87c9-abf76dcbde83', 'b6f5830e-be99-11ea-b51d-3927dc59567f', 'd5be075e-be2e-11ea-87c9-abf76dcbde83']
 autohide='intelligent'
 dock-mode=false
 enable-shadow=false
