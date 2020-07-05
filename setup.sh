@@ -100,3 +100,9 @@ else
         echo "fail, unknown error"
     fi
 fi
+
+if command -v budgie-desktop >/dev/null; then
+    echo -n "Loading Budgie settings... "
+    ./scripts/load-budgie-settings.sh
+    echo done
+fi
