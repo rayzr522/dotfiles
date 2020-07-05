@@ -17,24 +17,24 @@ background_color_pressed = #000000 60
 border_color_pressed = #000000 30
 
 # Background 2: Default task, Iconified task
-rounded = 4
-border_width = 1
-border_sides = TBLR
-background_color = #777777 20
-border_color = #777777 30
-background_color_hover = #aaaaaa 22
-border_color_hover = #eaeaea 44
+rounded = 2
+border_width = 0
+border_sides = B
+background_color = #777777 10
+border_color = #777777 20
+background_color_hover = #aaaaaa 15
+border_color_hover = #aaaaaa 30
 background_color_pressed = #555555 4
 border_color_pressed = #eaeaea 44
 
 # Background 3: Active task
-rounded = 4
-border_width = 1
-border_sides = TBLR
-background_color = #777777 20
-border_color = #ffffff 40
-background_color_hover = #aaaaaa 22
-border_color_hover = #eaeaea 44
+rounded = 2
+border_width = 3
+border_sides = B
+background_color = #999999 10
+border_color = #999999 20
+background_color_hover = #aaaaaa 15
+border_color_hover = #aaaaaa 30
 background_color_pressed = #555555 4
 border_color_pressed = #eaeaea 44
 
@@ -109,14 +109,14 @@ task_align = left
 #-------------------------------------
 # Task
 task_text = 1
-task_icon = 1
-task_centered = 1
+task_icon = 0
+task_centered = 0
 urgent_nb_of_blink = 100000
 task_maximum_size = 150 35
 task_padding = 2 2 4
 task_tooltip = 1
-task_thumbnail = 0
-task_thumbnail_size = 210
+task_thumbnail = 1
+task_thumbnail_size = 300
 task_font_color = #ffffff 100
 task_background_id = 2
 task_active_background_id = 3
@@ -124,7 +124,7 @@ task_urgent_background_id = 4
 task_iconified_background_id = 2
 mouse_left = toggle_iconify
 mouse_middle = none
-mouse_right = close
+mouse_right = toggle_iconify
 mouse_scroll_up = toggle
 mouse_scroll_down = iconify
 
@@ -154,7 +154,7 @@ launcher_item_app = rxvt-unicode.desktop
 #-------------------------------------
 # Clock
 time1_format = %H:%M
-time2_format = %A %d %B
+time2_format = %m/%d/%y
 time1_timezone = 
 time2_timezone = 
 clock_font_color = #ffffff 100
@@ -190,7 +190,7 @@ ac_disconnected_cmd =
 
 #-------------------------------------
 # Tooltip
-tooltip_show_timeout = 0.5
+tooltip_show_timeout = 0.25
 tooltip_hide_timeout = 0.1
 tooltip_padding = 4 4
 tooltip_background_id = 5
