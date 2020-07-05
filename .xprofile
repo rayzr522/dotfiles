@@ -27,5 +27,7 @@ elif [[ "$XDG_CURRENT_DESKTOP" =~ .*:GNOME ]]; then
 
     if [[ "$XDG_CURRENT_DESKTOP" == pop:GNOME ]]; then
         (sleep 5 && ~/.bin/fix-pop-shell-theme) &
+    elif [[ "$XDG_CURRENT_DESKTOP" == Budgie:GNOME ]]; then
+        try_exec tint2
     fi
 fi
