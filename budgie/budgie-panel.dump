@@ -75,6 +75,66 @@ alignment='end'
 name='Status Indicator'
 position=5
 
+[applets/{b5d88265-bfac-11ea-9f42-716677ee1063}]
+alignment='start'
+name='Budgie Menu'
+position=0
+
+[applets/{b5d88266-bfac-11ea-9f42-716677ee1063}]
+alignment='start'
+name='Spacer'
+position=1
+
+[applets/{b5d88267-bfac-11ea-9f42-716677ee1063}]
+alignment='start'
+name='Icon Task List'
+position=2
+
+[applets/{b5d88268-bfac-11ea-9f42-716677ee1063}]
+alignment='end'
+name='Spacer'
+position=0
+
+[applets/{b5d88269-bfac-11ea-9f42-716677ee1063}]
+alignment='end'
+name='System Tray'
+position=1
+
+[applets/{b5d8826a-bfac-11ea-9f42-716677ee1063}]
+alignment='end'
+name='Notifications'
+position=2
+
+[applets/{b5d8826b-bfac-11ea-9f42-716677ee1063}]
+alignment='end'
+name='Status Indicator'
+position=3
+
+[applets/{b5d8826c-bfac-11ea-9f42-716677ee1063}]
+alignment='end'
+name='User Indicator'
+position=4
+
+[applets/{b5d8826d-bfac-11ea-9f42-716677ee1063}]
+alignment='end'
+name='Spacer'
+position=5
+
+[applets/{b5d8826e-bfac-11ea-9f42-716677ee1063}]
+alignment='end'
+name='Separator'
+position=6
+
+[applets/{b5d8826f-bfac-11ea-9f42-716677ee1063}]
+alignment='end'
+name='Clock'
+position=7
+
+[applets/{b5d88270-bfac-11ea-9f42-716677ee1063}]
+alignment='end'
+name='Raven Trigger'
+position=8
+
 [applets/{b6f5830e-be99-11ea-b51d-3927dc59567f}]
 alignment='end'
 name='AppIndicator Applet'
@@ -113,6 +173,12 @@ menu-headers=false
 
 [panels/{0acf0730-be99-11ea-b51d-3927dc59567f}]
 applets=['0acf0735-be99-11ea-b51d-3927dc59567f', '0acf073c-be99-11ea-b51d-3927dc59567f', '0acf0731-be99-11ea-b51d-3927dc59567f', '0acf0736-be99-11ea-b51d-3927dc59567f', '0acf0732-be99-11ea-b51d-3927dc59567f', '0acf0737-be99-11ea-b51d-3927dc59567f', '0acf0733-be99-11ea-b51d-3927dc59567f', '0acf0738-be99-11ea-b51d-3927dc59567f', '0acf0734-be99-11ea-b51d-3927dc59567f', '0acf0739-be99-11ea-b51d-3927dc59567f', '0acf073a-be99-11ea-b51d-3927dc59567f', '0acf073b-be99-11ea-b51d-3927dc59567f']
+location='top'
+size=39
+transparency='none'
+
+[panels/{b5d88264-bfac-11ea-9f42-716677ee1063}]
+applets=['b5d88266-bfac-11ea-9f42-716677ee1063', 'b5d88270-bfac-11ea-9f42-716677ee1063', 'b5d8826d-bfac-11ea-9f42-716677ee1063', 'b5d8826e-bfac-11ea-9f42-716677ee1063', 'b5d8826a-bfac-11ea-9f42-716677ee1063', 'b5d88267-bfac-11ea-9f42-716677ee1063', 'b5d8826b-bfac-11ea-9f42-716677ee1063', 'b5d88268-bfac-11ea-9f42-716677ee1063', 'b5d8826c-bfac-11ea-9f42-716677ee1063', 'b5d88269-bfac-11ea-9f42-716677ee1063', 'b5d88265-bfac-11ea-9f42-716677ee1063', 'b5d8826f-bfac-11ea-9f42-716677ee1063']
 location='top'
 size=39
 transparency='none'

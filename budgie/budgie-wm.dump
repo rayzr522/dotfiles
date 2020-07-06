@@ -1,4 +1,4 @@
 [/]
 button-layout='appmenu:minimize,maximize,close'
 caffeine-mode=false
-center-windows=false
+center-windows=true
