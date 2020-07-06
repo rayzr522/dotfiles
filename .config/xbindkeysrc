@@ -88,3 +88,7 @@
 "~/.bin/cycle-or-launch jetbrains-idea gtk-launch jetbrains-idea.desktop"
     m:0x41 + c:14
     Shift+Mod4 + 5
+
+"~/.bin/cycle-active-window"
+    m:0x8 + c:49
+    Alt + grave

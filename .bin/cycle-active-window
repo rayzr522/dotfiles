@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# get current window
+xdotool getactivewindow | \
+    # get window class
+    xargs xprop WM_CLASS -id | \
+    # only get first prop value in KEY = "propValue", "propValue2"
+    cut -d'"' -f2 | \
+    # search for all matching windows
+    xargs xdotool search --onlyvisible --class | \
+    # get first result
+    head -n1 | \
+    # switch to it :)
+    xargs xdotool windowactivate
