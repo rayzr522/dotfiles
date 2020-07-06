@@ -85,6 +85,10 @@ alias mongo='mongo --quiet'
 if command -v shellcheck >/dev/null; then
     alias sc='shellcheck '
 fi
+
+if command -v xbindkeys >/dev/null; then
+    alias get-xbindkeys-key-combo='xbindkeys -n -f ~/.config/xbindkeysrc -k'
+fi
 # }}}
 
 # CI/CD {{{
