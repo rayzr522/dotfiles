@@ -90,5 +90,5 @@
     Shift+Mod4 + 5
 
 "~/.bin/cycle-active-window"
-    m:0x8 + c:49
-    Alt + grave
+    m:0xc + c:49
+    Control+Alt + grave
