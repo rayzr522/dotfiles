@@ -8,8 +8,13 @@ if command -v nvidia-settings >/dev/null; then
     nvidia-settings -l &
 fi
 
+has() {
+    command -v "$1" >/dev/null
+    return $?
+}
+
 try_exec() {
-    if command -v "$1" >/dev/null; then
+    if has "$1"; then
         exec "$@" &
     fi
 }
@@ -19,7 +24,11 @@ try_exec() {
 if [[ -z "$DISPLAY" ]]; then
     try_exec startkde
 elif [[ "$XDG_CURRENT_DESKTOP" == KDE ]]; then
-    try_exec compton -b
+    if has picom; then
+        try_exec picom --experimental-backends -b
+    elif has compton; then
+        try_exec compton -b
+    fi
 elif [[ "$XDG_CURRENT_DESKTOP" =~ .*:GNOME ]]; then
     if [[ -z "$GDM" ]]; then
         try_exec gnome-screensaver
