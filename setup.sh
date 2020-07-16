@@ -37,6 +37,7 @@ safe-link .bin
 safe-link .zshrc
 safe-link .zpreztorc
 safe-link .gitignore
+safe-link .gitconfig
 safe-link .tmux.conf
 if [[ "$(uname)" == Linux ]]; then
     safe-link .xprofile

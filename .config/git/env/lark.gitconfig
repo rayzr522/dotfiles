@@ -1,0 +1,6 @@
+[user]
+    name = Peter Blood
+    email = peter.blood@lark.com
+
+[commit]
+    gpgsign = true

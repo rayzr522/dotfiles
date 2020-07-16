@@ -1,0 +1,6 @@
+[user]
+	name = Rayzr522
+	email = rayzr522@gmail.com
+
+[includeIf "gitdir:~/lark/"]
+	path = ~/.config/git/env/lark.gitconfig
