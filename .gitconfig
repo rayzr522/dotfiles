@@ -2,5 +2,8 @@
 	name = Rayzr522
 	email = rayzr522@gmail.com
 
+[commit]
+	gpgsign = true
+
 [includeIf "gitdir:~/lark/"]
 	path = ~/.config/git/env/lark.gitconfig
