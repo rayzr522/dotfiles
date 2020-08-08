@@ -109,7 +109,7 @@ alias diskstat='df -h | grep -E '\''^/dev'\'' | sort | awk '\''{ print $1 ": " $
 # }}}
 
 # Templating commands {{{
-alias joinme='echo -e "\n## Join Me\n[![Discord Badge](https://github.com/Rayzr522/ProjectResources/raw/master/RayzrDev/badge-small.png)](https://discord.io/rayzrdevofficial)" >> '
+alias joinme='echo -e "\n## Join Me\n[![Discord Badge](https://github.com/Rayzr522/ProjectResources/raw/master/RayzrDev/badge-small.png)](https://rayzr.dev/join)" >> '
 # }}}
 
 # Joke commands {{{
