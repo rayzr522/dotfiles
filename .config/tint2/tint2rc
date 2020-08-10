@@ -7,7 +7,7 @@
 # Backgrounds
 # Background 1: Panel
 rounded = 0
-border_width = 30
+border_width = 0
 border_sides = LR
 background_color = #000000 30
 border_color = #000000 30
@@ -65,7 +65,7 @@ border_color_pressed = #000000 100
 panel_items = TBC
 panel_size = 100% 30
 panel_margin = 0 0
-panel_padding = 2 0 2
+panel_padding = 20 0 20
 panel_background_id = 1
 wm_menu = 1
 panel_dock = 0
