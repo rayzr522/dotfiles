@@ -1,7 +1,9 @@
 #!/bin/bash
 
 if pgrep openvpn >/dev/null; then
-    printf '\uf023'
+    # \uf023
+    printf '\xEF\x80\xA3'
 else
-    printf '\uf09c'
+    # \uf09c
+    printf '\xEF\x82\x9C'
 fi
