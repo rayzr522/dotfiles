@@ -72,6 +72,8 @@ alias nps='npr start'
 alias npt='npr test'
 alias npb='npr build'
 alias npl='npr lint'
+alias npw='npr watch'
+alias npd='npr dev'
 
 alias npi='npm install'
 alias npci='npm ci'
