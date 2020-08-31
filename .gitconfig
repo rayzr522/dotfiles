@@ -2,6 +2,9 @@
 	name = Rayzr522
 	email = rayzr522@gmail.com
 
+[rerere]
+	enabled = true
+
 [commit]
 	gpgsign = true
 
