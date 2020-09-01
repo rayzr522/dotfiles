@@ -49,6 +49,12 @@ if [[ "$(uname)" == Linux ]]; then
         echo "Setting google.xresources as the default rice theme"
         ln -s "$XTHEMES_DIR/google.xresources" "$XTHEMES_DIR/_selected"
     fi
+
+    CONKY_DIR="$DOTFILES_DIR/.config/conky"
+
+    if [[ -d "$CONKY_DIR/now-clocking" ]]; then
+        ln -s "$CONKY_DIR/config.now-clocking.env" "$CONKY_DIR/now-clocking/config.env"
+    fi
 fi
 
 mkdir -p "$DOTFILES_DIR/.config"
