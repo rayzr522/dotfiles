@@ -10,3 +10,6 @@
 
 [includeIf "gitdir:~/lark/"]
 	path = ~/.config/git/env/lark.gitconfig
+
+[pull]
+	rebase = false
