@@ -20,7 +20,7 @@ if [ ! "$REMOTE" ]; then
 fi
 
 REMOTE_NAME="$(cut -d / -f 1 <<< "$REMOTE")"
-REMOTE_BRANCH="$(cut -d / -f 2 <<< "$REMOTE")"
+REMOTE_BRANCH="$(cut -d / -f 2- <<< "$REMOTE")"
 
 REMOTE_URL="$(git remote get-url "$REMOTE_NAME")"
 
