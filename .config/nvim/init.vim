@@ -7,6 +7,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " -- Navigation
 Plug 'Shougo/denite.nvim'
 Plug 'preservim/nerdtree'
+Plug 'ruanyl/vim-gh-line'
 
 " -- Syntax
 Plug 'HerringtonDarkholme/yats.vim'
@@ -173,6 +174,8 @@ set ignorecase
 set smartcase
 
 set shortmess+=c
+
+let g:gh_use_canonical=0
 
 " }}}
 
