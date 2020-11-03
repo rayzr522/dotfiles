@@ -170,6 +170,10 @@ function gm {
     fi
 }
 
+function sizes {
+    du -sh "$@" | sort -h
+}
+
 # ----- AUTOCOMPLETIONS
 # Make sure to only run when we're using zsh
 if command -v compdef >/dev/null; then
