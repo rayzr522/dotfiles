@@ -35,6 +35,7 @@ alias v='nvim'
 # I'm addicted
 alias :wq='exit'
 alias :q!='exit'
+alias :e='nvim'
 # }}}
 
 # Sane defaults {{{
@@ -95,6 +96,8 @@ fi
 
 # CI/CD {{{
 alias maven-deploy='mvn -DaltDeploymentRepository=local-repo::default::file://$HOME/GitHub/maven-repo clean package deploy'
+
+alias inspect-docker-context='printf "FROM scratch\n COPY . /" | DOCKER_BUILDKIT=1 docker build -f- -o context .'
 # }}}
 
 # Quick launchers {{{
