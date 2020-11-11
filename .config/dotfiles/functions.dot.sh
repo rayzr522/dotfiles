@@ -108,7 +108,7 @@ function loc {
     local grep_opts=("--color=yes")
 
     if git rev-parse --git-dir &>/dev/null; then
-        git check-ignore * | while read -r ignore; do
+        git check-ignore * .* | while read -r ignore; do
         if [[ -d "$ignore" ]]; then
             grep_opts+=("--exclude-dir=$ignore")
         else
