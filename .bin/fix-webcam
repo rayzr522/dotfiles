@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo -n "0000:02:00.0" | sudo tee /sys/bus/pci/drivers/xhci_hcd/unbind
+sleep 5
+echo -n "0000:02:00.0" | sudo tee /sys/bus/pci/drivers/xhci_hcd/bind
+
