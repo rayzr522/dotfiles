@@ -1,8 +1,8 @@
 {
   "dependencies": {
-    "coc-eslint": ">=1.2.7",
-    "coc-highlight": ">=1.2.5",
-    "coc-json": ">=1.2.6",
-    "coc-tsserver": ">=1.5.1"
+    "coc-eslint": ">=1.3.2",
+    "coc-highlight": ">=1.2.6",
+    "coc-json": ">=1.3.2",
+    "coc-tsserver": ">=1.6.0"
   }
 }
