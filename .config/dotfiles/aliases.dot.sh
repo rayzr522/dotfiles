@@ -102,6 +102,7 @@ alias inspect-docker-context='printf "FROM scratch\n COPY . /" | DOCKER_BUILDKIT
 
 # Quick launchers {{{
 alias vps-stats='ssh vps "TERM=$TERM" ./stats.sh'
+alias note='nvim ~/notes/$(today)-notes.txt'
 # }}}
 
 # Info commands {{{
