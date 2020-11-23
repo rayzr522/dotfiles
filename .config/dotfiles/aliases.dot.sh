@@ -111,6 +111,7 @@ alias localip='ip addr show | grep "inet " | grep -v "127.0.0.1" | head -n1 | aw
 alias lastcommit='git log -n 1 -pretty=format:"%H"'
 alias md-view='node ~/GitHub/markdown-parser '
 alias diskstat='df -h | grep -E '\''^/dev'\'' | sort | awk '\''{ print $1 ": " $3 "/" $2 " used (" $5 ")" }'\'''
+alias today='date "+%D" | tr / -'
 # }}}
 
 # Templating commands {{{
