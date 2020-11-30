@@ -64,6 +64,7 @@ alias gbD='gbd -D'
 alias grh='git reset --hard'
 alias gss='git stash'
 alias gsp='git stash pop'
+alias grb='git rebase'
 # }}}
  
 # NPM {{{
