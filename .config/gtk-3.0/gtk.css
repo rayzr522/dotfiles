@@ -31,3 +31,4 @@ window.ssd headerbar.titlebar button.titlebutton {
 }
 
 @import 'colors.css';
+@import 'window_decorations.css';
