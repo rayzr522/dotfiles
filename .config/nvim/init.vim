@@ -43,6 +43,15 @@ map <c-x><c-s> :w<CR>
 
 map <leader>e :NERDTreeToggle<CR>
 
+" https://superuser.com/a/321726
+" delete without yanking
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+
+" replace currently selected text with default register
+" without yanking it
+vnoremap <leader>p "_dP
+
 " -- coc.nvim
 " use tab & shift-tab to cycle through completions
 inoremap <silent><expr> <TAB>
