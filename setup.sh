@@ -91,6 +91,10 @@ if [[ -d "$PROMPTS_DIR" ]] && [[ ! -f "$PROMPT_FILE" ]] || [[ $FORCE = true ]]; 
     echo "done"
 fi
 
+if ! command -v starship >/dev/null; then
+    curl -fsSL https://starship.rs/install.sh | bash
+fi
+
 echo -n "Installing or updating vim-plug... "
 curl -sfLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 echo "done"
