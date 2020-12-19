@@ -8,15 +8,16 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
-  'git'
+  'git' \
+  'prompt'
 
 # Control
 zstyle ':prezto:module:editor' key-bindings 'vi'
 
 # Appearance
 zstyle ':prezto:*:*' color 'yes'
-# zstyle ':prezto:module:prompt' theme 'garrett'
-# zstyle ':prezto:module:prompt' pwd-length 'short'
+zstyle ':prezto:module:prompt' theme 'off'
+zstyle ':prezto:module:prompt' pwd-length 'short'
 
 # Python
 zstyle ':prezto:module:python:virtualenv' auto-switch 'yes'
