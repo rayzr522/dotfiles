@@ -82,15 +82,6 @@ if [[ ! -d "$PREZTO_DIR" ]] && command -v zsh /dev/null; then
     '
 fi
 
-PROMPTS_DIR="$PREZTO_DIR/modules/prompt/functions"
-PROMPT_FILE="$PROMPTS_DIR/prompt_garrett_setup"
-
-if [[ -d "$PROMPTS_DIR" ]] && [[ ! -f "$PROMPT_FILE" ]] || [[ $FORCE = true ]]; then
-    echo -n "Downloading zsh-prompt-garrett... "
-    curl -sLJ "https://github.com/chauncey-garrett/zsh-prompt-garrett/raw/master/prompt_garrett_setup" -o "$PROMPT_FILE"
-    echo "done"
-fi
-
 if ! command -v starship >/dev/null; then
     curl -fsSL https://starship.rs/install.sh | bash
 fi
