@@ -91,6 +91,6 @@ FAST_HIGHLIGHT[chroma-ssh]=""
 
 # history-search-multi-word
 source "$ZSH_CUSTOM/plugins/history-search-multi-word/history-search-multi-word.plugin.zsh"
-zstyle :plugin:history-search-multi-word reset-prompt-protect 1
+zstyle :plugin:history-search-multi-word reset-prompt-protect 3
 
 eval "$(starship init zsh)"
