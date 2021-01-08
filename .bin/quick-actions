@@ -1,0 +1,35 @@
+#!/bin/bash
+
+declare -A commands
+
+commands+=( ["Switch sound to speakers"]="sound-speakers" )
+commands+=( ["Switch sound to headphones"]="sound-headphones" )
+commands+=( ["Kill PulseAudio"]="pulseaudio -k" )
+commands+=( ["SSH into VPS"]="ssh-into-vps" )
+commands+=( ["Fix webcam"]="fix-webcam" )
+commands+=( ["Play/Pause"]="playerctl play-pause" )
+
+sound-headphones() {
+    pactl set-default-sink alsa_output.usb-Focusrite_Scarlett_4i4_USB_D8RJVEK0A87F4C-00.analog-surround-40
+}
+
+sound-speakers() {
+    pactl set-default-sink alsa_output.pci-0000_00_1f.3.analog-stereo
+}
+
+ssh-into-vps() {
+    urxvt -e tmux new-session 'exec ssh vps'
+}
+
+fix-webcam() {
+    urxvt -geometry 30x5 -e "$HOME/.bin/fix-webcam"
+}
+
+action="$(printf '%s\n' "${!commands[@]}" | dmenu -p action: -l 3 -i)"
+cmd="${commands[${action:-none}]}"
+
+if [ -z "$cmd" ]; then
+    exit
+fi
+
+$cmd
