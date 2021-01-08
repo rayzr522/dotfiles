@@ -184,7 +184,7 @@ size=39
 transparency='none'
 
 [panels/{d5be0754-be2e-11ea-87c9-abf76dcbde83}]
-applets=['d5be0758-be2e-11ea-87c9-abf76dcbde83', '2fb01b46-be73-11ea-9d85-7d9721b6441a', 'd5be0755-be2e-11ea-87c9-abf76dcbde83', '21272328-be99-11ea-b51d-3927dc59567f', 'd5be075c-be2e-11ea-87c9-abf76dcbde83', 'd5be075d-be2e-11ea-87c9-abf76dcbde83', 'b6f5830e-be99-11ea-b51d-3927dc59567f', 'd5be075e-be2e-11ea-87c9-abf76dcbde83']
+applets=['d5be0758-be2e-11ea-87c9-abf76dcbde83', '2fb01b46-be73-11ea-9d85-7d9721b6441a', 'd5be0755-be2e-11ea-87c9-abf76dcbde83', '21272328-be99-11ea-b51d-3927dc59567f', 'd5be075c-be2e-11ea-87c9-abf76dcbde83', 'd5be075d-be2e-11ea-87c9-abf76dcbde83', 'd5be075e-be2e-11ea-87c9-abf76dcbde83', 'b6f5830e-be99-11ea-b51d-3927dc59567f']
 autohide='intelligent'
 dock-mode=false
 enable-shadow=false

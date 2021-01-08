@@ -18,3 +18,5 @@ cd budgie
 
 load_dconf_dump_to_path /com/solus-project/budgie-panel/ budgie-panel.dump
 load_dconf_dump_to_path /com/solus-project/budgie-wm/ budgie-wm.dump
+load_dconf_dump_to_path /org/gnome/desktop/wm/keybindings/ gnome-wm-keybindings.dump
+load_dconf_dump_to_path /org/gnome/settings-daemon/plugins/media-keys/ gnome-custom-keybindings.dump

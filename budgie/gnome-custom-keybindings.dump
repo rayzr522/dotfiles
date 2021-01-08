@@ -1,0 +1,31 @@
+[/]
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/']
+email=@as []
+home=['<Super>e']
+screensaver=['<Super>l']
+terminal=['']
+
+[custom-keybindings/custom0]
+binding='<Super>Return'
+command='urxvt'
+name='Open Terminal'
+
+[custom-keybindings/custom1]
+binding='<Shift><Super>Return'
+command='env NO_TMUX=true urxvt'
+name='Open Terminal (no TMUX)'
+
+[custom-keybindings/custom2]
+binding='<Primary><Shift><Alt>Delete'
+command='gnome-session-quit --power-off'
+name='Power-Off menu'
+
+[custom-keybindings/custom3]
+binding='<Super>r'
+command='rofi -show drun'
+name='rofi'
+
+[custom-keybindings/custom4]
+binding='<Super>x'
+command='/home/peter/.bin/quick-actions'
+name='quick-actions'
