@@ -36,3 +36,16 @@ URxvt.keysym.C-Minus:   font-size:decrease
 URxvt.keysym.C-equal:  font-size:reset
 URxvt.keysym.C-slash:  font-size:show
 
+rofi.width: 500
+rofi.font: Iosevka 15
+rofi.drun-display-format: {name}
+
+rofi.sort: true
+rofi.sorting-method: fzf
+rofi.case-sensitive: false
+rofi.hide-scrollbar: true
+rofi.separator-style: none
+rofi.color-normal: #222535, #676f99, #222535, #424555, #eeeeff
+rofi.color-urgent: #222535, #676f99, #222535, #424555, #eeeeff
+rofi.color-active: #222535, #676f99, #222535, #424555, #eeeeff
+rofi.color-window: #222535, #222535
