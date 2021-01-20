@@ -50,6 +50,8 @@ if [[ "$(uname)" == Linux ]]; then
         ln -s "$XTHEMES_DIR/google.xresources" "$XTHEMES_DIR/_selected"
     fi
 
+    xrdb -merge "$DOTFILES_DIR/.Xresources"
+
     CONKY_DIR="$DOTFILES_DIR/.config/conky"
 
     if [[ -d "$CONKY_DIR/now-clocking" ]]; then
