@@ -9,3 +9,5 @@ export EDITOR=nvim
 export VISUAL="$EDITOR"
 
 export SRVR="$HOME/Servers/Minecraft/paper-server"
+
+export SUDO_ASKPASS="$HOME/.bin/askpass-secret-tool"

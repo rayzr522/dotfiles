@@ -5,6 +5,8 @@ unalias o 2>/dev/null
 
 alias rs='source ~/.zshrc;'
 
+alias sudo='sudo -A'
+
 # Navigation {{{
 alias ~='cd ~'
 alias h='cd ~'
@@ -12,6 +14,7 @@ alias ..='cd ..'
 alias gh='cd ~/GitHub'
 alias dt='cd ~/Desktop'
 alias dl='cd ~/Downloads'
+alias dotfiles='cd ~/GitHub/dotfiles'
 # }}}
 
 # Confirmation {{{
