@@ -47,7 +47,7 @@ if [[ "$(uname)" == Linux ]]; then
 
     if [[ -d "$XTHEMES_DIR" ]] && [[ ! -L "$XTHEMES_DIR/_selected" ]]; then
         echo "Setting google.xresources as the default rice theme"
-        ln -s "$XTHEMES_DIR/google.xresources" "$XTHEMES_DIR/_selected"
+        ln "$LN_OPTS" "$XTHEMES_DIR/google.xresources" "$XTHEMES_DIR/_selected"
     fi
 
     xrdb -merge "$DOTFILES_DIR/.Xresources"
@@ -55,7 +55,7 @@ if [[ "$(uname)" == Linux ]]; then
     CONKY_DIR="$DOTFILES_DIR/.config/conky"
 
     if [[ -d "$CONKY_DIR/now-clocking" ]]; then
-        ln -s "$CONKY_DIR/config.now-clocking.env" "$CONKY_DIR/now-clocking/config.env"
+        ln "$LN_OPTS" "$CONKY_DIR/config.now-clocking.env" "$CONKY_DIR/now-clocking/config.env"
     fi
 fi
 
@@ -108,5 +108,25 @@ fi
 if command -v budgie-desktop >/dev/null; then
     echo -n "Loading Budgie settings... "
     ./scripts/load-budgie-settings.sh
+    echo done
+fi
+
+if command -v fc-list >/dev/null && ! fc-list | grep -q "Iosevka Nerd Font"; then
+    echo -n "Downloading fonts... "
+
+    (
+        cd "$(mktemp -d)"
+        curl -sSLO "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Iosevka.zip"
+        unzip -q Iosevka.zip
+        # we don't really need these
+        rm -rf *'Windows Compatible.ttf'
+        mkdir -p ~/.local/share/fonts
+        cp *.ttf ~/.local/share/fonts
+        echo -n "refreshing font cache... "
+        fc-cache -f
+        echo -n "removing temp dir... "
+        rm -rf "$(pwd)"
+    )
+
     echo done
 fi
