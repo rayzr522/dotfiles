@@ -25,7 +25,7 @@ fix-webcam() {
     urxvt -geometry 30x5 -e "$HOME/.bin/fix-webcam"
 }
 
-action="$(printf '%s\n' "${!commands[@]}" | dmenu -p action: -l 3 -i)"
+action="$(printf '%s\n' "${!commands[@]}" | rofi -dmenu -p action -l 5 -i)"
 cmd="${commands[${action:-none}]}"
 
 if [ -z "$cmd" ]; then
