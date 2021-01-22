@@ -33,6 +33,8 @@ In order to set up all these config files for yourself, simply clone the reposit
 ```bash
 git clone https://github.com/Rayzr522/dotfiles.git
 cd dotfiles
+# if you're not on linux or don't want to install system dependencies, skip this:
+./scripts/install-system-deps.sh
 ./setup.sh
 ```
 
