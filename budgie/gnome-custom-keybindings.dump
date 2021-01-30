@@ -28,5 +28,5 @@ name='rofi'
 
 [custom-keybindings/custom4]
 binding='<Super>x'
-command='/home/peter/.bin/quick-actions'
+command="sh -c '$HOME/.bin/quick-actions'"
 name='quick-actions'
