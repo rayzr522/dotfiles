@@ -4,6 +4,7 @@ email=@as []
 home=['<Super>e']
 screensaver=['<Super>l']
 terminal=['']
+www=@as []
 
 [custom-keybindings/custom0]
 binding='<Super>Return'
