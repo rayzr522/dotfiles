@@ -178,7 +178,21 @@ function set-gnome-lockscreen {
     gsettings set org.gnome.desktop.screensaver picture-uri "file://$(realpath $1)"
 }
 
-# ----- AUTOCOMPLETIONS
+function github {
+    local url="$(giturl "$@")"
+    local ret=$?
+
+    if [[ $ret != 0 ]]; then
+        return $ret
+    fi
+
+    o "$url"
+}
+
+# END FUNCTIONS
+
+# START AUTOCOMPLETIONS
+
 # Make sure to only run when we're using zsh
 if command -v compdef >/dev/null; then
     function _dfe {
