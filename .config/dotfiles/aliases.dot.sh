@@ -2,6 +2,7 @@
 
 # Unbork prezto things
 unalias o 2>/dev/null
+unalias gm 2>/dev/null
 
 alias rs='source ~/.zshrc;'
 
