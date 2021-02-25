@@ -105,19 +105,7 @@ function loc {
     local query="$1"
     local dir="${2:-.}"
 
-    local grep_opts=("--color=yes")
-
-    if git rev-parse --git-dir &>/dev/null; then
-        git check-ignore * .* | while read -r ignore; do
-        if [[ -d "$ignore" ]]; then
-            grep_opts+=("--exclude-dir=$ignore")
-        else
-            grep_opts+=("--exclude-from=$ignore")
-        fi
-    done
-    fi
-
-    grep "${grep_opts[@]}" -Rni "$query" "$dir" | less -R
+    rg --color always --line-number --ignore-case "$query" "$dir" | less -R
 }
 
 function fc-find {
