@@ -30,7 +30,7 @@ fi
 
 echo -n "$REMOTE_URL" | sed -e 's;\.git$;;g' -e 's;^git@\(.\+\):\(.\+\)/\(.\+\)$;https://\1/\2/\3;g'
 
-if [ ! -z "$REMOTE_BRANCH" ] && [ "$REMOTE_BRANCH" != "master" ]; then
+if [ ! -z "$REMOTE_BRANCH" ] && [ "$REMOTE_BRANCH" != "master" ] && [ "$REMOTE_BRANCH" != "main" ]; then
     if [ "$1" = "-p" ]; then
         echo -n "/pull/$REMOTE_BRANCH"
     else
