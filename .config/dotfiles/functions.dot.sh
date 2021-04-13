@@ -167,7 +167,8 @@ function set-gnome-lockscreen {
 }
 
 function github {
-    local url="$(giturl "$@")"
+    local url
+    url="$(giturl "$@")"
     local ret=$?
 
     if [[ $ret != 0 ]]; then
