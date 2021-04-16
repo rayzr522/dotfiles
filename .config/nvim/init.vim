@@ -11,6 +11,7 @@ Plug 'ruanyl/vim-gh-line'
 
 " -- Syntax
 Plug 'HerringtonDarkholme/yats.vim'
+Plug 'pantharshit00/vim-prisma'
 
 " -- UI Widgets
 Plug 'vim-airline/vim-airline'
