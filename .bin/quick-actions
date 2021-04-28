@@ -9,6 +9,20 @@ commands+=( ["SSH into VPS"]="ssh-into-vps" )
 commands+=( ["Fix webcam"]="fix-webcam" )
 commands+=( ["Play/Pause"]="playerctl play-pause" )
 
+if command -v cpufreq-info >/dev/null; then
+    for governer in $(cpufreq-info -g); do
+        commands+=( ["CPU Mode: $governer"]="set-cpu-mode $governer" )
+    done
+fi
+
+sudoask() {
+    SUDO_ASKPASS="$HOME/.bin/askpass-secret-tool" sudo -A "$@"
+}
+
+notify() {
+    command -v notify-send >/dev/null && notify-send "$@"
+}
+
 sound-headphones() {
     pactl set-default-sink alsa_output.usb-Focusrite_Scarlett_4i4_USB_D8RJVEK0A87F4C-00.analog-surround-40
 }
@@ -23,6 +37,12 @@ ssh-into-vps() {
 
 fix-webcam() {
     urxvt -geometry 30x5 -e "$HOME/.bin/fix-webcam"
+}
+
+set-cpu-mode() {
+    local mode="$1"
+    sudoask cpufreq-set -g "$mode"
+    notify -t 3000 -i system-settings "CPU mode changed" "Now set to $mode"
 }
 
 action="$(printf '%s\n' "${!commands[@]}" | rofi -dmenu -p action -l 5 -i)"
