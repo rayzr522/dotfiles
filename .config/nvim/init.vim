@@ -115,6 +115,10 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
 
+" inc/dec numbers
+nnoremap <A-a> <C-a>
+nnoremap <A-x> <C-x>
+
 " }}}
 
 " Auto Commands {{{
