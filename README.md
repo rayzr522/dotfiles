@@ -3,7 +3,7 @@
   <img width="100%" src="https://cdn.discordapp.com/attachments/282207139752050688/729264536212733952/unknown.png" alt="Gnome + Budgie = awesome!">
 </p>
 
-*Screenshot of my setup. Click to see a larger preview.*
+_Screenshot of my setup. Click to see a larger preview._
 
 # dotfiles
 
@@ -11,18 +11,18 @@
 
 This includes all of my dotfiles I use on all my \*nix systems (including but not limited to: Ubuntu, Arch, Pop!\_OS, macOS, WSL).
 
-*Disclaimer: Please keep in mind that some of these scripts / configs are things that I made years ago and have yet to update with all of my new scripting knowledge. Additionally, not everything will work on everyone's system, although I am trying to make these scripts as portable as possible (since I want to be able to automatically deploy my scripts to new machines in the future!).*
+_Disclaimer: Please keep in mind that some of these scripts / configs are things that I made years ago and have yet to update with all of my new scripting knowledge. Additionally, not everything will work on everyone's system, although I am trying to make these scripts as portable as possible (since I want to be able to automatically deploy my scripts to new machines in the future!)._
 
 ## Software
 
-* **Terminal:** urxvt
-* **Font:** [Iosevka Nerd Font](https://www.nerdfonts.com/)
-* **Multiplexer:** tmux
-* **Editor:** neovim
-* **IDE:** IntelliJ IDEA / WebStorm
-* **Music:** Spotify
-* **Chat:** Discord
-* **Browser:** Google Chrome
+- **Terminal:** urxvt
+- **Font:** [Iosevka Nerd Font](https://www.nerdfonts.com/)
+- **Multiplexer:** tmux
+- **Editor:** neovim
+- **IDE:** IntelliJ IDEA / WebStorm
+- **Music:** Spotify
+- **Chat:** Discord
+- **Browser:** Google Chrome
 
 ## [Wallpapers](WALLPAPERS.md)
 
@@ -38,7 +38,7 @@ cd dotfiles
 ./setup.sh
 ```
 
-*Note: running `./setup.sh` with the `-f` flag will cause it to blindly overwrite existing config files without prompting. Only do so if you know what you are doing.
+_Note: running `./setup.sh` with the `-f` flag will cause it to blindly overwrite existing config files without prompting. Only do so if you know what you are doing._
 
 ## Other Personal Scripts
 
