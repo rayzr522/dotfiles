@@ -19,9 +19,6 @@ truncation_length = 1
 fish_style_pwd_dir_length = 1
 truncate_to_repo = true
 
-[docker]
-symbol = " "
-
 [elixir]
 symbol = " "
 
@@ -33,9 +30,6 @@ symbol = " "
 
 [golang]
 symbol = " "
-
-[haskell]
-symbol = " "
 
 [hg_branch]
 symbol = " "
