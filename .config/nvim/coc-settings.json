@@ -1,4 +1,12 @@
 {
     "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
-    "typescript.preferences.importModuleSpecifier": "relative"
+    "typescript.preferences.importModuleSpecifier": "relative",
+    "coc.preferences.formatOnSaveFiletypes": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "css",
+        "markdown"
+    ]
 }
