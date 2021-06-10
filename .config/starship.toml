@@ -1,6 +1,5 @@
 [aws]
-disabled = true
-symbol = " "
+symbol = "  "
 
 [battery]
 full_symbol = ""
