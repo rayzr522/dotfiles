@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if ! command -v gnome-screenshot >/dev/null; then
+    echo "gnome-screenshot must be installed to use this!" >&2
+    exit 1
+fi
+
+SCREENSHOT_FILE="$(mktemp /tmp/XXXXXXXX.png)"
+gnome-screenshot -a -f "$SCREENSHOT_FILE"
+xclip -selection clipboard -t image/png -i "$SCREENSHOT_FILE"
+rm "$SCREENSHOT_FILE"
