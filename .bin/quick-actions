@@ -8,6 +8,7 @@ commands+=( ["Kill PulseAudio"]="pulseaudio -k" )
 commands+=( ["SSH into VPS"]="ssh-into-vps" )
 commands+=( ["Fix webcam"]="fix-webcam" )
 commands+=( ["Play/Pause"]="playerctl play-pause" )
+commands+=( ["Screenshot Area"]="$HOME/.bin/quick-screenshot" )
 
 if command -v cpufreq-info >/dev/null; then
     for governer in $(cpufreq-info -g); do
