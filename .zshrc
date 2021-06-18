@@ -4,9 +4,6 @@
 # My personal ZSH config.
 # ------------------------
 
-# Get base system $PATH before any other tools muck with it
-export _ORIG_PATH=${_ORIG_PATH:-$PATH}
-
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
