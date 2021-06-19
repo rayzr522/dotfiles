@@ -9,16 +9,15 @@ set -ex
 
 PKGBUILD_DIR=urxvt-pkgbuild
 
-[[ -d "$PKGBUILD_DIR" ]] || git clone https://github.com/blueyed/PKGBUILD-rxvt-unicode-wide "$PKGBUILD_DIR"
+[[ -d "$PKGBUILD_DIR" ]] || git clone https://github.com/rayzr522/PKGBUILD-rxvt-unicode-wide.git "$PKGBUILD_DIR"
 cd "$PKGBUILD_DIR"
 
 cvs -z3 -d :pserver:anonymous@cvs.schmorp.de/schmorpforge co rxvt-unicode
 cd rxvt-unicode
 
-patch --silent --forward -p0 -i ../font-width-fix.patch || true
-patch --silent --forward -p0 -i ../line-spacing-fix.patch || true
-patch --silent --forward -p0 -i ../sgr-mouse-mode.patch || true
-patch --silent --forward -p1 -i ../enable-wide-glyphs.patch || true
+patch --silent --forward -p0 -i ../font-width-fix.patch
+patch --silent --forward -p0 -i ../line-spacing-fix.patch
+patch --silent --forward -p1 -i ../enable-wide-glyphs.patch
 
 ./configure \
     --prefix=/usr \
