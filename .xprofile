@@ -1,13 +1,5 @@
 #!/bin/bash
 
-# Ensure Xresources are loaded
-xrdb -merge ~/.Xresources &
-
-if command -v nvidia-settings >/dev/null; then
-    # Load nvidia-settings
-    nvidia-settings -l &
-fi
-
 has() {
     command -v "$1" >/dev/null
     return $?
@@ -19,7 +11,10 @@ try_exec() {
     fi
 }
 
-(sleep 5 && ~/.bin/conky-start) &
+if has nvidia-settings; then
+    # Load nvidia-settings
+    try_exec nvidia-settings -l &
+fi
 
 if [[ -z "$DISPLAY" ]]; then
     try_exec startkde
@@ -41,3 +36,9 @@ elif [[ "$XDG_CURRENT_DESKTOP" =~ .*:GNOME ]]; then
         try_exec xbindkeys -p -f ~/.config/xbindkeysrc
     fi
 fi
+
+# hacky way to wait til desktop loads
+(sleep 5 && {
+    xrdb -I "$HOME" -merge ~/.Xresources
+    ~/.bin/conky-start &
+}) &

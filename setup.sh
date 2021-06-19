@@ -41,6 +41,8 @@ safe-link .gitconfig
 safe-link .tmux.conf
 if [[ "$(uname)" == Linux ]]; then
     safe-link .xprofile
+    safe-link .xprofile .xsession
+    safe-link .xprofile .xsessionrc
     safe-link .Xresources
 
     XTHEMES_DIR="$DOTFILES_DIR/.config/rice/Xthemes"
