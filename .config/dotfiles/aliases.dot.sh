@@ -128,7 +128,7 @@ alias joinme='echo -e "\n## Join Me\n[![Discord Badge](https://github.com/Rayzr5
 # }}}
 
 # Joke commands {{{
-alias wininfo='xprop -id "$(xwininfo | grep -oE "0x[0-9a-f]{7}")"'
+alias wininfo='xprop -id "$(xwininfo | grep -oE "Window id: 0x[0-9a-f]{6,7}" | cut -d" " -f3)"'
 alias boopboom='kill "$(wininfo | grep _NET_WM_PID | cut -d" " -f3)"'
 alias boxify='cowsay -W "$(( $(tput cols) - 3))" | head -n -5'
 alias chill='screen -dmS music mpsyt /lunacy chillout, "$(( RANDOM % 20 ))"'
