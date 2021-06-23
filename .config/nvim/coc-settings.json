@@ -8,5 +8,6 @@
         "typescriptreact",
         "css",
         "markdown"
-    ]
+    ],
+    "prettier.requireConfig": true
 }
