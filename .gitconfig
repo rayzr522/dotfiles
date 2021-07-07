@@ -13,3 +13,6 @@
 
 [core]
 	autocrlf = true
+
+[includeIf "gitdir:~/.local/share/nvim/plugged/"]
+	path = ~/.config/git/env/plugged.gitconfig
