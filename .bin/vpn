@@ -18,7 +18,13 @@ action_usage() {
 }
 
 action_start() {
-    sudo -A openvpn --config ~/.config/ovpn/client.ovpn --auth-user-pass --daemon
+    local options=(--config ~/.config/ovpn/client.ovpn --daemon)
+    if [ -f ~/.config/ovpn/client.password ]; then
+        options+=(--auth-user-pass ~/.config/ovpn/client.password)
+    else
+        options+=(--auth-user-pass)
+    fi
+    sudo -A openvpn "${options[@]}"
 }
 
 action_kill() {
