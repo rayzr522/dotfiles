@@ -16,3 +16,5 @@
 
 [includeIf "gitdir:~/.local/share/nvim/plugged/"]
 	path = ~/.config/git/env/plugged.gitconfig
+[init]
+	defaultBranch = main
