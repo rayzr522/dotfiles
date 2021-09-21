@@ -19,6 +19,15 @@ patch --silent --forward -p0 -i ../font-width-fix.patch
 patch --silent --forward -p0 -i ../line-spacing-fix.patch
 patch --silent --forward -p1 -i ../enable-wide-glyphs.patch
 
+(
+    cd libptytty
+    mkdir build
+    cd build
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS=ON -S .. .
+    cmake --build .
+    sudo cmake --install .
+)
+
 ./configure \
     --prefix=/usr \
     --enable-256-color \
