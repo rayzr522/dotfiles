@@ -19,8 +19,9 @@ export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$_ORIG_NODE_PATH"
 # Configure tools
 export EDITOR=nvim
 export VISUAL="$EDITOR"
-export SUDO_ASKPASS="$SCRIPTS/askpass-secret-tool"
 
-if [ -n "$WSL_DISTRO_NAME" ]; then
-    export GPG_TTY=$(tty)
+if [ "$(uname)" = Linux ]; then
+    export SUDO_ASKPASS="$SCRIPTS/askpass-secret-tool"
 fi
+
+export GPG_TTY=$(tty)

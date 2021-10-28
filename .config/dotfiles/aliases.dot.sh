@@ -6,7 +6,9 @@ unalias gm 2>/dev/null
 
 alias rs='source ~/.zshrc;'
 
-alias sudo='sudo -A'
+if [ "$(uname)" = Linux ]; then
+    alias sudo='sudo -A'
+fi
 
 # Navigation {{{
 alias ~='cd ~'
