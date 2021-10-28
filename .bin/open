@@ -6,7 +6,7 @@ os="$(uname)"
 if [ $os = "Linux" ]; then
     xdg-open "$*" &>/dev/null
 elif [ $os = "Darwin" ]; then
-    open "$*"
+    /usr/bin/open "$*"
 else
     echo "I don't know how to handle the operating system '$os'" >&2
     exit 1
