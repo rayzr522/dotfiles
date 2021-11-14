@@ -5,7 +5,9 @@ fail() {
     exit 1
 }
 
-cd "$HOME/GitHub" || fail "Could not find GitHub folder."
+DIRECTORY="${1:-$HOME/GitHub}"
+
+cd "$DIRECTORY" || fail "Could not find $DIRECTORY ."
 
 projects="$(find . -maxdepth 2 -type d -name '.git' -exec dirname {} \;)"
 count_changes=0
@@ -13,7 +15,7 @@ count_commits=0
 
 while read -r project; do
     name="$(basename "$project")"
-    cd "$HOME/GitHub/$project" || fail "Failed to enter project folder '$name'."
+    cd "$DIRECTORY/$project" || fail "Failed to enter project folder '$name'."
     status="$(git status -s)"
 
     if [ ! -z "$status" ]; then
