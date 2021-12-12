@@ -4,6 +4,11 @@
 # My personal ZSH config.
 # ------------------------
 
+if [[ -d /opt/homebrew/bin ]]; then
+    # this must run before anything else
+    export PATH="/opt/homebrew/bin:$PATH"
+fi
+
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
@@ -15,7 +20,7 @@ unsetopt correct
 zstyle ":completion:*:commands" rehash 1
 
 # When using urxvt, go straight to tmux and reattach if a session is available.
-if [[ $TERM =~ (rxvt-unicode|xterm)-256color ]] && [[ -z "$NO_TMUX" ]]; then
+if [[ $TERM =~ (rxvt-unicode|xterm)-256color ]] && [[ -z "$NO_TMUX" ]] && command -v tmux >/dev/null; then
   if [[ ! -z "$(tmux list-sessions | grep -v '(attached)')" ]]; then
     exec tmux attach
   else
