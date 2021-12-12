@@ -30,6 +30,7 @@ alias ln='ln -i'
 alias header='curl -I'
 alias headerc='curl -I --compress'
 alias get='wget --content-disposition'
+alias sirv='pnpx --yes --package sirv-cli sirv'
 # }}}
 
 # Fix vi/vim (and by vi/vim I mean me because I am the one who forgets) {{{
