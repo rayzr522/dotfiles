@@ -50,7 +50,7 @@ function changelog {
 
     git log --format='* %H - %s' "$1".."$2"
 
-    printf "\nEnjoy!\n\n- Rayzr :computer:\n"
+    printf "\nEnjoy!\n\n- rayzr :computer:\n"
 }
 
 # Changes the online-mode of the server.properties file in the current directory to true or false.
