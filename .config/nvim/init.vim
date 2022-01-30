@@ -140,7 +140,7 @@ augroup end
 " Doesn't work (well) with urxvt
 " set termguicolors
 
-if has('termguicolors')
+if has('termguicolors') && !$TERM_PROGRAM =~ "Apple_Terminal"
     set termguicolors
 
     set t_8f=[38;2;%lu;%lu;%lum
