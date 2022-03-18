@@ -26,10 +26,11 @@ javascript:/* lets you copy a page full of Humble Bundle games to clipboard */
     };
 
     const games = Array.from(document.querySelectorAll('.key-redeemer'))
-        .map(it => {
+        .flatMap(it => {
+            const key = it.querySelector('.js-keyfield.redeemed')?.title;
+            if (!key) return [];
             const name = it.querySelector('.heading-text > h4').innerText;
-            const key = it.querySelector('.js-keyfield.redeemed').title;
-            return [name, key];
+            return [[name, key]];
         });
 
     if (confirm(`Do you want to copy ${games.length} game names + keys to clipboard?`)) {
