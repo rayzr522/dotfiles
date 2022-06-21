@@ -36,13 +36,6 @@ alias sirv='pnpx --yes --package sirv-cli sirv'
 # Fix vi/vim (and by vi/vim I mean me because I am the one who forgets) {{{
 alias vi='nvim'
 alias vim='nvim'
-# shorthand because i Am LaZy
-alias v='nvim'
-
-# I'm addicted
-alias :wq='exit'
-alias :q!='exit'
-alias :e='nvim'
 # }}}
 
 # Sane defaults {{{
@@ -73,6 +66,7 @@ alias grh='git reset --hard'
 alias gss='git stash'
 alias gsp='git stash pop'
 alias grb='git rebase'
+alias gtl='git tag | tr - \~ | sort -V | tr \~ -'
 # }}}
  
 # NPM {{{
