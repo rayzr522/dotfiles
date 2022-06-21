@@ -87,7 +87,11 @@ if [[ ! -d "$PREZTO_DIR" ]] && command -v zsh /dev/null; then
 fi
 
 if ! command -v starship >/dev/null; then
-    curl -fsSL https://starship.rs/install.sh | bash
+    if command -v brew >/dev/null; then
+        brew install starship
+    else
+        curl -fsSL https://starship.rs/install.sh | bash
+    fi
 fi
 
 echo -n "Installing or updating vim-plug... "
