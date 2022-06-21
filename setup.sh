@@ -90,7 +90,7 @@ if ! command -v starship >/dev/null; then
     if command -v brew >/dev/null; then
         brew install starship
     else
-        curl -fsSL https://starship.rs/install.sh | bash
+        curl -sS https://starship.rs/install.sh | sh
     fi
 fi
 
