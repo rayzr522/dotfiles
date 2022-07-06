@@ -5,6 +5,7 @@ export SCRIPTS="$HOME/.bin"
 export SRVR="$HOME/Servers/Minecraft/paper-server"
 export NPM_PACKAGES="$HOME/.cache/npm-packages"
 export N_PREFIX="$NPM_PACKAGES"
+export PNPM_HOME="$HOME/.local/share/pnpm"
 
 # Get base system vars before any other tools muck with them
 export _ORIG_PATH=${_ORIG_PATH:-$PATH}
@@ -12,7 +13,7 @@ export _ORIG_MANPATH=${_ORIG_MANPATH:-${MANPATH:-$(manpath)}}
 export _ORIG_NODE_PATH=${_ORIG_NODE_PATH:-$NODE_PATH}
 
 # Configure discovery paths
-export PATH="$HOME/.local/bin:$SCRIPTS:$NPM_PACKAGES/bin:$HOME/.deno/bin:$HOME/go/bin:$_ORIG_PATH:./node_modules/.bin"
+export PATH="$HOME/.local/bin:$SCRIPTS:$NPM_PACKAGES/bin:$PNPM_HOME:$HOME/.deno/bin:$HOME/go/bin:$_ORIG_PATH:./node_modules/.bin"
 export MANPATH="$NPM_PACKAGES/share/man:$_ORIG_MANPATH"
 export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$_ORIG_NODE_PATH"
 
