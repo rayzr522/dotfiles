@@ -71,7 +71,7 @@ alias gtl='git tag | tr - \~ | sort -V | tr \~ -'
 alias tickets='grep -oE "[A-Z]+-[0-9]+"'
 alias jql='xargs | tr " " "," | xargs -I{} echo "id in ({})"'
 alias get-latest-tag-range='echo -n "$(gtl | tail -n2 | head -n1)..$(gtl | tail -n1)"'
-alias get-release-tickets='git --no-pager log --pretty=oneline "$(get-latest-tag-range)" 1>&2; echo "$(tput setaf 2)\nuse the following JQL query to see all tickets:\n$(tput sgr0)$(git log --format="%s" | tickets | jql)"'
+alias get-release-tickets='git --no-pager log --pretty=oneline "$(get-latest-tag-range)" 1>&2; echo "$(tput setaf 2)\nuse the following JQL query to see all tickets:\n$(tput sgr0)$(git log --format="%s" "$(get-latest-tag-range)" | tickets | jql)"'
 # }}}
  
 # NPM {{{
