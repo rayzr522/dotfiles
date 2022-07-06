@@ -67,6 +67,11 @@ alias gss='git stash'
 alias gsp='git stash pop'
 alias grb='git rebase'
 alias gtl='git tag | tr - \~ | sort -V | tr \~ -'
+
+alias tickets='grep -oE "[A-Z]+-[0-9]+"'
+alias jql='xargs | tr " " "," | xargs -I{} echo "id in ({})"'
+alias get-latest-tag-range='echo -n "$(gtl | tail -n2 | head -n1)..$(gtl | tail -n1)"'
+alias get-release-tickets='git --no-pager log --pretty=oneline "$(get-latest-tag-range)" 1>&2; echo "$(tput setaf 2)\nuse the following JQL query to see all tickets:\n$(tput sgr0)$(git log --format="%s" | tickets | jql)"'
 # }}}
  
 # NPM {{{
@@ -118,6 +123,7 @@ alias md-view='node ~/GitHub/markdown-parser '
 alias diskstat='df -h | grep -E '\''^/dev'\'' | sort | awk '\''{ print $1 ": " $3 "/" $2 " used (" $5 ")" }'\'''
 alias today='date "+%D" | tr / -'
 alias scanrepos='find . -maxdepth 2 -name .git -type d -prune | xargs dirname | sed "s;./;;g" | while read -r repo; do [ -n "$(git -C "$repo" remote -v)" ] && [ -z "$(git -C "$repo" status --porcelain)" ] && echo "$(tput setaf 2)$repo" || echo "$(tput setaf 1)$repo"; done | sort -r'
+alias path='echo "$PATH" | tr : "\n"'
 # }}}
 
 # Templating commands {{{
