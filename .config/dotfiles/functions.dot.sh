@@ -178,6 +178,15 @@ function github {
     o "$url"
 }
 
+function convert-to-mp4 {
+    if [[ $# -lt 2 ]]; then
+        echo "usage: convert-to-mp4 <input> <output>" >&2
+        return 1
+    fi
+
+    ffmpeg -i "$1" -vcodec h264_nvenc -crf 30 -acodec copy "$2"
+}
+
 # END FUNCTIONS
 
 # START AUTOCOMPLETIONS
