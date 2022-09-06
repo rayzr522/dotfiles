@@ -19,15 +19,6 @@ unsetopt correct
 # Don't trust cache for completions -- https://unix.stackexchange.com/a/2180
 zstyle ":completion:*:commands" rehash 1
 
-# When using urxvt, go straight to tmux and reattach if a session is available.
-if [[ $TERM =~ (rxvt-unicode|xterm)-256color ]] && [[ -z "$NO_TMUX" ]] && command -v tmux >/dev/null; then
-  if [[ ! -z "$(tmux list-sessions | grep -v '(attached)')" ]]; then
-    exec tmux attach
-  else
-    exec tmux
-  fi
-fi
-
 # All environment variables, aliases, etc. are handled in my organized dotfiles.
 for file in ~/.config/dotfiles/*.dot.sh; do
   source "$file"
