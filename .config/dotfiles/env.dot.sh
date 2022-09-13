@@ -21,8 +21,9 @@ export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$_ORIG_NODE_PATH"
 export EDITOR=nvim
 export VISUAL="$EDITOR"
 
-if [ "$(uname)" = Linux ]; then
+if [ "$(uname)" = Linux ] && command -v secret-tool >/dev/null; then
     export SUDO_ASKPASS="$SCRIPTS/askpass-secret-tool"
+    alias sudo="sudo -A"
 fi
 
 export GPG_TTY=$(tty)
