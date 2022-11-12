@@ -1,9 +1,12 @@
 #!/bin/bash
 ##DESC## Opens a file using the DE/OS-specific system.
+# vi:syntax=bash
 
 os="$(uname)"
 
-if [ $os = "Linux" ]; then
+if command -v wslview >/dev/null; then
+    wslview "$*" &>/dev/null
+elif [ $os = "Linux" ]; then
     xdg-open "$*" &>/dev/null
 elif [ $os = "Darwin" ]; then
     /usr/bin/open "$*"
