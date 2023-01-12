@@ -20,25 +20,6 @@ function reverse {
     echo "$OUT" | cut -c2-
 }
 
-# Per-dir profiles & .termdir support.
-function cd {
-    # shellcheck disable=SC1091
-    builtin cd "${1+"$@"}"
-
-    # get actual return value
-    local ret=$?
-
-    if [[ "$ret" == 0 ]]; then
-        # Source a directory-specific profile if one is available.
-        [[ -f ./.dir_profile ]] && source ./.dir_profile
-        # Keep track of where the terminal is at for system keybinds to open the file manager in the PWD.
-        realpath "$PWD" | tee ~/.termdir >/dev/null
-    fi
-
-    # return the proper return value
-    return $ret
-}
-
 # Changelog command
 function changelog {
     if [[ $# -lt 2 ]]; then
