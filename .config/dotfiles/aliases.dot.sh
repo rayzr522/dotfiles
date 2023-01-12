@@ -132,3 +132,7 @@ alias boopboom='kill "$(wininfo | grep _NET_WM_PID | cut -d" " -f3)"'
 alias boxify='cowsay -W "$(( $(tput cols) - 3))" | head -n -5'
 alias chill='screen -dmS music mpsyt /lunacy chillout, "$(( RANDOM % 20 ))"'
 # }}}
+
+# Docker aliases {{{
+alias rustscan='docker run -it --rm --name rustscan rustscan/rustscan:latest'
+# }}}
