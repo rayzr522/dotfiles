@@ -32,8 +32,8 @@ echo -n "$REMOTE_URL" | sed -e 's;\.git$;;g' -e 's;^git@\(.\+\):\(.\+\)/\(.\+\)$
 
 if [ ! -z "$REMOTE_BRANCH" ] && [ "$REMOTE_BRANCH" != "master" ] && [ "$REMOTE_BRANCH" != "main" ]; then
     if [ "$1" = "-p" ]; then
-        echo -n "/pull/$REMOTE_BRANCH"
+        echo "/pull/$REMOTE_BRANCH"
     else
-        echo -n "/tree/$REMOTE_BRANCH"
+        echo "/tree/$REMOTE_BRANCH"
     fi
 fi
