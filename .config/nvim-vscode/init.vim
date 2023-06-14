@@ -21,7 +21,7 @@ function! EditFile(...)
 endfunction
 
 " code format settings
-set autoindent expandtab tabstop=2 shiftwidth=2
+set autoindent expandtab tabstop=2 shiftwidth=2 ignorecase smartcase
 
 " keybinds
 let mapleader = ' '
