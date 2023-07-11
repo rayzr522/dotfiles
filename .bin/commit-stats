@@ -1,0 +1,42 @@
+#!/bin/bash
+
+commit_range="$1"
+
+# Get the total number of commits in the range
+total_commits=$(git rev-list --count "$commit_range")
+
+# Initialize variables to keep track of additions and deletions
+total_additions=0
+total_deletions=0
+current_commit=0
+
+# Set color variables
+GRAY="\033[1;35m"
+GREEN="\033[1;32m"
+RED="\033[1;31m"
+RESET="\033[0m"
+
+# Iterate over each commit in the range
+while read -r commit; do
+    ((current_commit++))
+    echo -ne "${GRAY}Processing commit $current_commit/$total_commits${RESET}\r"
+
+    # Get the statistics for the commit
+    stats=$(git show --numstat --format="" "$commit")
+
+    # Iterate over each line of the stats
+    while read -r line; do
+        # Extract the additions and deletions from the line
+        added=$(echo "$line" | awk '{print $1}')
+        deleted=$(echo "$line" | awk '{print $2}')
+
+        # Increment the counters
+        ((total_additions+=added))
+        ((total_deletions+=deleted))
+    done <<< "$stats"
+done < <(git rev-list "$commit_range")
+
+tput el
+
+# Print the total additions and deletions with colors
+echo -e "${GREEN}+${total_additions}${RESET} ${RED}-${total_deletions}${RESET}"
