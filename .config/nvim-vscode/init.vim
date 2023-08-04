@@ -18,7 +18,7 @@ autocmd VimEnter *
 
 " functions
 function! EditFile(...)
-  call VSCodeNotify('vscode.open', a:1)
+  call VSCodeExtensionNotify('open-file', expand(a:1))
 endfunction
 
 " code format settings
@@ -29,5 +29,7 @@ let mapleader = ' '
 let g:wordmotion_prefix = ','
 nmap ]d <cmd>call VSCodeNotify('editor.action.marker.next')<cr>
 nmap [d <cmd>call VSCodeNotify('editor.action.marker.prev')<cr>
-nmap <leader>r <cmd>source ~/.config/nvim-vscode/init.vim<cr>
+nmap <leader>zr <cmd>source ~/.config/nvim-vscode/init.vim<cr><cmd>echo "Reloaded config!"<cr>
+nmap <leader>ze <cmd>call EditFile('~/.config/nvim-vscode/init.vim')<cr>
+nmap <leader>zp <cmd>echo "Running PlugInstall..."<cr><cmd>PlugInstall --sync<cr><cmd>q<cr><cmd>echo "Done!"<cr>
 nmap <leader>c <cmd>call VSCodeNotify('workbench.action.closeActiveEditor')<cr>
