@@ -12,6 +12,10 @@ export _ORIG_NODE_PATH=${_ORIG_NODE_PATH:-$NODE_PATH}
 # Configure discovery paths
 export PATH="$HOME/.local/bin:$SCRIPTS:$HOME/.deno/bin:$HOME/go/bin:$_ORIG_PATH:./node_modules/.bin"
 
+if [ -f "/etc/wsl.conf" ]; then
+   export PATH="$SCRIPTS/wsl:$PATH"
+fi
+
 # Configure tools
 export EDITOR=nvim
 export VISUAL="$EDITOR"
