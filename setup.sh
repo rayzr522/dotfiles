@@ -24,6 +24,7 @@ safe-link() {
     echo "> Linking '$1'"
     SOURCE="$PWD/$1"
     DEST="$DOTFILES_DIR/${2:-$1}"
+    mkdir -p "$(dirname "$DEST")"
 
     if [[ -d "$SOURCE" ]] && [[ -d "$DEST" ]] && [[ ! -L "$DEST" ]]; then
         echo "! Made a backup of pre-existing '$1'"
@@ -61,12 +62,21 @@ if [[ "$(uname)" == Linux ]]; then
     fi
 fi
 
-mkdir -p "$DOTFILES_DIR/.config"
-for file in "$PWD/.config/"*; do
-    safe-link ".config/$(basename "$file")"
-done
+# safe-link .config/coc
+safe-link .config/conky
+safe-link .config/dotfiles
+safe-link .config/git
+safe-link .config/gtk-3.0
+# safe-link .config/hangups
+safe-link .config/nvim/lua/user/init.lua
+safe-link .config/nvim-vscode
+safe-link .config/picom.conf
+safe-link .config/rice
+safe-link .config/starship.toml
+safe-link .config/tint2
+safe-link .config/xbindkeysrc
+safe-link .config/zsh
 
-mkdir -p "$HOME/.templates"
 for file in "$PWD/.templates/"*; do
     safe-link ".templates/$(basename "$file")"
 done
@@ -94,24 +104,24 @@ if ! command -v starship >/dev/null; then
     fi
 fi
 
-if [ "$CONFIGURE_NEOVIM" ]; then
-    echo -n "Installing or updating vim-plug... "
-    curl -sfLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    echo "done"
-
-    echo -n "Updating coc.nvim extensions... "
-    if ! command -v npm >/dev/null; then
-        echo "fail, npm not found"
-    else
-        npm --prefix "$DOTFILES_DIR/.config/coc/extensions" install --silent --no-package-lock &>/dev/null
-
-        if [[ $? = 0 ]]; then
-            echo "done"
-        else
-            echo "fail, unknown error"
-        fi
-    fi
-fi
+# if [ "$CONFIGURE_NEOVIM" ]; then
+#     echo -n "Installing or updating vim-plug... "
+#     curl -sfLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+#     echo "done"
+# 
+#     echo -n "Updating coc.nvim extensions... "
+#     if ! command -v npm >/dev/null; then
+#         echo "fail, npm not found"
+#     else
+#         npm --prefix "$DOTFILES_DIR/.config/coc/extensions" install --silent --no-package-lock &>/dev/null
+# 
+#         if [[ $? = 0 ]]; then
+#             echo "done"
+#         else
+#             echo "fail, unknown error"
+#         fi
+#     fi
+# fi
 
 if command -v budgie-desktop >/dev/null; then
     echo -n "Loading Budgie settings... "
