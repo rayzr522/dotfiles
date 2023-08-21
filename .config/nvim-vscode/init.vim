@@ -9,6 +9,7 @@ set rtp+=~/.config/nvim-vscode
 call plug#begin('~/.config/nvim-vscode/plug')
 Plug 'chaoren/vim-wordmotion'
 Plug 'jeetsukumaran/vim-indentwise'
+Plug 'tpope/vim-abolish'
 call plug#end()
 
 autocmd VimEnter *
