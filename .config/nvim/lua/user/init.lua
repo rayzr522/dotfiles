@@ -42,4 +42,15 @@ local config = {
   },
 }
 
+vim.api.nvim_create_autocmd("LspAttach", {
+  ---@param ev { buf: number, data: { client_id: number }}
+  callback = function(ev)
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    if client and client.name == "tsserver" then
+      local is_deno = not (vim.fn.findfile("deno.json", ".;") == '')
+      if is_deno then client.stop() end
+    end
+  end,
+})
+
 return config
