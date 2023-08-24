@@ -5,11 +5,11 @@
 os="$(uname)"
 
 if command -v wslview >/dev/null; then
-    wslview "$*" &>/dev/null
+    wslview "$@" &>/dev/null
 elif [ $os = "Linux" ]; then
-    xdg-open "$*" &>/dev/null
+    xdg-open "$@" &>/dev/null
 elif [ $os = "Darwin" ]; then
-    /usr/bin/open "$*"
+    /usr/bin/open "$@"
 else
     echo "I don't know how to handle the operating system '$os'" >&2
     exit 1
