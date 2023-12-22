@@ -31,7 +31,7 @@ _Disclaimer: Please keep in mind that some of these scripts / configs are things
 In order to set up all these config files for yourself, simply clone the repository and run the `setup.sh` script. Example:
 
 ```bash
-git clone https://github.com/Rayzr522/dotfiles.git
+git clone --recursive https://github.com/4ayzr522/dotfiles.git
 cd dotfiles
 # if you're not on linux or don't want to install system dependencies, skip this:
 ./scripts/install-system-deps.sh
@@ -39,15 +39,3 @@ cd dotfiles
 ```
 
 _Note: running `./setup.sh` with the `-f` flag will cause it to blindly overwrite existing config files without prompting. Only do so if you know what you are doing._
-
-## Other Personal Scripts
-
-These are other personal scripts / tools that I made which I use in conjunction with the config files that are here.
-
-- [mcsm](https://github.com/Rayzr522/MinecraftServerManager)
-- [server-essentials](https://github.com/Rayzr522/server-essentials)
-- [printy](https://github.com/Rayzr522/Printy)
-
-## Join Me
-
-[![Discord Badge](https://github.com/Rayzr522/ProjectResources/raw/master/RayzrDev/badge-small.png)](https://rayzr.dev/join)
