@@ -121,10 +121,6 @@ alias scanrepos='find . -maxdepth 2 -name .git -type d -prune | xargs dirname | 
 alias path='echo "$PATH" | tr : "\n"'
 # }}}
 
-# Templating commands {{{
-alias joinme='echo -e "\n## Join Me\n[![Discord Badge](https://github.com/Rayzr522/ProjectResources/raw/master/RayzrDev/badge-small.png)](https://rayzr.dev/join)" >> '
-# }}}
-
 # Joke commands {{{
 alias wininfo='xprop -id "$(xwininfo | grep -oE "Window id: 0x[0-9a-f]{6,7}" | cut -d" " -f3)"'
 alias boopboom='kill "$(wininfo | grep _NET_WM_PID | cut -d" " -f3)"'

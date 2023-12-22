@@ -1,8 +1,6 @@
-#    (    rayzr522    )
-#    ( rayzr.dev/join )
-# ------------------------
-# My personal ZSH config.
-# ------------------------
+# ---------------------------
+# rayzr's personal ZSH config
+# ---------------------------
 
 if [[ -d /opt/homebrew/bin ]]; then
     # this must run before anything else
