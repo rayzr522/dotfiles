@@ -10,6 +10,9 @@ call plug#begin('~/.config/nvim-vscode/plug')
 Plug 'chaoren/vim-wordmotion'
 Plug 'jeetsukumaran/vim-indentwise'
 Plug 'tpope/vim-abolish'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'wellle/targets.vim'
+Plug 'tpope/vim-surround'
 call plug#end()
 
 autocmd VimEnter *
