@@ -168,6 +168,28 @@ function convert-to-mp4 {
     ffmpeg -i "$1" -vcodec h264_nvenc -crf 30 -acodec copy "$2"
 }
 
+function bak {
+    if [[ $# -lt 1 ]]; then
+        echo "usage: bak <path>" >&2
+        return 1
+    fi
+
+    mkdir -p ~/.bak
+    if [[ ! -e "$1" ]]; then
+        echo "'$1' does not exist" >&2
+        return 1
+    fi
+
+    if [[ -z "$BAK_GPG_ID" ]]; then
+        echo "BAK_GPG_ID not configured" >&2
+        return 1
+    fi
+
+    local bak_name="$(date "+%y-%m-%d-%H-%M-%S")-$(basename "$PWD")-$(basename "$1")"
+    tar -czf - "$1" | gpg --encrypt --recipient "$BAK_GPG_ID" --output ~/.bak/"$bak_name".tar.gz.gpg
+    echo "baked up as $bak_name"
+}
+
 # END FUNCTIONS
 
 # START AUTOCOMPLETIONS
