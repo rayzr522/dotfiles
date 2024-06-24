@@ -1,5 +1,5 @@
 #compdef dfe
 local -a files
-files=( $(for file in ~/.config/dotfiles/*.zsh; do echo "$(basename "$file" ".zsh")"; done) )
+files=($(ls ~/.config/zsh/init))
 _describe files files
 

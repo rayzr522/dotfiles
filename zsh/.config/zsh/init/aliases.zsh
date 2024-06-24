@@ -10,7 +10,7 @@ alias h='cd ~'
 alias ..='cd ..'
 alias dt='cd ~/Desktop'
 alias dl='cd ~/Downloads'
-alias dotfiles='cd ~/GitHub/dotfiles'
+alias dotfiles="cd $(realpath "$(dirname "$0")/../../../..")"
 # }}}
 
 # Confirmation {{{

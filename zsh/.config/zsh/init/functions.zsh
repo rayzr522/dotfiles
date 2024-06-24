@@ -50,7 +50,7 @@ function minecraft-online-mode {
 
 # Edits the given dotfile and then re-sources it.
 function dfe {
-    local dotfile="$HOME/.config/dotfiles/$1.zsh"
+    local dotfile="$HOME/.config/zsh/init/$1"
     nvim "$dotfile" && source "$dotfile"
 }
 
