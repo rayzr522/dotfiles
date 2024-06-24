@@ -6,8 +6,8 @@ LS_COLORS=${LS_COLORS:-'di=34:ln=35:so=32:pi=33:ex=31:bd=36;01:cd=33;01:su=31;40
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:default' list-prompt '%S%M matches%s'
 
-# Use caching to make completion for commands such as dpkg and apt usable.
-zstyle ':completion::complete:*' use-cache on
+# Don't trust cache for completions -- https://unix.stackexchange.com/a/2180
+zstyle ":completion:*:commands" rehash 1
 
 # Case-insensitive (all), partial-word, and then substring completion.
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'm:{[:upper:]}={[:lower:]}'  'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
