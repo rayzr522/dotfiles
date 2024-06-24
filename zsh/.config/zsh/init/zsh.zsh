@@ -1,5 +1,12 @@
 fpath+=(~/.config/zsh/comp)
 
+function _zsh_chpwd_ls {
+  ls -F --group-directories-first --color=auto
+}
+
+autoload -Uz add-zsh-hook
+add-zsh-hook chpwd _zsh_chpwd_ls
+
 # enable autocomplete
 autoload -Uz compinit 
 compinit
