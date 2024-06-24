@@ -25,7 +25,7 @@ function loc {
     local query="$1"
     local dir="${2:-.}"
 
-    rg --color always --line-number --ignore-case "$query" "$dir" | less -R
+    rg --hidden --color always --line-number --ignore-case "$query" "$dir" | less -R
 }
 
 # finds a font
