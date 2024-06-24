@@ -1,0 +1,13 @@
+#compdef cs
+
+_describe 'script editor'
+
+_arguments \
+  '-e[edit script]:script to edit:->scripts' \
+  '-r[remove script]:script to remove:->scripts' \
+
+case "$state" in
+  scripts)
+    _values "$state_descr" $(ls "$SCRIPTS")
+    ;;
+esac

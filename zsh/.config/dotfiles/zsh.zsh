@@ -1,3 +1,5 @@
+fpath+=(~/.config/zsh/comp)
+
 # enable autocomplete
 autoload -Uz compinit 
 compinit
