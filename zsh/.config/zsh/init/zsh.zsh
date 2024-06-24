@@ -16,10 +16,13 @@ bindkey '^x^e' edit-command-line
 # Enable ZSH reverse-search with ^R.
 bindkey '^R' history-incremental-search-backward
 
+# reclaim ^s (source: https://superuser.com/a/385290)
+stty stop undef
+stty start undef
+
 # source: https://github.com/sorin-ionescu/prezto/issues/28
 # Insert "sudo " at the beginning of the line
 function _zsh_prepend_sudo {
-    echo "hello"
   if [[ $BUFFER != "sudo "* ]]; then
     BUFFER="sudo $BUFFER"; CURSOR+=5
   fi
@@ -29,7 +32,6 @@ zle -N _zsh_prepend_sudo
 bindkey '^s' _zsh_prepend_sudo
 
 # and then my own addition
-
 function _zsh_un_prepend_sudo {
   if [[ $BUFFER = "sudo "* ]]; then
       (( CURSOR -= 5 ))
