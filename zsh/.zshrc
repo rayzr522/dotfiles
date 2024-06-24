@@ -7,18 +7,8 @@ if [[ -d /opt/homebrew/bin ]]; then
     export PATH="/opt/homebrew/bin:$PATH"
 fi
 
-# Source Prezto.
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
-
-# Don't autocorrect
-unsetopt correct
-# Don't trust cache for completions -- https://unix.stackexchange.com/a/2180
-zstyle ":completion:*:commands" rehash 1
-
 # All environment variables, aliases, etc. are handled in my organized dotfiles.
-for file in ~/.config/dotfiles/*.dot.sh; do
+for file in ~/.config/zsh/init/*.zsh; do
   source "$file"
 done
 
