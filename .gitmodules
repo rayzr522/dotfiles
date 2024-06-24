@@ -1,12 +1,12 @@
 [submodule ".config/zsh/plugins/zsh-autosuggestions"]
-	path = .config/zsh/plugins/zsh-autosuggestions
+	path = zsh/.config/zsh/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions.git
 [submodule ".config/zsh/plugins/fast-syntax-highlighting"]
-	path = .config/zsh/plugins/fast-syntax-highlighting
+	path = zsh/.config/zsh/plugins/fast-syntax-highlighting
 	url = https://github.com/zdharma-continuum/fast-syntax-highlighting
 [submodule ".config/zsh/plugins/history-search-multi-word"]
-	path = .config/zsh/plugins/history-search-multi-word
+	path = zsh/.config/zsh/plugins/history-search-multi-word
 	url = https://github.com/zdharma-continuum/history-search-multi-word
 [submodule ".config/conky/now-clocking"]
-	path = .config/conky/now-clocking
+	path = conky/.config/conky/now-clocking
 	url = https://github.com/rayzr522/now-clocking.git
