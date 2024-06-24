@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Sorts STDIN by length.
 function sortlen {
     while read -r line; do echo "${#line} $line"; done |\
@@ -52,7 +50,8 @@ function minecraft-online-mode {
 
 # Edits the given dotfile and then re-sources it.
 function dfe {
-    nvim ~/.config/dotfiles/"$1".dot.sh && source ~/.zshrc
+    local dotfile="$HOME/.config/dotfiles/$1.zsh"
+    nvim "$dotfile" && source "$dotfile"
 }
 
 # Opens the given path or the current directory.
@@ -190,33 +189,3 @@ function bak {
     echo "baked up as $bak_name"
 }
 
-# END FUNCTIONS
-
-# START AUTOCOMPLETIONS
-
-# Make sure to only run when we're using zsh
-if command -v compdef >/dev/null; then
-    function _dfe {
-        local -a options
-        options=( $(for item in ~/.config/dotfiles/*.dot.sh; do basename "$item" ".dot.sh"; done) )
-        _describe 'command' options
-    }
-
-    compdef _dfe dfe
-
-    function _build {
-        local -a options
-        options=( $(find ~/GitHub -mindepth 2 -maxdepth 2 -name 'pom.xml' -print0 | xargs -0 dirname -z | xargs -0 basename -a) )
-        _describe 'command' options
-    }
-
-    compdef _build build
-
-    function _cs {
-        local -a options
-        options=( $(find -L ~/.bin -maxdepth 1 -type f -print0 | xargs -0 basename -a) )
-        _describe 'command' options
-    }
-
-    compdef _cs cs
-fi

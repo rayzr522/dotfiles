@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # An attempt at something similar to Java's Stream API, except in bash.
 # It... sort of works. Just incredibly slowly and sometimes not at all :)
 

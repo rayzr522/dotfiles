@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Important directories
 export SCRIPTS="$HOME/.bin"
 export SRVR="$HOME/Servers/Minecraft/paper-server"
@@ -9,19 +7,19 @@ export _ORIG_PATH=${_ORIG_PATH:-$PATH}
 export _ORIG_MANPATH=${_ORIG_MANPATH:-${MANPATH:-$(manpath)}}
 export _ORIG_NODE_PATH=${_ORIG_NODE_PATH:-$NODE_PATH}
 
-# do pnpm here :D
-export PNPM_HOME="/home/rayzr/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-
 # Configure discovery paths
 export PATH="$HOME/.local/bin:$SCRIPTS:$HOME/.deno/bin:$HOME/go/bin:$_ORIG_PATH:./node_modules/.bin"
 
 if [ -f "/etc/wsl.conf" ]; then
    export PATH="$SCRIPTS/wsl:$PATH"
 fi
+
+# do pnpm here :D
+export PNPM_HOME="$HOME/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
 
 # Configure tools
 export EDITOR=nvim

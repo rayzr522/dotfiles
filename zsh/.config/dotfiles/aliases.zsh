@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Unbork prezto things
 unalias o 2>/dev/null
 unalias gm 2>/dev/null
@@ -119,6 +117,7 @@ alias diskstat='df -h | grep -E '\''^/dev'\'' | sort | awk '\''{ print $1 ": " $
 alias today='date "+%D" | tr / -'
 alias scanrepos='find . -maxdepth 2 -name .git -type d -prune | xargs dirname | sed "s;./;;g" | while read -r repo; do [ -n "$(git -C "$repo" remote -v)" ] && [ -z "$(git -C "$repo" status --porcelain)" ] && echo "$(tput setaf 2)$repo" || echo "$(tput setaf 1)$repo"; done | sort -r'
 alias path='echo "$PATH" | tr : "\n"'
+alias fpath='echo "$FPATH" | tr : "\n"'
 # }}}
 
 # Joke commands {{{

@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # A little joke of a system that I made to remind myself
 # to focus instead of getting distracted by my terminal.
 # Every time I open the terminal, it starts playing
