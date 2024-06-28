@@ -40,5 +40,5 @@ fi
 # hacky way to wait til desktop loads
 (sleep 5 && {
     xrdb -I "$HOME" -merge ~/.Xresources
-    ~/.bin/conky-start &
+    try_exec ~/.bin/conky-start
 }) &

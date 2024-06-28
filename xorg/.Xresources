@@ -1,4 +1,4 @@
-#include ".config/rice/Xthemes/_selected"
+#include ".config/xorg/themes/_selected"
 
 !! URxvt
 URxvt.font: xft:Iosevka Nerd Font:size=10
