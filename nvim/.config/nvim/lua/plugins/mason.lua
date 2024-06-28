@@ -18,6 +18,7 @@ return {
     opts = function(_, opts)
       opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, {
         "biome",
+        "prettier",
       })
     end,
   },
@@ -39,18 +40,26 @@ return {
             'css',
             'vue',
           },
-          args = {
-            'check',
-            '--write',
-            '--unsafe',
-            '--formatter-enabled=true',
-            '--organize-imports-enabled=true',
-            '--skip-errors',
-            '--stdin-file-path=$FILENAME',
-          },
+          -- args = {
+          --   'check',
+          --   '--write',
+          --   '--unsafe',
+          --   '--formatter-enabled=true',
+          --   '--organize-imports-enabled=true',
+          --   '--skip-errors',
+          --   '--stdin-file-path=$FILENAME',
+          -- },
+          condition = function(utils)
+            return utils.root_has_file({ "biome.json" })
+          end,
+        }),
+        nls.formatting.prettier.with({
+          condition = function(utils)
+            return utils.root_has_file({ ".prettierrc" })
+          end,
         }),
       }
-      opts.debug = true
+      -- opts.debug = true
       return opts
     end,
   },
