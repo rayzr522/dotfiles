@@ -17,7 +17,7 @@ if has apt; then
   echo "apt found"
   if confirm "would you like to install system deps?"; then
     sudo apt update
-    sudo apt install build-essential git tmux zsh stow curl wget zip unzip
+    sudo apt install build-essential git tmux zsh stow curl wget zip unzip ffmpeg imagemagick rofi xclip xdotool playerctl jq conky
   fi
 fi
 
