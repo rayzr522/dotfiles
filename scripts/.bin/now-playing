@@ -8,7 +8,8 @@ if playerctl -l 2>&1 | grep -q 'No players were found'; then
     exit 1
 fi
 
-playerctl_player="$(playerctl -l | grep -v plasma-browser-integration | head -n1)"
+# get first unpaused player
+playerctl_player="$(playerctl -i plasma-browser-integration -a status -f '{{status}} {{playerName}}' | sort -r -k 1 | awk '{print $2}' | head -n1)"
 
 playerctl_exec() {
     playerctl -p "$playerctl_player" "$@"
