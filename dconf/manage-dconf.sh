@@ -1,7 +1,5 @@
 #!/bin/bash
 
-cd "$(dirname "$0")"
-
 declare -A schemas
 declare -a opts
 
@@ -26,6 +24,16 @@ function get_schemas {
 function schema_filename {
   echo -n "${1:1:-1}.dump" | tr '/' '_'
 }
+function rel_to_pwd {
+  local in="${1?missing in}"
+  local abs="$(realpath -m "$in")"
+  local relative_to_orig_pwd="${abs#$PWD}"
+  if [ "$relative_to_orig_pwd" != "$abs" ]; then
+    echo ".$relative_to_orig_pwd"
+  else 
+    echo "$abs"
+  fi
+}
 
 add_opt gnome_terminal
 add_schema gnome_terminal /org/gnome/terminal/
@@ -40,28 +48,34 @@ add_schema budgie /com/solus-project/budgie-wm/
 
 ACTION="$1"
 OPT="$2"
-DUMP_DIR="./dumps/$OPT"
+DUMP_DIR="$(dirname "$0")/dumps/$OPT"
 
-if [ -z "$ACTION" ] || [ -z "$OPT" ]; then
-  echo -e "usage: manage.sh load|save <opt>\n\navailable opts:\n$(printf -- '- %s\n' "${opts[@]}")" >&2
+usage_and_die() {
+  echo -e "usage: manage-dconf.sh load|save <opt>\n\navailable opts:\n$(printf -- '- %s\n' "${opts[@]}")" >&2
   exit 1
-fi
+}
 
-if [ "$ACTION" = save ]; then
+if [ -z "$ACTION" ]; then
+  usage_and_die
+elif [ "$ACTION" = save ]; then
+  test -z "$OPT" && usage_and_die
   mkdir -p "$DUMP_DIR"
   for schema in $(get_schemas "$OPT"); do
     out="$DUMP_DIR/$(schema_filename "$schema")"
-    echo "saving $schema to $out"
+    echo "saving $schema to $(rel_to_pwd "$out")"
     dconf dump "$schema" > "$out"
   done
-else
+elif [ "$ACTION" = load ]; then
+  test -z "$OPT" && usage_and_die
   for schema in $(get_schemas "$OPT"); do
     in="$DUMP_DIR/$(schema_filename "$schema")"
     if [ -f "$in" ]; then
-      echo "loading $schema from $in"
+      echo "loading $schema from $(rel_to_pwd "$in")"
       dconf load "$schema" < "$in"
     else
-      echo "skipped $schema as $in was not found"
+      echo "skipped $schema as $(rel_to_pwd "$in") was not found"
     fi
   done
+elif [ "$ACTION" = getopts ]; then
+  echo "${opts[@]}"
 fi

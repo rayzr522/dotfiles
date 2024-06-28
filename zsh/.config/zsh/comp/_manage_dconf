@@ -1,0 +1,10 @@
+#compdef manage-dconf.sh
+
+_describe "dconf manager"
+_arguments ":action:(load save)" ":opt:->opts"
+
+case "$state" in
+  opts)
+    _values "$state_descr" $($_comp_command1 getopts)
+    ;;
+esac

@@ -1,4 +1,3 @@
-# Unbork prezto things
 alias rs='source ~/.zshrc;'
 
 # Navigation {{{
@@ -7,6 +6,11 @@ alias ..='cd ..'
 alias dt='cd ~/Desktop'
 alias dl='cd ~/Downloads'
 alias dotfiles="cd $(realpath "$(dirname "$0")/../../../..")"
+# }}}
+
+# Clipboard {{{
+alias pbcopy='xclip -i -selection clipboard'
+alias pbpaste='xclip -o -selection clipboard'
 # }}}
 
 # Confirmation {{{

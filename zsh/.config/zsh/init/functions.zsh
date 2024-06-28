@@ -4,6 +4,12 @@ function dfe {
     nvim "$dotfile" && test -f "$dotfile" && source "$dotfile"
 }
 
+function reloadfunc {
+    local func="${1?missing func}"
+    unset "functions[$func]"
+    autoload -Uz "$func"
+}
+
 # opens path in GUI (supporting piping)
 function o {
     local dir="$@"
