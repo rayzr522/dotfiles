@@ -27,8 +27,8 @@ alias get='wget --content-disposition'
 # }}}
 
 # Sane defaults {{{
-alias ls='ls --color=auto --classify --group-directories-first'
-alias ll='ls -lah'
+alias ls='ls --color=auto --group-directories-first'
+alias ll='ls -lahF'
 # }}}
 
 # Git {{{
