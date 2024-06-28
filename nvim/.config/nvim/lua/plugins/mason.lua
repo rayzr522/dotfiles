@@ -17,8 +17,41 @@ return {
     "jay-babu/mason-null-ls.nvim",
     opts = function(_, opts)
       opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, {
-        "prettier",
+        "biome",
       })
+    end,
+  },
+  {
+    -- yoinked from https://github.com/OneOfOne/dotfiles/blob/master/.config/nvim/lua/plugins/code.lua
+    'nvimtools/none-ls.nvim',
+    opts = function(_, opts)
+      local nls = require('null-ls').builtins
+      opts.sources = { --override lazyvim's default sources
+        -- ts
+        nls.formatting.biome.with({
+          filetypes = {
+            'javascript',
+            'javascriptreact',
+            'json',
+            'jsonc',
+            'typescript',
+            'typescriptreact',
+            'css',
+            'vue',
+          },
+          args = {
+            'check',
+            '--write',
+            '--unsafe',
+            '--formatter-enabled=true',
+            '--organize-imports-enabled=true',
+            '--skip-errors',
+            '--stdin-file-path=$FILENAME',
+          },
+        }),
+      }
+      opts.debug = true
+      return opts
     end,
   },
   -- {
