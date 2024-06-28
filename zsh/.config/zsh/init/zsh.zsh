@@ -1,5 +1,11 @@
 fpath+=(~/.config/zsh/comp)
 
+# we want history yes plz
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+
 function _zsh_chpwd_ls {
   ls -F --group-directories-first --color=auto
 }
