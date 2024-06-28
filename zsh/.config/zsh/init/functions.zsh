@@ -1,7 +1,7 @@
 # edits the given dotfile and then re-sources it
 function dfe {
     local dotfile="$HOME/.config/zsh/init/$1"
-    nvim "$dotfile" && source "$dotfile"
+    nvim "$dotfile" && test -f "$dotfile" && source "$dotfile"
 }
 
 # opens path in GUI (supporting piping)
