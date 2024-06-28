@@ -17,6 +17,7 @@ alias pbpaste='xclip -o -selection clipboard'
 alias mv='mv -i'
 alias cp='cp -i'
 alias ln='ln -i'
+alias rm='rm -i'
 # }}}
 
 # Server / Network {{{
