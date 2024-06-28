@@ -1,0 +1,4 @@
+[/]
+maximize=['<Super>Up']
+minimize=['<Super>Page_Down']
+unmaximize=['<Super>Down']

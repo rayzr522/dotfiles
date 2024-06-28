@@ -1,0 +1,20 @@
+[/]
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/PopLaunch1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/']
+email=@as []
+home=['<Super>e']
+terminal=@as []
+
+[custom-keybindings/PopLaunch1]
+binding='Launch1'
+command='gnome-control-center wifi'
+name='WiFi'
+
+[custom-keybindings/custom0]
+binding='<Super>t'
+command='kitty'
+name='kitty'
+
+[custom-keybindings/custom1]
+binding='<Super>backslash'
+command='/home/rayzr/.bin/quick-actions'
+name='quick-actions'

@@ -1,0 +1,13 @@
+[legacy/profiles:]
+default='d579e879-a81e-4ddf-915a-84447f4a1f63'
+list=['b1dcc9dd-5262-4d8d-a863-c897e6d979b9', 'd579e879-a81e-4ddf-915a-84447f4a1f63']
+
+[legacy/profiles:/:d579e879-a81e-4ddf-915a-84447f4a1f63]
+background-transparency-percent=12
+default-size-columns=100
+default-size-rows=32
+font='FiraCode Nerd Font 12'
+use-theme-colors=true
+use-theme-transparency=true
+use-transparent-background=false
+visible-name='gud'
