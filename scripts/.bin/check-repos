@@ -5,7 +5,7 @@ fail() {
     exit 1
 }
 
-DIRECTORY="${1:-$HOME/GitHub}"
+DIRECTORY="${1:-$HOME/code}"
 
 cd "$DIRECTORY" || fail "Could not find $DIRECTORY ."
 

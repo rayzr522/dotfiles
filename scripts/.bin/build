@@ -48,7 +48,7 @@ PROJECTS=( "$@" )
 
 if [ ${#PROJECTS} -lt 1 ]; then
     if command -v peco >/dev/null; then
-        PROJECT="$(find "$HOME/GitHub" -maxdepth 2 -name 'pom.xml' -print0 | xargs -0 dirname -z | xargs -0 basename -a | peco --prompt 'Project:' --layout bottom-up || fail "No project chosen")"
+        PROJECT="$(find "$HOME/code" -maxdepth 2 -name 'pom.xml' -print0 | xargs -0 dirname -z | xargs -0 basename -a | peco --prompt 'Project:' --layout bottom-up || fail "No project chosen")"
         [ ! "$PROJECT" ] && usage
         PROJECTS=( "$PROJECT" )
     else
@@ -80,7 +80,7 @@ BUILT_JARS=()
 function build {
     task "Locating project folder of $1"
 
-    cd "$HOME/GitHub" || fail "Could not enter $HOME/GitHub"
+    cd "$HOME/code" || fail "Could not enter $HOME/code"
 
     if [ ! -d "$1" ]; then
         fail "The project '$1' does not exist!"
