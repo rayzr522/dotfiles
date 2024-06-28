@@ -1,12 +1,8 @@
 # Unbork prezto things
-unalias o 2>/dev/null
-unalias gm 2>/dev/null
-
 alias rs='source ~/.zshrc;'
 
 # Navigation {{{
 alias ~='cd ~'
-alias h='cd ~'
 alias ..='cd ..'
 alias dt='cd ~/Desktop'
 alias dl='cd ~/Downloads'
@@ -23,17 +19,11 @@ alias ln='ln -i'
 alias header='curl -I'
 alias headerc='curl -I --compress'
 alias get='wget --content-disposition'
-alias sirv='pnpx --yes --package sirv-cli sirv'
-# }}}
-
-# Fix vi/vim (and by vi/vim I mean me because I am the one who forgets) {{{
-alias vi='nvim'
-alias vim='nvim'
 # }}}
 
 # Sane defaults {{{
-alias grep='grep --exclude-dir=node_modules'
-alias ls='ls --color=auto'
+alias ls='ls --color=auto --classify --group-directories-first'
+alias ll='ls -lah'
 # }}}
 
 # Git {{{
@@ -67,38 +57,12 @@ alias get-latest-tag-range='echo -n "$(gtl | tail -n2 | head -n1)..$(gtl | tail 
 alias get-release-tickets='git --no-pager log --pretty=oneline "$(get-latest-tag-range)" 1>&2; echo "$(tput setaf 2)\nuse the following JQL query to see all tickets:\n$(tput sgr0)$(git log --format="%s" "$(get-latest-tag-range)" | tickets | jql)"'
 # }}}
  
-# NPM {{{
-alias npr='npm run'
-
-alias nps='npr start'
-alias npt='npr test'
-alias npb='npr build'
-alias nprb='npr rebuild'
-alias npl='npr lint'
-alias npw='npr watch'
-alias npd='npr dev'
-
-alias npi='npm install'
-alias npci='npm ci'
-# }}}
-
 # DB {{{
 alias mongo='mongo --quiet'
 # }}}
 
-# Misc optional tool shortcuts {{{
-if command -v shellcheck >/dev/null; then
-    alias sc='shellcheck '
-fi
-
-if command -v xbindkeys >/dev/null; then
-    alias get-xbindkeys-key-combo='xbindkeys -n -f ~/.config/xbindkeysrc -k'
-fi
-# }}}
-
 # CI/CD {{{
-alias maven-deploy='mvn -DaltDeploymentRepository=local-repo::default::file://$HOME/GitHub/maven-repo clean package deploy'
-
+alias maven-deploy='mvn -DaltDeploymentRepository=local-repo::default::file://${MAVEN_REPO_PATH:-$HOME/GitHub/maven-repo} clean package deploy'
 alias inspect-docker-context='printf "FROM scratch\n COPY . /" | DOCKER_BUILDKIT=1 docker build -f- -o context .'
 # }}}
 
@@ -129,4 +93,9 @@ alias chill='screen -dmS music mpsyt /lunacy chillout, "$(( RANDOM % 20 ))"'
 
 # Docker aliases {{{
 alias rustscan='docker run -it --rm --name rustscan rustscan/rustscan:latest'
+# }}}
+
+# node aliasees {{{
+alias sirv='pnpm dlx sirv-cli@latest --dev'
+alias nuxi='pnpm dlx nuxi@latest'
 # }}}
