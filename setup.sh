@@ -13,6 +13,18 @@ confirm() {
   test "$result" == y
 }
 
+install_nf() {
+  local name="${1?missing name}"
+  (
+    cd "$(mktemp -d)"
+    wget "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/$name.zip"
+    unzip "$name.zip"
+    mkdir -p ~/.local/share/fonts
+    mv *.ttf ~/.local/share/fonts
+    fc-cache -f
+  )
+}
+
 if has apt; then
   echo "apt found"
   if confirm "would you like to install system deps?"; then
@@ -50,11 +62,11 @@ if ! has nvim; then
   echo "neovim not found"
   if confirm "install neovim?"; then
     (
-      cd "$(mktemp -d)"
-      wget "https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz"
-      tar -xzvf nvim-linux64.tar.gz
-      sudo rsync -abu nvim-linux64/ /usr/local/
-    )
+    cd "$(mktemp -d)"
+    wget "https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz"
+    tar -xzvf nvim-linux64.tar.gz
+    sudo rsync -abu nvim-linux64/ /usr/local/
+  )
   fi
 fi
 
@@ -68,17 +80,14 @@ fi
 
 if ! has fc-list; then
   echo "cant manage fonts on this system, ignoring"
-elif ! fc-list | grep -q "Nerd Font"; then
-  echo "no nerd fonts found"
-  if confirm "install one?"; then
-    (
-      cd "$(mktemp -d)"
-      wget "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.zip"
-      unzip FiraCode.zip
-      mkdir -p ~/.local/share/fonts
-      mv *.ttf ~/.local/share/fonts
-      fc-cache -f
-    )
+else
+  if ! fc-list | grep -q "FiraCode Nerd Font"; then
+    echo "FiraCode Nerd Font not installed"
+    confirm "install it?" && install_nf FiraCode
+  fi
+  if ! fc-list | grep -q "Iosevka Nerd Font"; then
+    echo "Iosevka Nerd Font not installed"
+    confirm "install it?" && install_nf Iosevka
   fi
 fi
 
