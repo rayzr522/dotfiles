@@ -23,9 +23,9 @@ status="$(playerctl_exec status)"
 symbol=""
 
 if [[ "$status" = "Playing" ]]; then
-    symbol=$'\ue602'
+    symbol=$'\uf04b'
 elif [[ "$status" = "Paused" ]]; then
-    symbol=$'\uf8e3'
+    symbol=$'\uf04c'
 else
     exit 0
 fi
