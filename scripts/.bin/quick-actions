@@ -8,11 +8,11 @@ add_opt() {
     opts+=( "$1" )
 }
 
+add_opt "Play/Pause" "playerctl play-pause"
 add_opt "Switch sound to speakers" "pactl set-default-sink alsa_output.usb-ACTIONS_Pebble_V3-00.3.iec958-stereo"
 add_opt "Switch sound to headphones" "pactl set-default-sink alsa_output.usb-Focusrite_Scarlett_4i4_USB_D8RJVEK0A87F4C-00.3.analog-surround-40"
-add_opt "Kill PulseAudio" "pulseaudio -k"
 add_opt "SSH into VPS" "ssh-into-vps"
-add_opt "Play/Pause" "playerctl play-pause"
+add_opt "Kill PulseAudio" "pulseaudio -k"
 # add_opt "Fix webcam" "fix-webcam"
 # add_opt "Screenshot Area" "$HOME/.bin/quick-screenshot"
 
