@@ -10,7 +10,7 @@ add_opt() {
 
 add_opt "Play/Pause" "playerctl play-pause"
 add_opt "yewtube" "kitty bash -c 'tmux at -t yewtube || tmux new-session -s yewtube yt'"
-add_opt "Switch sound to speakers" "pactl set-default-sink alsa_output.usb-ACTIONS_Pebble_V3-00.3.iec958-stereo"
+add_opt "Switch sound to speakers" "pactl set-default-sink alsa_output.usb-ACTIONS_Pebble_V3-00.analog-stereo"
 add_opt "Switch sound to headphones" "pactl set-default-sink alsa_output.usb-Focusrite_Scarlett_4i4_USB_D8RJVEK0A87F4C-00.3.analog-surround-40"
 add_opt "SSH into VPS" "ssh-into-vps"
 add_opt "Kill PulseAudio" "pulseaudio -k"
