@@ -87,3 +87,16 @@ function bak {
     echo "baked up as $bak_name"
 }
 
+# touch, but also chmod +x
+function touchexec {
+    touch "$1" && chmod +x "$1"
+}
+
+function mkscript {
+    if [ ! -f "$1" ]; then
+        echo "#!/bin/bash" > "$1"
+    fi
+    if [ ! -x "$1" ]; then
+        chmod +x "$1"
+    fi
+}
