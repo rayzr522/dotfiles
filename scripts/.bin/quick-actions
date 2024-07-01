@@ -3,54 +3,65 @@
 declare -A cmds
 declare -a opts
 
-add_opt() {
-    cmds["$1"]="$2"
-    opts+=( "$1" )
+function add_opt {
+  cmds["$1"]="$2"
+  opts+=( "$1" )
 }
 
 add_opt "Play/Pause" "playerctl play-pause"
 add_opt "yewtube" "kitty bash -c 'tmux at -t yewtube || tmux new-session -s yewtube yt'"
-add_opt "Switch sound to speakers" "pactl set-default-sink alsa_output.usb-ACTIONS_Pebble_V3-00.analog-stereo"
-add_opt "Switch sound to headphones" "pactl set-default-sink alsa_output.usb-Focusrite_Scarlett_4i4_USB_D8RJVEK0A87F4C-00.3.analog-surround-40"
+add_opt "Switch sound to speakers" "switch-audo-output 'Pebble V3 Analog Stereo'"
+add_opt "Switch sound to headphones" "switch-audo-output 'GA102 High Definition Audio Controller Digital Stereo (HDMI)'"
 add_opt "SSH into VPS" "ssh-into-vps"
 add_opt "Kill PulseAudio" "pulseaudio -k"
 # add_opt "Fix webcam" "fix-webcam"
 # add_opt "Screenshot Area" "$HOME/.bin/quick-screenshot"
 
 if command -v cpufreq-info >/dev/null; then
-    for governer in $(cpufreq-info -g); do
-        opts+=( ["CPU Mode: $governer"]="set-cpu-mode $governer" )
-    done
+  for governer in $(cpufreq-info -g); do
+    opts+=( ["CPU Mode: $governer"]="set-cpu-mode $governer" )
+  done
 fi
 
-
-ssh-into-vps() {
-    kitty tmux new-session 'exec ssh infra-2'
+function switch-audo-output {
+  local description="${1?description missing}"
+  local name="$(pactl list sinks | grep "Description: $description" -B1 | head -n1 | awk '{print $2}')"
+  if [ -z "$name" ]; then
+    echo "could not find sink matching description '$description'" >&2
+    exit 1
+  fi
+  echo "$description"
+  echo "$name"
+  pactl set-default-sink "$name"
 }
 
-fix-webcam() {
-    urxvt -geometry 30x5 -e "$HOME/.bin/fix-webcam"
+function ssh-into-vps {
+  kitty tmux new-session 'exec ssh infra-2'
 }
 
-sudoask() {
-    SUDO_ASKPASS="$HOME/.bin/askpass-secret-tool" sudo -A "$@"
+function fix-webcam {
+  urxvt -geometry 30x5 -e "$HOME/.bin/fix-webcam"
 }
 
-notify() {
-    command -v notify-send >/dev/null && notify-send "$@"
+function sudoask {
+  SUDO_ASKPASS="$HOME/.bin/askpass-secret-tool" sudo -A "$@"
 }
 
-set-cpu-mode() {
-    local mode="$1"
-    sudoask cpufreq-set -g "$mode"
-    notify -t 3000 -i system-settings "CPU mode changed" "Now set to $mode"
+function notify {
+  command -v notify-send >/dev/null && notify-send "$@"
+}
+
+function set-cpu-mode {
+  local mode="$1"
+  sudoask cpufreq-set -g "$mode"
+  notify -t 3000 -i system-settings "CPU mode changed" "Now set to $mode"
 }
 
 action="$(printf '%s\n' "${opts[@]}" | rofi -dmenu -p action -l 5 -i)"
 cmd="${cmds[${action:-none}]}"
 
 if [ -z "$cmd" ]; then
-    exit
+  exit
 fi
 
 eval "$cmd"
