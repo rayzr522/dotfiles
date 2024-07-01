@@ -1,14 +1,11 @@
 #!/bin/bash
 
-killall conky 2>/dev/null
-
-if [[ ! -x ~/.config/conky/now-clocking/start.sh ]]; then
-    exit 0
-fi
+set -x
 
 while [[ ! "$DISPLAY" ]]; do
     echo "Waiting for display to start conky..."
     sleep 1
 done
 
-~/.config/conky/now-clocking/start.sh
+killall conky 2>/dev/null
+[ -x ~/.config/conky/now-clocking/start.sh ] && ~/.config/conky/now-clocking/start.sh
