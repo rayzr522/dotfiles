@@ -10,8 +10,8 @@ function add_opt {
 
 add_opt "Play/Pause" "playerctl play-pause"
 add_opt "yewtube" "kitty bash -c 'tmux at -t yewtube || tmux new-session -s yewtube yt'"
-add_opt "Switch sound to speakers" "switch-audo-output 'Pebble V3 Analog Stereo'"
-add_opt "Switch sound to headphones" "switch-audo-output 'GA102 High Definition Audio Controller Digital Stereo (HDMI)'"
+add_opt "Switch sound to speakers" "switch-audo-output 'Pebble V3 Analog Stereo' && notify 'Switched to speakers'"
+add_opt "Switch sound to headphones" "switch-audo-output 'GA102 High Definition Audio Controller Digital Stereo (HDMI)' && notify 'Switched to headphones'"
 add_opt "SSH into VPS" "ssh-into-vps"
 add_opt "Kill PulseAudio" "pulseaudio -k"
 
