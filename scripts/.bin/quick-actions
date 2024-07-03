@@ -14,6 +14,7 @@ add_opt "Switch sound to speakers" "switch-audo-output 'Pebble V3 Analog Stereo'
 add_opt "Switch sound to headphones" "switch-audo-output 'GA102 High Definition Audio Controller Digital Stereo (HDMI)' && notify 'Switched to headphones'"
 add_opt "SSH into VPS" "ssh-into-vps"
 add_opt "Kill PulseAudio" "pulseaudio -k"
+add_opt "Suspend system" "systemctl suspend"
 
 # add_opt "Fix webcam" "fix-webcam"
 # add_opt "Screenshot Area" "$HOME/.bin/quick-screenshot"
