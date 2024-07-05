@@ -1,6 +1,9 @@
 ---@type LazySpec
 return {
-  { "folke/tokyonight.nvim", },
+  {
+    "folke/tokyonight.nvim",
+    opts = { style = "night" },
+  },
   {
     "axelvc/template-string.nvim",
     ft = { "javascript", "typescript", "javascriptreact", "typescriptreact", "vue" },
