@@ -10,3 +10,6 @@
 [submodule ".config/conky/now-clocking"]
 	path = conky/.config/conky/now-clocking
 	url = https://github.com/rayzr522/now-clocking.git
+[submodule "tmux/.config/tmux/plugins/tpm"]
+	path = tmux/.config/tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
