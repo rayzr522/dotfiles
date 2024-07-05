@@ -17,5 +17,5 @@ bind C-r move-window -r
 bind -r Tab next-window
 
 # clipboard shortcuts
-bind -t copy-mode y send-keys -x copy-pipe-and-cancel "xsel -i -p && xsel -o -p | xsel -i -b"
+bind -T copy-mode y send-keys -X copy-pipe-and-cancel "xsel -i -p && xsel -o -p | xsel -i -b"
 # bind C-y run "xsel -o | tmux load-buffer - ; tmux paste-buffer"
