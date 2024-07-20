@@ -1,3 +1,5 @@
+vim.g.wordmotion_prefix = ','
+
 ---@type LazySpec
 return {
   {
@@ -46,8 +48,12 @@ return {
       lsp = {
         override_definition = true, -- override vim.lsp.buf.definition
       },
-      debounce = 0
-    }
+      debounce = 200
+    },
+    { "chaoren/vim-wordmotion", lazy = false },
+    { "tpope/vim-abolish", lazy = false },
+    { "tpope/vim-surround", lazy = false },
+    { "wellle/targets.vim", lazy = false },
   },
   -- {
   --   "danymat/neogen",
