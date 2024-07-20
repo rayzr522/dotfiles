@@ -1,4 +1,4 @@
-fpath+=(~/.config/zsh/comp)
+fpath+=(~/.config/zsh/comp ~/.zfunc)
 
 # we want history yes plz
 HISTFILE=~/.zsh_history
