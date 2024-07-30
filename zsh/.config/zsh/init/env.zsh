@@ -2,13 +2,13 @@
 export SCRIPTS="$HOME/.bin"
 export SRVR="$HOME/Servers/Minecraft/paper-server"
 
-# Get base system vars before any other tools muck with them
+# Get base system vars before any other tools muck with them; this also prevents infinite expansion of PATH/MANPATH/etc when re-sourcing this file
 export _ORIG_PATH=${_ORIG_PATH:-$PATH}
 export _ORIG_MANPATH=${_ORIG_MANPATH:-${MANPATH:-$(manpath)}}
 export _ORIG_NODE_PATH=${_ORIG_NODE_PATH:-$NODE_PATH}
 
 # Configure discovery paths
-export PATH="$HOME/.local/bin:$SCRIPTS:$HOME/.deno/bin:$HOME/go/bin:$_ORIG_PATH:./node_modules/.bin"
+export PATH="$HOME/.local/bin:$SCRIPTS:$HOME/.deno/bin:$HOME/go/bin:$HOME/.cargo/bin:$_ORIG_PATH:./node_modules/.bin"
 
 if [ -f "/etc/wsl.conf" ]; then
    export PATH="$SCRIPTS/wsl:$PATH"
