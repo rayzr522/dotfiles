@@ -21,7 +21,13 @@ add_opt "Suspend system" "systemctl suspend"
 
 if command -v cpufreq-info >/dev/null; then
   for governer in $(cpufreq-info -g); do
-    opts+=( ["CPU Mode: $governer"]="set-cpu-mode $governer" )
+    add_opt "CPU Mode: $governer" "set-cpu-mode $governer"
+  done
+fi
+
+if command -v openrgb >/dev/null && [ -d ~/.config/OpenRGB ]; then
+  for profile in $(basename -s .orp ~/.config/OpenRGB/*.orp); do
+    add_opt "openrgb profile: $profile" "openrgb -p $profile"
   done
 fi
 
