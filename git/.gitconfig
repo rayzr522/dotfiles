@@ -18,9 +18,6 @@
   diffFilter = delta --color-only
 [delta]
   navigate = true
-[merge]
-  conflictstyle = zdiff3
-
 
 [includeIf "gitdir:~/.local/share/nvim/plugged/"]
 	path = ~/.config/git/env/plugged.gitconfig
