@@ -1,5 +1,13 @@
 fpath+=(~/.config/zsh/comp ~/.zfunc)
 
+# enable autocomplete (adapted from https://gist.github.com/ctechols/ca1035271ad134841284)
+autoload -Uz compinit
+if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
+
 # we want history yes plz
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -16,9 +24,6 @@ function _zsh_chpwd_ls {
 autoload -Uz add-zsh-hook
 add-zsh-hook chpwd _zsh_chpwd_ls
 
-# enable autocomplete
-autoload -Uz compinit 
-compinit
 
 # Use viins keymap
 bindkey -v
