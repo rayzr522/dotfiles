@@ -6,6 +6,9 @@ HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory
 
+# zmv is cool
+autoload -Uz zmv
+
 function _zsh_chpwd_ls {
   ls -F --group-directories-first --color=auto
 }
