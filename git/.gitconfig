@@ -4,17 +4,23 @@
 
 [rerere]
 	enabled = true
-
 [commit]
 	gpgsign = true
-
 [pull]
 	rebase = false
 
 [core]
 	autocrlf = false
+	pager = delta
+[init]
+	defaultBranch = main
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true
+[merge]
+  conflictstyle = zdiff3
+
 
 [includeIf "gitdir:~/.local/share/nvim/plugged/"]
 	path = ~/.config/git/env/plugged.gitconfig
-[init]
-	defaultBranch = main
