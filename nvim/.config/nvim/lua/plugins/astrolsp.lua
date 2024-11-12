@@ -11,7 +11,7 @@ return {
     --   }
     -- })
     opts.config = require("astrocore").extend_tbl(opts.config or {}, {
-      tsserver = {
+      ts_ls = {
         init_options = {
           plugins = {
             {
