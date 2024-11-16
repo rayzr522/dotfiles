@@ -55,6 +55,7 @@ if ! has mise; then
   echo "mise not found"
   if confirm "would you like to install it?"; then
     curl https://mise.run | sh
+    eval "$(~/.local/bin/mise env)"
   fi
 fi
 
