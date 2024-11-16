@@ -4,7 +4,7 @@ export VISUAL="$EDITOR"
 
 # passwordless sudo via keychain
 if [ "$(uname)" = Linux ] && command -v secret-tool >/dev/null; then
-    export SUDO_ASKPASS="$SCRIPTS/askpass-secret-tool"
+    export SUDO_ASKPASS="$HOME/.bin/askpass-secret-tool"
     alias sudo="sudo -A"
 fi
 
