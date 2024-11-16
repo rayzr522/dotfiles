@@ -51,6 +51,20 @@ if [[ "$SHELL" != *zsh ]]; then
   fi
 fi
 
+if ! has mise; then
+  echo "mise not found"
+  if confirm "would you like to install it?"; then
+    curl https://mise.run | sh
+  fi
+fi
+
+mise_deps=("neovim" "starship" "pnpm" "node@lts")
+if has mise && confirm "would you like to install (${mise_deps[*]}) with mise?"; then
+  mise use -g "${mise_deps[@]}"
+  eval "$(mise env)"
+fi
+
+
 if ! has starship; then
   echo "starship not found"
   if confirm "install starship?"; then
