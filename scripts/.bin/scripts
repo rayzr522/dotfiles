@@ -1,7 +1,7 @@
 #!/bin/bash
 ##DESC## This is a simple script to list all scripts along with their descriptions.
 
-cd "$SCRIPTS" || exit 1
+cd "$HOME/.bin" || exit 1
 
 BOLD="$(tput bold)"
 RESET="$(tput sgr0)"

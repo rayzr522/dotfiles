@@ -8,6 +8,6 @@ _arguments \
 
 case "$state" in
   scripts)
-    _values "$state_descr" $(ls "$SCRIPTS")
+    _values "$state_descr" $(ls "$HOME/.bin")
     ;;
 esac
